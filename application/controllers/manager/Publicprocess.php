@@ -6,6 +6,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  **/
 class Publicprocess extends Base_Controller {
 	public $_model;
+	public $class_name = '';
 	public function __construct()
 	{
 		$this->use_model = false;
@@ -17,6 +18,7 @@ class Publicprocess extends Base_Controller {
 		$model = request_post('model') ? request_post('model') : request_get('model');
 		if(strpos($model,'cp') !== FALSE){
 			$model = str_replace(array('cp', '_cp'), '', $model);
+			$this->class_name = $model;
 		}
 		if($model){
 			$model = strtolower($model).'_model';
@@ -37,16 +39,24 @@ class Publicprocess extends Base_Controller {
 	public function listorder(){
 		$data = request_post('data') ? request_post('data') : array();
 		$orderfield = request_post('order_field') ? request_post('order_field') : 'listorder';
+		$model = request_post('model') ? request_post('model') : request_get('model');
+
 		if($data){
 			$dataArr = explode(',', $data);
 			foreach($dataArr as $k => $v){
 				$vA = explode('-', $v);
 				$data = array($orderfield => !empty($vA[1]) ? $vA[1] : 0);
 				$where = array('id' => $vA[0]);
-				if($this->_model){
-					$this->_model->updateData($data, $where);
+				if($this->_model == null){
+					$this->load->model('Result_model');
+					$this->Result_model->update($this->class_name, $where, $data);
+				}else{
+					if($this->_model){
+						$this->_model->updateData($data, $where);
+					}
 				}
 			}
+			$this->cache->file->delete($this->class_name);
 			echo 'ok';
 		}
 	}
@@ -68,12 +78,15 @@ class Publicprocess extends Base_Controller {
 				$where = array('id' => $id);
 				if($this->_model == null){
 					$this->load->model('Result_model');
-					$this->Result_model->delete($model, $where);
+					$this->Result_model->delete($this->class_name, $where);
+				}else{
+					if($this->_model){
+						$this->_model->delData($where);
+					}
 				}
-				if($this->_model){
-					$this->_model->delData($where);
-				}
+				
 			}
+			$this->cache->file->delete($this->class_name);
 			exit('ok');
 		}
 	}
