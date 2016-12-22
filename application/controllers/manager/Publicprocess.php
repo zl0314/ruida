@@ -66,6 +66,10 @@ class Publicprocess extends Base_Controller {
 		if($ids){
 			foreach($ids as $k => $id){
 				$where = array('id' => $id);
+				if($this->_model == null){
+					$this->load->model('Result_model');
+					$this->Result_model->delete($model, $where);
+				}
 				if($this->_model){
 					$this->_model->delData($where);
 				}

@@ -57,6 +57,7 @@ class Linkagecp extends Base_Controller {
 					$data['parentid'] = !empty($data['parentid']) ? intval($data['parentid']) : 0;
 					$names = str_replace(array("\r","\n","\t"), ',', $data['name']);
 					$names = explode(',', $names);
+					$names = array_filter($names);
 					if(!empty($names)){
 						foreach($names as $k => $r){
 							$save_data = array(
