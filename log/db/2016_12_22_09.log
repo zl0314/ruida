@@ -1,4 +1,0 @@
-2016-12-22 09:58:08 SELECT * FROM `rd_adminuser` WHERE `username` = 'admin'  LIMIT 1
-
-2016-12-22 09:58:14: SELECT * FROM `rd_ad` ORDER BY `id` DESC  LIMIT 10
-2016-12-22 09:58:31: SELECT * FROM `rd_ad` ORDER BY `id` DESC  LIMIT 10

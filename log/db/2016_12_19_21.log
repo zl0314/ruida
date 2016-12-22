@@ -1,6 +1,0 @@
-2016-12-19 21:41:23 SELECT * FROM `adminuser` WHERE `username` = 'admin'  LIMIT 1
-
-2016-12-19 21:45:16 SELECT * FROM `adminuser` WHERE `username` = 'admin'  LIMIT 1
-
-2016-12-19 21:47:17 SELECT * FROM `rd_adminuser` WHERE `username` = 'admin'  LIMIT 1
-

@@ -1,3 +1,0 @@
-2016-12-16 07:03:52: SELECT * FROM `stu` RIGHT JOIN `news` ON `news`.`id`=`stu`.`id` WHERE `title` LIKE '%巴西%' ESCAPE '!' AND  `source` LIKE '%新闻%' ESCAPE '!' ORDER BY `news`.`id` DESC  LIMIT 2, 10
-2016-12-16 07:25:27: SELECT * FROM `stu` RIGHT JOIN `news` ON `news`.`id`=`stu`.`id` WHERE `title` LIKE '%巴西%' ESCAPE '!' AND  `source` LIKE '%新闻%' ESCAPE '!' ORDER BY `news`.`id` DESC  LIMIT 2, 10
-2016-12-16 07:27:40: SELECT * FROM `stu` RIGHT JOIN `news` ON `news`.`id`=`stu`.`id` WHERE `title` LIKE '%巴西%' ESCAPE '!' AND  `source` LIKE '%新闻%' ESCAPE '!' ORDER BY `news`.`id` DESC  LIMIT 2, 10

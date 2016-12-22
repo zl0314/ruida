@@ -1,2 +1,0 @@
-2016-12-21 11:37:00 SELECT * FROM `jm_adminuser` WHERE `username` = 'admin'  LIMIT 1
-
