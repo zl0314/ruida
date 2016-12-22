@@ -6,7 +6,7 @@ class MY_Controller extends CI_Controller {
 
 		$this->load->model('Result_model');
 		$this->data['webset'] = $this->get_cache('system_setting', 'getRow');
-		$this->data['friend_link'] = $this->get_cache('friend_link', 'getList', array('isshow' => 1), 'name,link_url');
+		$this->data['friend_link'] = $this->get_cache('friend_link', 'getList', array('isshow' => 1), 'name,link_url,id');
 
         $site_class = $this->router->class;
         $site_method = $this->router->method;
@@ -45,11 +45,17 @@ class MY_Controller extends CI_Controller {
 	public function get_cache($cache_name, $type = 'getList', $where = array(), $field = '*', $orderby = 'id desc' ){
 		$tb = $cache_name;
 		if(!empty($where)){
-			$cache_name = md5($cache_name.json_encode($where));
+			// $cache_name = md5($cache_name.json_encode($where));
 		}
 		$cache_data = $this->cache->file->get($cache_name);
 		if(empty($cache_data)){
 			$cache_data = $this->Result_model->$type($tb, $field, $where);
+			if($type == 'getList'){
+				foreach ($cache_data as $key => $r) {
+					$cache_data[$r['id']] = $r;
+					unset($cache_data[$key]);
+				}
+			}
 			$this->cache->file->save($cache_name, $cache_data);
 		}
 		return $cache_data;

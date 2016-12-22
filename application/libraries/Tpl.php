@@ -32,7 +32,10 @@ class Tpl extends Smarty{
         $this->cache_dir      = APPPATH . 'cache/cache/';
         $this->template_file  = !empty( $this->CI->uri->segments[1] ) ?  $this->CI->uri->segments[1] : '';
         $this->template_file .= !empty( $this->CI->uri->segments[2] ) ?  '/'. $this->CI->uri->segments[2] : '/index';
-        $this->template_file .= !empty( $this->CI->uri->segments[3]) && ( $this->CI->uri->segments[1] == 'manager' )  ? '/'.$this->CI->uri->segments[3] : '';
+        $this->template_file .= 
+                            !empty( $this->CI->uri->segments[3]) && ( $this->CI->uri->segments[1] == 'manager' )  
+                            ? '/'.$this->CI->uri->segments[3] 
+                            : ( !empty($this->CI->uri->segments[1]) && $this->CI->uri->segments[1] == 'manager' ? '/index' : '');
     }
     
     /**

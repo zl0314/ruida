@@ -36,7 +36,8 @@ class Friend_linkcp extends Base_Controller{
 					$data['id'] = null;
 				}
 				$this->model->save($data);
-				 redirect('manager/'.'/friend_linkcp');
+				$this->cache->file->delete('friend_link');
+				redirect('manager/'.'/friend_linkcp');
 				$this->message('保存成功' );
 			}
 			$this->data['vo'] = $data;
