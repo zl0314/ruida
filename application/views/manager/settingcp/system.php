@@ -46,18 +46,23 @@
 
 						<div class="form-row" >
 							<label for="contact_email" class="form-field">联系邮箱</label>
-							<input type="text" class="input-txt" id="description" name="setting[contact_email]" value="<?=!empty($setting['contact_email']) ? $setting['contact_email'] : '' ?>" />	
+							<input type="text" class="input-txt" id="contact_email" name="setting[contact_email]" value="<?=!empty($setting['contact_email']) ? $setting['contact_email'] : '' ?>" />	
 						</div>
 
 					<div class="form-row" >
-							<label for="service_line" class="form-field">客服电话</label>
-							<input type="text" class="input-txt" id="description" name="setting[service_line]" value="<?=!empty($setting['service_line']) ? $setting['service_line'] : '' ?>" />	
+							<label for="customer_tel" class="form-field">客服电话</label>
+							<input type="text" class="input-txt" id="customer_tel" name="setting[customer_tel]" value="<?=!empty($setting['customer_tel']) ? $setting['customer_tel'] : '' ?>" />	
+						</div>
+
+						<div class="form-row" >
+							<label for="service_line" class="form-field">服务热线</label>
+							<input type="text" class="input-txt" id="service_line" name="setting[service_line]" value="<?=!empty($setting['service_line']) ? $setting['service_line'] : '' ?>" />	
 						</div>
 						
 						 
 					<div class="form-row" >
 							<label for="company_address" class="form-field">公司地址</label>
-							<input type="text" class="input-txt" id="company_address" name="setting[service_line]" value="<?=!empty($setting['company_address']) ? $setting['company_address'] : '' ?>" />	
+							<input type="text" class="input-txt" id="company_address" name="setting[company_address]" value="<?=!empty($setting['company_address']) ? $setting['company_address'] : '' ?>" />	
 						</div>
 
 					<div class="form-row" >

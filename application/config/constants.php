@@ -121,7 +121,7 @@ $PHP_SELF = isset($_SERVER['PHP_SELF']) ? $_SERVER['PHP_SELF'] : (isset($_SERVER
 $PHP_SCHEME = $_SERVER['SERVER_PORT'] == '443' ? 'https://' : 'http://';
 $PHP_PORT = $_SERVER['SERVER_PORT'] == '80' ? '' : ':'.$_SERVER['SERVER_PORT'];
 $PHP_PATH = isset($_SERVER['PATH_INFO']) ? $_SERVER['PATH_INFO'] : '/';
-define('SITE_URL', $PHP_SCHEME.$_SERVER['SERVER_NAME'].$PHP_PORT.SITE_PATH);
+define('SITE_URL', $PHP_SCHEME.$_SERVER['SERVER_NAME'].$PHP_PORT);
 define('SCRIPT_URL', $PHP_SCHEME.$_SERVER['SERVER_NAME'].$PHP_PORT.$PHP_PATH.($_SERVER['QUERY_STRING'] ? '?'.$_SERVER['QUERY_STRING'] : ''));
 define('SITE_DOMAIN', $_SERVER['SERVER_NAME']);
 define('REDIRECT_URL', isset($_GET['redirect_url']) ? urldecode($_GET['redirect_url']) : '');

@@ -29,13 +29,13 @@
            
             <td><?php echo date('Y-m-d H:i:s' , $v['addtime']);?></td>
             <td>
-              <a class="icon-edit" title="编辑" href="<?php echo site_url(sprintf($siteclass."/add/%s" , $v['id']));?>">编辑</a>
+              <a class="icon-edit" title="编辑" href="<?php echo site_url('manager/'.sprintf($siteclass."/add/%s" , $v['id']));?>">编辑</a>
 
               <?php if( $v['username'] != 'admin'):?>
-            	<a class="icon-edit" title="权限" href="<?php echo site_url(sprintf($siteclass."/right/%s" , $v['id']));?>">权限</a>
+            	<a class="icon-edit" title="权限" href="<?php echo site_url('manager/'.sprintf($siteclass."/right/%s" , $v['id']));?>">权限</a>
                 
 
-            	<a class="icon-del" onclick="if( !confirm('您确定要删除？')){ return false;}"  title="删除" href="<?php echo site_url( sprintf($siteclass."/del/%s" , $v['id']));?>">删除</a>
+            	<a class="icon-del" onclick="if( !confirm('您确定要删除？')){ return false;}"  title="删除" href="<?php echo site_url( sprintf('manager/'.$siteclass."/del/%s" , $v['id']));?>">删除</a>
                 
                 <?php endif;?>
                 </td>

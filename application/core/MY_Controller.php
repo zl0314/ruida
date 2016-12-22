@@ -2,9 +2,11 @@
 
 class MY_Controller extends CI_Controller {
 	function __construct(){
-		parent::__construct() ;
-		
-		$this->data['webset'] = $this->cache->file->get('system_setting');
+		parent::__construct();
+
+		$this->load->model('Result_model');
+		$this->data['webset'] = $this->get_cache('system_setting', 'getRow');
+		$this->data['friend_link'] = $this->get_cache('friend_link', 'getList', array('isshow' => 1), 'name,link_url');
 
         $site_class = $this->router->class;
         $site_method = $this->router->method;
@@ -28,13 +30,28 @@ class MY_Controller extends CI_Controller {
 	 */
 	public function message( $err ='', $url='', $sec = '1' , $is_right = 0){
 		if( $err ){
-			if($this->is_app){
-				$this->fail($err);
-			}
 			$this->data['sec'] = $sec*1000;
 			$this->data['url'] = reMoveXss($url);
 			$this->data['err'] = reMoveXss($err);
 			$this->load->view('message', $this->data);
 		}
+	}
+	/**
+	 * 得到缓存信息
+	 * @param  string $cache_name 缓存名
+	 * @param  string $type       获取类型， row 一行记录， list 记录集合
+	 * @param  array  $where      过滤条件
+	 */
+	public function get_cache($cache_name, $type = 'getList', $where = array(), $field = '*', $orderby = 'id desc' ){
+		$tb = $cache_name;
+		if(!empty($where)){
+			$cache_name = md5($cache_name.json_encode($where));
+		}
+		$cache_data = $this->cache->file->get($cache_name);
+		if(empty($cache_data)){
+			$cache_data = $this->Result_model->$type($tb, $field, $where);
+			$this->cache->file->save($cache_name, $cache_data);
+		}
+		return $cache_data;
 	}
 }

@@ -13,12 +13,10 @@ class Adcp extends Base_Controller {
         $this->load->model('ad_model', 'model');
 		$this->posArr = array(
 			'index-index' => '首页',
-			'special-index' => '专题首页',
-			'wap-index-index' => '手机端首页',
-			
-			'hotel-lists' => '度假产品',
-			
-			'login-log' => '用户注册&用户登录',
+            'page-index-aboutus' => '关于我们',
+            'page-index-contactus' => '联系我们',
+            'page-index-statement' => '隐私声明',
+			'job-index' => '加入我们',
 		);
 		$this->data['posArr'] = $this->posArr;
     }
@@ -33,7 +31,7 @@ class Adcp extends Base_Controller {
         $search = array();
         $where = array();
         if(request_get('title')){
-            $where['search']['like']['title'] = request_get('title');
+            $where['like']['title'] = request_get('title');
         }
 
         $data = get_page('ad', $where,$this->Result_model);

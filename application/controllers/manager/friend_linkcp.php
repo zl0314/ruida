@@ -14,7 +14,7 @@ class Friend_linkcp extends Base_Controller{
 	{
 
 		$where = array();
-		$data = get_page('friend_link', $where, $this->Result_model, '10', 'listorder desc');
+		$data = get_page('friend_link', $where, $this->Result_model, '10', 'listorder desc, id desc');
 		$this->tpl->assign($data);
 		$this->tpl->display();
 	}

@@ -1,0 +1,21 @@
+2016-12-22 12:00:12: SELECT * FROM `rd_subway` ORDER BY `id` desc  LIMIT 10
+2016-12-22 12:00:20 SELECT * FROM `rd_linkage` WHERE `id` = 20  LIMIT 1
+
+2016-12-22 12:00:24: SELECT * FROM `rd_subway` ORDER BY `id` desc  LIMIT 10
+2016-12-22 12:01:46: SELECT * FROM `rd_subway` ORDER BY `id` desc  LIMIT 10
+2016-12-22 12:01:49 SELECT * FROM `rd_subway` WHERE `id` = 20  LIMIT 1
+
+2016-12-22 12:01:51: SELECT * FROM `rd_subway` ORDER BY `id` desc  LIMIT 10
+2016-12-22 12:45:18: SELECT * FROM `rd_subway` ORDER BY `id` desc  LIMIT 10
+2016-12-22 12:46:17: SELECT * FROM `rd_subway` ORDER BY `id` desc  LIMIT 10
+2016-12-22 12:46:21 SELECT `name` FROM `rd_subway` WHERE `id` = 20  LIMIT 1
+
+2016-12-22 12:46:21: SELECT * FROM `rd_subway` ORDER BY `id` desc  LIMIT 10
+2016-12-22 12:46:54: SELECT Count(id) as cnt FROM `rd_subway` WHERE `parentid` = 20  LIMIT 1
+2016-12-22 12:47:19: SELECT Count(id) as cnt FROM `rd_subway` WHERE `parentid` = 20  LIMIT 1
+2016-12-22 12:47:22: SELECT * FROM `rd_subway` ORDER BY `id` desc  LIMIT 10
+2016-12-22 12:47:48: SELECT * FROM `rd_subway` ORDER BY `id` desc  LIMIT 10
+2016-12-22 12:58:55 SELECT `name` FROM `rd_subway` WHERE `id` = 18  LIMIT 1
+
+2016-12-22 12:58:55: SELECT * FROM `rd_subway` WHERE `parentid` = 18 ORDER BY `id` desc  LIMIT 10
+2016-12-22 12:58:58: SELECT * FROM `rd_subway` ORDER BY `id` desc  LIMIT 10

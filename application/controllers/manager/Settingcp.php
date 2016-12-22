@@ -22,7 +22,7 @@ class Settingcp extends Base_Controller {
 			$data['setting'] = json_encode($setting);
 			
 			$this->setting_model->saveData($data);
-			$this->cache->file->save('system_setting', $setting);
+			$this->cache->file->save('system_setting', $setting, CACHE_EXP);
 			$this->message('保存成功' , site_url('manager/'.$this->siteclass.'/'.$this->sitemethod ));
 			return true;
 		}

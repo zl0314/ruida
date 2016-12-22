@@ -21,16 +21,16 @@ class Usercp extends Base_Controller {
 		
 		//搜索条件
 		if(request_get('username')){
-			$where['search']['like'] = array('username' => request_get('username') );
+			$where['like'] = array('username' => request_get('username') );
 		}
 		if(request_get('realname')){
-			$where['search']['like']['realname'] = request_get('realname');
+			$where['like']['realname'] = request_get('realname');
 		}
 		if(request_get('mobile')){
-			$where['search']['like']['mobile'] = request_get('mobile');
+			$where['like']['mobile'] = request_get('mobile');
 		}
 		if(request_get('patriarch')){
-			$where['search']['like']['patriarch'] = request_get('patriarch');
+			$where['like']['patriarch'] = request_get('patriarch');
 		}
 		
 		if($id){

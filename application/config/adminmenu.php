@@ -50,20 +50,20 @@ $ADMIN_MENU = array(
 					),
 					'adcp' => array(
 				
-					'name' => '广告管理',
+					'name' => 'Banner管理',
 					'status' => 1,
 					'method' => array(
 						'index' => array(
-							'name' => '广告列表',
+							'name' => 'Banner列表',
 							'status' => 1
 						),
 						'add' => array(
-							'name' => '广告编辑',
+							'name' => 'Banner编辑',
 							'status' => 1
 						),
 						
 						'del' => array(
-							'name' => '广告删除',
+							'name' => 'Banner删除',
 							'status' => 0
 						)
 					)
@@ -109,7 +109,25 @@ $ADMIN_MENU = array(
 								),
 						),
 				),
-
+				'jobcp' => array(
+				
+					'name' => '招聘管理',
+					'status' => 1,
+					'method' => array(
+						'index' => array(
+							'name' => '招聘列表',
+							'status' => 1
+						),
+						'add' => array(
+							'name' => '招聘添加',
+							'status' => 1
+						),
+						'del' => array(
+							'name' => '删除',
+							'status' => 0
+						)
+					)
+				),
 			'friend_linkcp' => array(
 			
 				'name' => '友情链接管理',
@@ -129,7 +147,60 @@ $ADMIN_MENU = array(
 					)
 				)
 			),
-		
+			'linkagecp' => array(
+							'name' => '城市管理',
+							'status' => 1,
+							'method' => array(
+									'index' => array(
+											'name' => '城市列表',
+											'status' => 1
+									),
+									'add' => array(
+											'name' => '城市编辑',
+											'status' => 1
+									),
+                                'del' => array(
+                                        'name' => '删除',
+                                        'status' => 0
+                                ),
+							),
+					),
+			'subwaycp' => array(
+					'name' => '地铁线路管理',
+					'status' => 1,
+					'method' => array(
+							'index' => array(
+									'name' => '地铁线路列表',
+									'status' => 1
+							),
+							'add' => array(
+									'name' => '地铁线路编辑',
+									'status' => 1
+							),
+                        'del' => array(
+                                'name' => '删除',
+                                'status' => 0
+                        ),
+					),
+			),
+			'subway_station_cp' => array(
+					'name' => '地铁站管理',
+					'status' => 0,
+					'method' => array(
+							'index' => array(
+									'name' => '地铁站列表',
+									'status' => 1
+							),
+							'add' => array(
+									'name' => '地铁站编辑',
+									'status' => 1
+							),
+                        'del' => array(
+                                'name' => '删除',
+                                'status' => 0
+                        ),
+					),
+			),
 		),
 ),
 

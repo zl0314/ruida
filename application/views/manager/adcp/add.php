@@ -43,8 +43,9 @@ $(function(){
           <div class="form-cont">
             <input id="pic" type="text" name="data[pic]" readonly class="input-txt" value="<?php echo !empty($vo['pic']) ? $vo['pic'] : '';?>" />
             <input type="button" class="ajaxUploadBtn" id="pic_button" onclick="ajaxUpload('pic','scrollpic')" value="上传图片" style="width:70px; height:25px;">
-            <p>首页推荐大小为宽4920像素，高768像素 <br> 用户登录&用户注册页面宽1920像素  高592像素 <br>其它页面宽1920像素，高419像素。<br>
-              手机端宽640像素，高221像素
+            <p>
+              房源列表页面：宽1920像素，高398像素，<br>
+              关于我们， 隐私声明，加入我们：宽1100像素，高266像素
             </p>
           </div>
         </div>
@@ -57,11 +58,11 @@ $(function(){
           </div>
         </div>
 
-		 <div class="form-row">
+		<!--  <div class="form-row">
           <label for="listorder" class="form-field">排序</label>
           <div class="form-cont">
             <input class="input-txt" id="listorder" type="text" name="data[listorder]" value="<?php echo !empty($vo['listorder']) ? $vo['listorder'] : '0';?>">数值越小越靠前 </div>
-        </div>
+        </div> -->
         
         
         <div class="btn-area">

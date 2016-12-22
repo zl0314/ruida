@@ -373,7 +373,6 @@ class CI_Upload {
 	 */
 	public function do_upload($field = 'userfile')
 	{
-
 		// Is $_FILES[$field] set? If not, no reason to continue.
 		if (isset($_FILES[$field]))
 		{
@@ -454,6 +453,7 @@ class CI_Upload {
 		{
 			$this->_file_mime_type($_file);
 		}
+
 		$this->file_type = preg_replace('/^(.+?);.*$/', '\\1', $this->file_type);
 		$this->file_type = strtolower(trim(stripslashes($this->file_type), '"'));
 		$this->file_name = $this->_prep_filename($_file['name']);
@@ -1217,8 +1217,9 @@ class CI_Upload {
 	{
 		// We'll need this to validate the MIME info string (e.g. text/plain; charset=us-ascii)
 		$regexp = '/^([a-z\-]+\/[a-z0-9\-\.\+]+)(;\s.+)?$/';
+
 		// Fileinfo extension - most reliable method
-		//$finfo = @finfo_open(FILEINFO_MIME);
+		//$finfo = info_open(FILEINFO_MIME);
 		//if (is_resource($finfo)) // It is possible that a FALSE value is returned, if there is no magic MIME database file found on the system
 		//{
 			// $mime = @finfo_file($finfo, $file['tmp_name']);

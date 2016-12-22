@@ -27,13 +27,12 @@ class Tpl extends Smarty{
         $this->CI = get_instance();
         $this->data = null;
 
-        $this->template_dir        = APPPATH . 'views/';
-        $this->compile_dir         = APPPATH . 'cache/templates_c/';
-        $this->cache_dir           = APPPATH . 'cache/cache/';
-        $this->template_file       = !empty( $this->CI->uri->segments[1] ) ?  $this->CI->uri->segments[1] : '';
-        $this->template_file       .= !empty( $this->CI->uri->segments[2] ) ?  '/'. $this->CI->uri->segments[2] : 'index';
-        $this->template_file      .= !empty( $this->CI->uri->segments[3] ) ? '/'.$this->CI->uri->segments[3] : '/index';
-
+        $this->template_dir   = APPPATH . 'views/';
+        $this->compile_dir    = APPPATH . 'cache/templates_c/';
+        $this->cache_dir      = APPPATH . 'cache/cache/';
+        $this->template_file  = !empty( $this->CI->uri->segments[1] ) ?  $this->CI->uri->segments[1] : '';
+        $this->template_file .= !empty( $this->CI->uri->segments[2] ) ?  '/'. $this->CI->uri->segments[2] : '/index';
+        $this->template_file .= !empty( $this->CI->uri->segments[3]) && ( $this->CI->uri->segments[1] == 'manager' )  ? '/'.$this->CI->uri->segments[3] : '';
     }
     
     /**
@@ -82,7 +81,6 @@ class Tpl extends Smarty{
         $sitemethod = $this->CI->router->method;
         $this->siteclass = strtolower($siteclass);
         $this->sitemethod = strtolower($sitemethod);
-        
         //创建目录 以及 当前方法的文件
         // $template_file = $this->template_dir.$this->siteclass.'/'.$this->sitemethod.$this->suffix;
 

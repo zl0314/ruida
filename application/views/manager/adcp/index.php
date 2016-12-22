@@ -34,7 +34,7 @@
             <th><div class="th-gap">图片</div></th>
           
             <th><div class="th-gap">添加时间</div></th>
-            <th><div class="th-gap">排序</div></th>
+            <!-- <th><div class="th-gap">排序</div></th> -->
             <th><div class="th-gap">操作</div></th>
           </tr>
         </thead>
@@ -42,7 +42,7 @@
           <tr>
             <td colspan=" <?php if(request_get('pos') == 'index-index'):?> 9 <?php else:?>8<?php endif;?>"> 
            <input type="button" class="batch delect_batch" value="删 除" onclick="delitem('a', this)">
-            <input type="button" class="batch listorder_batch" value="排 序" onclick="listorder()"> 
+            <!-- <input type="button" class="batch listorder_batch" value="排 序" onclick="listorder()">  -->
             <div class="pre-next"> <?php if(!empty($page_html)){ echo $page_html;}?></div></td>
           </tr>
         </tfoot>
@@ -61,18 +61,15 @@
             
             
             ?></td>
-            <?php if(request_get('pos') == 'index-index'):?>
-            <td><?php echo $v['ptitle']['title'];?></td>
-            <?php endif;?>
-            
+           
             <td><a href="<?php echo $v['url']?>" target="_blank"><?php echo $v['url'];?></a></td>
             <td><a href="<?php echo $v['pic']?>" class="itempic" target="_blank">查看</a></td>
           
             
             <td><?php echo date('Y-m-d H:i:s' , $v['addtime']);?></td>
-            <td><input type="text" class="short_txt" itemid="<?php echo $v['id']?>" name="listorder[<?php echo $v['id']?>]" value="<?=$v['listorder']?>" <?php echo $v['listorder'];?></td>
+            <!-- <td><input type="text" class="short_txt" itemid="<?php echo $v['id']?>" name="listorder[<?php echo $v['id']?>]" value="<?=$v['listorder']?>" <?php echo $v['listorder'];?></td> -->
             <td>
-			<a class="icon-edit" title="编辑" href="<?php echo site_url(sprintf($siteclass."/add/%s" , $v['id']));?>">编辑</a>
+			<a class="icon-edit" title="编辑" href="<?php echo site_url(sprintf('manager/'.$siteclass."/add/%s" , $v['id']));?>">编辑</a>
 			 <a class="icon-del" onclick="delitem('<?php echo $v['id']?>',this)"  title="删除" href="javascript:;">删除</a></td>
           </tr>
           <?php endforeach;?>

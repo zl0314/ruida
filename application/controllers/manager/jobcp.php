@@ -39,14 +39,12 @@ class Jobcp extends Base_Controller {
             $data = $this->input->post('data');
             if($data['title'] == ''){
                 $msg = '标题不能为空';
-            }else if(empty($data['apartment'])){
-                $msg = '所属部门不能为空';
-            }else if(empty($data['address'])){
-                $msg = '工作地点不能为空';
-            }else if(empty($data['people_count'])){
-                $msg = '招聘人数不能为空';
+            }else if(empty($data['worker_age'])){
+                $msg = '招工作年限不能为空';
             }else if(empty($data['toppic'])){
 //                $msg = '详情页顶部图片不能为空';
+            }else if(empty($data['fuli'])){
+                $msg = '福利待遇不能为空';
             }else if(empty($data['intro'])){
                 $msg = '列表描述信息不能为空';
             }else if(empty($data['duty'])){
@@ -64,7 +62,7 @@ class Jobcp extends Base_Controller {
                 }
 				
                 $this->model->save($data);
-                $this->message('保存成功' , site_url($this->siteclass));
+                $this->message('保存成功' , site_url('manager/'.$this->siteclass));
             }
             $this->data['vo'] = $data;
 
@@ -81,8 +79,5 @@ class Jobcp extends Base_Controller {
         $this->tpl->display('manager/'.$this->siteclass.'/add');
     }
 
-    public function edit($id = 0){
-        $this->tpl->add($id);
-    }
-    
+  
 }

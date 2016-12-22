@@ -219,7 +219,7 @@ class Adminusercp extends Base_Controller {
 			$this->data['classmenu'] = $classmenu;
 			$this->data['right_menus'] = $menus;
 			$this->data['admin_privileges'] = $admin_privileges;
-			$this->display();
+			$this->tpl->display();
 		} else {
 			$user_id = $this->input->post('user_id');
 			$privileges = request_post('privileges');

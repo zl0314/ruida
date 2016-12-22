@@ -21,56 +21,51 @@
                     <input id="name" type="text" required name="data[title]" class="input-txt" value="<?=!empty($vo['title']) ? $vo['title'] : '';?>" />
                 </div>
                 </div>
-
-				  <div class="form-row">
-                <label for="apartment" class="form-field">所属部门</label>
+            
+                
+                  <div class="form-row">
+                <label for="worker_age" class="form-field">工作年限</label>
                 <div class="form-cont">
-                    <input id="apartment" type="text" required name="data[apartment]" class="input-txt" value="<?=!empty($vo['apartment']) ? $vo['apartment'] : '';?>" />
+                    <input id="worker_age" type="text" required name="data[worker_age]" class="input-txt" value="<?=!empty($vo['worker_age']) ? $vo['worker_age'] : '';?>" />
                 </div>
                 </div>
-				
-				  <div class="form-row">
-                <label for="address" class="form-field">工作地点</label>
-                <div class="form-cont">
-                    <input id="address" type="text" required name="data[address]" class="input-txt" value="<?=!empty($vo['address']) ? $vo['address'] : '';?>" />
-                </div>
-                </div>
-				  <div class="form-row">
-                <label for="people_count" class="form-field">招聘人数</label>
-                <div class="form-cont">
-                    <input id="people_count" type="text" required name="data[people_count]" class="input-txt" value="<?=!empty($vo['people_count']) ? $vo['people_count'] : '';?>" />
-                </div>
-                </div>
-				
-				
-				
-         <div class="form-row">
+                
+                     <!--<div class="form-row">
           <label for="toppic" class="form-field">详情页顶部图片</label>
           <div class="form-cont">
             <input id="toppic" type="text" name="data[toppic]" readonly class="input-txt" value="<?=!empty($vo['toppic']) ? $vo['toppic'] : '';?>" />
             <input type="button"class="ajaxUploadBtn"  id="toppic_button" onclick="ajaxUpload('toppic','job')" value="上传图片" style="width:70px; height:25px;">
             <p>建议大小宽980px，高339px</p>
           </div>
-        </div>
+        </div>-->
+                
+             <div class="form-row">
+            <label for="fuli" class="form-field">福利待遇</label>
+            <div class="form-cont">
+                <input id="fuli" type="text" required name="data[fuli]" class="input-txt" value="<?=!empty($vo['fuli']) ? $vo['fuli'] : '';?>" />
+                请用“,”隔开， 例如：开放式环境,免费三餐,五险一金
+            </div>
+            </div>
 
-		 <div class="form-row">
-                <label for="people_count" class="form-field">列表描述信息</label>
+
+         <div class="form-row">
+                <label for="intro" class="form-field">列表描述信息</label>
                 <div class="form-cont">
                    <textarea name="data[intro]" class="input-area" id="intro" ><?=!empty($vo['intro']) ? $vo['intro'] : '';?></textarea>
                 </div>
                 </div>
-				
+                
            
 
             <div class="form-row">
-          <label for="duty" class="form-field">岗位职责</label>
+          <label for="duty" class="form-field">工作职责</label>
           <div class="form-cont">
             <script  name="data[duty]" id="duty" type="text/html" style="width:750px;height:450px;"><?=!empty($vo['duty']) ?  htmlspecialchars_decode($vo['duty']) : '';?></script>
           </div>
         </div>
 
             <div class="form-row">
-                <label for="ability" class="form-field">任职资格</label>
+                <label for="ability" class="form-field">工作要求</label>
                 <div class="form-cont">
                     <script  name="data[ability]" id="ability" type="text/html" style="width:750px;height:450px;"><?=!empty($vo['ability']) ?  htmlspecialchars_decode($vo['ability']) : '';?></script>
                 </div>

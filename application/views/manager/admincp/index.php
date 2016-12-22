@@ -34,10 +34,10 @@ $(function(){
 	endif;
 	?>
   </ul>
-  <p><span>您好 ，<?php echo $this->session->userdata('nickname');?>，欢迎回来, </span><a href="<?php echo site_url('manager/admincp/logout');?>">退出</a></p>
+  <p><span>您好 ，<?php echo $this->session->userdata('nickname');?>，欢迎回来, </span><a href="<?php echo site_url('/manager/admincp/logout');?>">退出</a></p>
 </div>
 <div id="mainDiv" class="main-frame" style="height: 677px; ">
-  <iframe src="<?php echo site_url('manager/admincp/center');?>" id="mainframe" name="mainframe" width="100%" height="100%" frameborder="0" title="main frame content"></iframe>
+  <iframe src="<?php echo site_url('/manager/admincp/center');?>" id="mainframe" name="mainframe" width="100%" height="100%" frameborder="0" title="main frame content"></iframe>
 </div>
 <div id="side-menu" style="height: 677px; "> 
 	<?php if(!empty($admin_menus)):?>
@@ -56,7 +56,7 @@ $(function(){
 		 <?php foreach( $subr['method'] as $methodk => $methodr):?>
 			 <?php if($methodr['status'] == 0){continue;}?>
 				 <?php if(in_array($methodk, $privileges[$subk]) || isset($privileges[$subk][$methodk]) ):?>
-			      <li ><a href="<?php echo site_url('manager/'.$subk.'/'.$methodk);?>" target="mainframe"><?php echo $methodr['name']?></a></li>
+			      <li ><a href="<?php echo site_url('/manager/'.$subk.'/'.$methodk);?>" target="mainframe"><?php echo $methodr['name']?></a></li>
 			     <?php endif;?>
 		     <?php endforeach;?>
 		     <?php endif;?>
@@ -74,7 +74,7 @@ $(function(){
 //初始化 自适应窗口大小
 var autoSize = function(){
 	var height = document.documentElement.clientHeight - 89;
-	//$('#side-menu').css('height',height+'px');
+	$('#side-menu').css('height',height+'px');
 	$('#mainDiv').css('height',height+'px');
 }
 autoSize();

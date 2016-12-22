@@ -10,6 +10,7 @@ class Housecp extends Base_Controller {
         parent::__construct();
         $this->checkAdminLogin();
 		$this->load->model('Result_model');
+
     }
 
     /**
@@ -24,7 +25,7 @@ class Housecp extends Base_Controller {
             $where['search']['like']['title'] = request_get('title');
         }
 
-        $data = get_page('ad', $where,$this->Result_model);
+        $data = get_page('house', $where,$this->Result_model);
         
         $this->tpl->assign($data);
         $this->tpl->assign($search);

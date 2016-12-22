@@ -1,0 +1,32 @@
+2016-12-22 15:02:36 SELECT * FROM `rd_ad` WHERE `pos` = 'page-index-aboutus'  LIMIT 1
+
+2016-12-22 15:02:36: SELECT * FROM `rd_pages` WHERE `hook` = 'statement'  LIMIT 1
+2016-12-22 15:02:38: SELECT * FROM `rd_friend_link`
+2016-12-22 15:42:48: SELECT `name`, `link_url` FROM `rd_b80983c6573a73af540529c8fecca630` WHERE `isshow` = 1
+2016-12-22 15:42:51: SELECT `name`, `link_url` FROM `rd_b80983c6573a73af540529c8fecca630` WHERE `isshow` = 1
+2016-12-22 15:43:52 SELECT * FROM `rd_ad` WHERE `pos` = 'page-index-aboutus'  LIMIT 1
+
+2016-12-22 15:43:52: SELECT * FROM `rd_pages` WHERE `hook` = 'aboutus'  LIMIT 1
+2016-12-22 15:43:56: SELECT `name`, `link_url` FROM `rd_friend_link` WHERE `isshow` = 1
+2016-12-22 15:44:14 SELECT * FROM `rd_ad` WHERE `pos` = 'page-index-aboutus'  LIMIT 1
+
+2016-12-22 15:44:14: SELECT * FROM `rd_pages` WHERE `hook` = 'aboutus'  LIMIT 1
+2016-12-22 15:44:17: SELECT `name`, `link_url` FROM `rd_friend_link` WHERE `isshow` = 1
+2016-12-22 15:44:42 SELECT * FROM `rd_ad` WHERE `pos` = 'page-index-aboutus'  LIMIT 1
+
+2016-12-22 15:44:42: SELECT * FROM `rd_pages` WHERE `hook` = 'aboutus'  LIMIT 1
+2016-12-22 15:44:56 SELECT * FROM `rd_ad` WHERE `pos` = 'page-index-aboutus'  LIMIT 1
+
+2016-12-22 15:44:56: SELECT * FROM `rd_pages` WHERE `hook` = 'aboutus'  LIMIT 1
+2016-12-22 15:45:20 SELECT * FROM `rd_ad` WHERE `pos` = 'page-index-aboutus'  LIMIT 1
+
+2016-12-22 15:45:20: SELECT * FROM `rd_pages` WHERE `hook` = 'aboutus'  LIMIT 1
+2016-12-22 15:45:56 SELECT * FROM `rd_ad` WHERE `pos` = 'page-index-aboutus'  LIMIT 1
+
+2016-12-22 15:45:56: SELECT * FROM `rd_pages` WHERE `hook` = 'aboutus'  LIMIT 1
+2016-12-22 15:46:04 SELECT * FROM `rd_ad` WHERE `pos` = 'page-index-aboutus'  LIMIT 1
+
+2016-12-22 15:46:04: SELECT * FROM `rd_pages` WHERE `hook` = 'aboutus'  LIMIT 1
+2016-12-22 15:46:44 SELECT * FROM `rd_ad` WHERE `pos` = 'page-index-aboutus'  LIMIT 1
+
+2016-12-22 15:46:44: SELECT * FROM `rd_pages` WHERE `hook` = 'aboutus'  LIMIT 1

@@ -42,7 +42,7 @@
              <td><a href="<?php echo $v['link_url'];?>" target="_blank"><?php echo $v['link_url'];?></a></td>
             <td><input type="text" class="short_txt" itemid="<?php echo $v['id']?>" name="listorder[<?php echo $v['id']?>]" value="<?=$v['listorder']?>" <?php echo $v['listorder'];?></td>
            <td><?php if($v['isshow'] == 1){ echo '显示';}else{ echo '不显示';}?></th>
-            <td><a class="icon-edit" title="编辑" href="<?php echo site_url(sprintf($siteclass."/add/%s" , $v['id']));?>">编辑</a> <a class="icon-del" onclick="delitem('<?php echo $v['id']?>',this)"  title="删除" href="javascript:;">删除</a></td>
+            <td><a class="icon-edit" title="编辑" href="<?php echo site_url('manager/'.sprintf($siteclass."/add/%s" , $v['id']));?>">编辑</a> <a class="icon-del" onclick="delitem('<?php echo $v['id']?>',this)"  title="删除" href="javascript:;">删除</a></td>
           </tr>
           <?php endforeach;?>
           <?php else:?>

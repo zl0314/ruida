@@ -2,7 +2,6 @@
 
 function get_page($tb, $where = array(), $model = null, $perpage = 10, $order = '', $page_query = '', $pk_name= 'id' ){
     $order = $order == '' ? $pk_name . ' DESC' : $order;
-    $tb = tname($tb);
     $page['total_rows'] = $model->getOne($tb, 'Count('.$pk_name.') as cnt' , $where);
     // 加载分页类
     $CI =& get_instance();

@@ -21,6 +21,7 @@ class Result_model extends CI_Model{
      * @return array            返回一查询结果
      */
     public function getRow($tb, $field = '*', $where = array(), $order = ''){
+       $tb = tname($tb);
        $this->get_db();
        $this->db->select($field);
        $this->db->from($tb);
@@ -99,6 +100,7 @@ class Result_model extends CI_Model{
      * @return array
      */
     public function getList($tb, $field = '*', $where = array(), $limit = 0, $offset = 0, $order = ''){
+        $tb = tname($tb);
         $this->get_db();
         $this->db->select($field);
         $this->db->from($tb);

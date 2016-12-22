@@ -1,0 +1,29 @@
+DROP TABLE rd_job;
+CREATE TABLE IF NOT EXISTS `rd_job` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `people_count` int(10) NOT NULL COMMENT '招聘人数',
+  `duty` text NOT NULL COMMENT '职责',
+  `ability` text NOT NULL COMMENT '要求',
+  `addtime` int(10) NOT NULL,
+  `title` varchar(100) NOT NULL COMMENT '标题',
+  `toppic` varchar(255) DEFAULT NULL COMMENT '详情顶部图片',
+  `listorder` int(3) NOT NULL DEFAULT '0',
+  `worker_age` varchar(50) DEFAULT NULL COMMENT '工作年限',
+  `fuli` varchar(100) NOT NULL COMMENT '福利待遇',
+  `intro` text NOT NULL COMMENT '列表页面描述',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+
+
+CREATE TABLE IF NOT EXISTS `rd_user` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `username` varchar(200) DEFAULT NULL COMMENT '用户名(待定)',
+  `password` varchar(64) DEFAULT NULL COMMENT '密码md5',
+  `mobile` varchar(11) DEFAULT NULL COMMENT '手机号码',
+  `email` varchar(100) DEFAULT NULL COMMENT '邮箱',
+  `addtime` int(11) unsigned NOT NULL COMMENT '添加时间',
+  `salt` char(7) DEFAULT NULL COMMENT '密码随机码',
+  `last_login_time` int(10) DEFAULT NULL,
+  `sex` tinyint(1) DEFAULT '1' COMMENT '1男 2女',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='用户表' AUTO_INCREMENT=1 ;

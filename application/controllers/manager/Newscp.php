@@ -24,7 +24,7 @@ class Newscp extends Base_Controller {
         $where = array();
 		$search = array();
         if(request_get('title')){
-            $where['search']['like']['title'] = request_get('title');
+            $where['like']['title'] = request_get('title');
         }
         // 列表数据  分页数据
         $data =  get_page('news', $where, $this->Result_model, null , 'listorder desc, id desc');
@@ -66,7 +66,7 @@ class Newscp extends Base_Controller {
                     $data['fb_time'] = strtotime($data['fb_time']);
                 }
                 $this->model->save($data);
-                $this->message('保存成功' , site_url($this->siteclass));
+                $this->message('保存成功' , site_url('manager/'.$this->siteclass));
             }
             $data['fb_time'] = strtotime($data['fb_time']);
             $this->data['vo'] = $data;

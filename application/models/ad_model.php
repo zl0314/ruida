@@ -12,5 +12,11 @@ class Ad_model extends MY_Model
         parent::__construct() ;
     }
 
-
+    public function get_pos_ad($where){
+    	$ad_row = array();
+    	if(!empty($where)){
+    		$ad_row = $this->getRow('*', $where);
+    	}
+    	return $ad_row;
+    }
 }
