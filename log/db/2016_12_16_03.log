@@ -1,0 +1,6 @@
+2016-12-16 03:32:35: SELECT * FROM `stu` RIGHT JOIN `news` ON `news`.`id`=`stu`.`id` WHERE `title` LIKE '%巴西%' ESCAPE '!' AND  `source` LIKE '%新闻%' ESCAPE '!' ORDER BY `news`.`id` DESC  LIMIT 2, 10
+2016-12-16 03:42:39: SELECT * FROM `stu` RIGHT JOIN `news` ON `news`.`id`=`stu`.`id` WHERE `title` LIKE '%巴西%' ESCAPE '!' AND  `source` LIKE '%新闻%' ESCAPE '!' ORDER BY `news`.`id` DESC  LIMIT 2, 10
+2016-12-16 03:43:32: SELECT * FROM `stu` RIGHT JOIN `news` ON `news`.`id`=`stu`.`id` WHERE `title` LIKE '%巴西%' ESCAPE '!' AND  `source` LIKE '%新闻%' ESCAPE '!' ORDER BY `news`.`id` DESC  LIMIT 2, 10
+2016-12-16 03:44:19: SELECT * FROM `stu` RIGHT JOIN `news` ON `news`.`id`=`stu`.`id` WHERE `title` LIKE '%巴西%' ESCAPE '!' AND  `source` LIKE '%新闻%' ESCAPE '!' ORDER BY `news`.`id` DESC  LIMIT 2, 10
+2016-12-16 03:55:31: SELECT * FROM `stu` RIGHT JOIN `news` ON `news`.`id`=`stu`.`id` WHERE `title` LIKE '%巴西%' ESCAPE '!' AND  `source` LIKE '%新闻%' ESCAPE '!' ORDER BY `news`.`id` DESC  LIMIT 2, 10
+2016-12-16 03:59:32: SELECT * FROM `stu` RIGHT JOIN `news` ON `news`.`id`=`stu`.`id` WHERE `title` LIKE '%巴西%' ESCAPE '!' AND  `source` LIKE '%新闻%' ESCAPE '!' ORDER BY `news`.`id` DESC  LIMIT 2, 10

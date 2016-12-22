@@ -1,0 +1,106 @@
+2016-12-20 08:14:16 SELECT * FROM `rd_adminuser` WHERE `username` = 'admin'  LIMIT 1
+
+2016-12-20 08:16:36 SELECT * FROM `system_setting`  LIMIT 1
+
+2016-12-20 08:18:29 SELECT * FROM `rd_system_setting`  LIMIT 1
+
+2016-12-20 08:19:12 SELECT * FROM `rd_system_setting`  LIMIT 1
+
+2016-12-20 08:19:59 SELECT * FROM `rd_system_setting`  LIMIT 1
+
+2016-12-20 08:21:35: SELECT * FROM `rd_ad` ORDER BY `id` DESC  LIMIT 10
+2016-12-20 08:23:07: SELECT * FROM `rd_news` ORDER BY `listorder` desc, `id` desc  LIMIT 10
+2016-12-20 08:23:44: SELECT * FROM `rd_news` ORDER BY `listorder` desc, `id` desc  LIMIT 10
+2016-12-20 08:23:51: SELECT * FROM `rd_news` ORDER BY `listorder` desc, `id` desc  LIMIT 10
+2016-12-20 08:24:55 SELECT `rd_page` FROM `rd_ad` WHERE Count(id) as cnt  LIMIT 1
+
+2016-12-20 08:25:06: SELECT * FROM `rd_pages` ORDER BY `id` desc  LIMIT 10
+2016-12-20 08:25:12: SELECT * FROM `rd_pages` ORDER BY `id` desc  LIMIT 10
+2016-12-20 08:25:15 SELECT * FROM `rd_ad` WHERE `id` =0  LIMIT 1
+
+2016-12-20 08:26:19: SELECT * FROM `rd_friend_link` ORDER BY `id` DESC  LIMIT 10
+2016-12-20 08:26:24: SELECT * FROM `rd_friend_link` ORDER BY `id` DESC  LIMIT 10
+2016-12-20 08:26:28 SELECT * FROM `rd_pages` WHERE `id` =0  LIMIT 1
+
+2016-12-20 08:27:22: SELECT * FROM `rd_friend_link` ORDER BY `id` DESC  LIMIT 10
+2016-12-20 08:27:35: SELECT * FROM `rd_friend_link` ORDER BY `id` DESC  LIMIT 10
+2016-12-20 08:27:52: SELECT * FROM `rd_friend_link` ORDER BY `id` DESC  LIMIT 10
+2016-12-20 08:28:50 SELECT * FROM `rd_system_setting`  LIMIT 1
+
+2016-12-20 08:29:05 SELECT * FROM `rd_system_setting`  LIMIT 1
+
+2016-12-20 08:29:11: SELECT * FROM `rd_ad` ORDER BY `id` DESC  LIMIT 10
+2016-12-20 08:30:43: SELECT * FROM `rd_adminuser` WHERE `isdelete` =0 ORDER BY `id` desc  LIMIT 10
+2016-12-20 08:30:47 SELECT * FROM `rd_ad` WHERE `id` =0  LIMIT 1
+
+2016-12-20 08:31:10: SELECT * FROM `rd_user` ORDER BY `id` desc  LIMIT 10
+2016-12-20 08:31:36 SELECT * FROM `rd_system_setting`  LIMIT 1
+
+2016-12-20 08:33:58 SELECT * FROM `rd_system_setting`  LIMIT 1
+
+2016-12-20 08:33:59: SELECT * FROM `rd_ad` ORDER BY `id` DESC  LIMIT 10
+2016-12-20 08:34:03: SELECT * FROM `rd_news` ORDER BY `listorder` desc, `id` desc  LIMIT 10
+2016-12-20 08:34:07: SELECT * FROM `rd_pages` ORDER BY `id` desc  LIMIT 10
+2016-12-20 08:34:10: SELECT * FROM `rd_adminuser` WHERE `isdelete` =0 ORDER BY `id` desc  LIMIT 10
+2016-12-20 08:34:11 SELECT * FROM `rd_ad` WHERE `id` =0  LIMIT 1
+
+2016-12-20 08:34:21 SELECT * FROM `rd_ad` WHERE `username` = 'zhanglong'  LIMIT 1
+
+2016-12-20 08:34:43 SELECT * FROM `rd_adminuser` WHERE `username` = 'zhanglong'  LIMIT 1
+
+2016-12-20 08:34:43 INSERT INTO `rd_adminuser` (`id`, `username`, `password`, `nickname`, `is_root`, `addtime`) VALUES (NULL, 'zhanglong', '578c6e2a3adf23ccdde437882453e873', '张龙', 0, 1482194083)
+
+2016-12-20 08:34:45: SELECT * FROM `rd_adminuser` WHERE `isdelete` =0 ORDER BY `id` desc  LIMIT 10
+2016-12-20 08:35:22: SELECT * FROM `rd_user` ORDER BY `id` desc  LIMIT 10
+2016-12-20 08:35:24 SELECT * FROM `rd_system_setting`  LIMIT 1
+
+2016-12-20 08:38:11: SELECT * FROM `rd_friend_link` ORDER BY `id` DESC  LIMIT 10
+2016-12-20 08:38:13: SELECT * FROM `rd_user` ORDER BY `id` desc  LIMIT 10
+2016-12-20 08:38:15: SELECT * FROM `rd_user` ORDER BY `id` desc  LIMIT 10
+2016-12-20 08:38:16: SELECT * FROM `rd_adminuser` WHERE `isdelete` =0 ORDER BY `id` desc  LIMIT 10
+2016-12-20 08:38:18: SELECT * FROM `rd_ad` ORDER BY `id` DESC  LIMIT 10
+2016-12-20 08:38:19 SELECT * FROM `rd_system_setting`  LIMIT 1
+
+2016-12-20 08:38:20 UPDATE `rd_system_setting` SET `id` = '1', `setting` = '{\"site_title\":\"\\u4e03\\u5f69\\u9633\\u5149\",\"keywords\":\"\\u4e03\\u5f69\\u9633\\u5149\",\"description\":\"\\u4e03\\u5f69\\u9633\\u5149\",\"contact_tel\":\"\",\"contact_wechat\":\"\",\"contact_email\":\"\",\"service_line\":\"\",\"footinfo\":\"\"}', `data` = Array WHERE `id` = '1'
+
+2016-12-20 08:39:10 SELECT * FROM `rd_system_setting`  LIMIT 1
+
+2016-12-20 08:39:46 UPDATE `rd_system_setting` SET `id` = '1', `setting` = '{\"site_title\":\"\\u4e03\\u5f69\\u9633\\u5149\",\"keywords\":\"\\u4e03\\u5f69\\u9633\\u5149\",\"description\":\"\\u4e03\\u5f69\\u9633\\u5149\",\"contact_tel\":\"\",\"contact_wechat\":\"\",\"contact_email\":\"\",\"service_line\":\"\",\"footinfo\":\"\"}', `data` = Array WHERE `id` = '1'
+
+2016-12-20 08:42:28 SELECT * FROM `rd_system_setting`  LIMIT 1
+
+2016-12-20 08:42:30 UPDATE `rd_system_setting` SET `id` = '1', `setting` = '{\"site_title\":\"\\u4e03\\u5f69\\u9633\\u5149\",\"keywords\":\"\\u4e03\\u5f69\\u9633\\u5149\",\"description\":\"\\u4e03\\u5f69\\u9633\\u5149\",\"contact_tel\":\"\",\"contact_wechat\":\"\",\"contact_email\":\"\",\"service_line\":\"\",\"footinfo\":\"\"}', `data` = Array WHERE `id` = '1'
+
+2016-12-20 08:42:53 SELECT * FROM `rd_system_setting`  LIMIT 1
+
+2016-12-20 08:43:27 SELECT * FROM `rd_system_setting`  LIMIT 1
+
+2016-12-20 08:43:47 SELECT * FROM `rd_system_setting`  LIMIT 1
+
+2016-12-20 08:44:05 UPDATE `rd_system_setting` SET `id` = '1', `setting` = '{\"site_title\":\"\\u4e03\\u5f69\\u9633\\u5149\",\"keywords\":\"\\u4e03\\u5f69\\u9633\\u5149\",\"description\":\"\\u4e03\\u5f69\\u9633\\u5149\",\"contact_tel\":\"\",\"contact_wechat\":\"\",\"contact_email\":\"\",\"service_line\":\"\",\"footinfo\":\"\"}' WHERE `id` = '1'
+
+2016-12-20 08:44:09 SELECT * FROM `rd_system_setting`  LIMIT 1
+
+2016-12-20 08:44:18: SELECT * FROM `rd_ad` ORDER BY `id` DESC  LIMIT 10
+2016-12-20 08:44:56: SELECT * FROM `rd_ad` ORDER BY `id` DESC  LIMIT 10
+2016-12-20 08:45:16: SELECT * FROM `rd_ad` ORDER BY `id` DESC  LIMIT 10
+2016-12-20 08:49:51: SELECT * FROM `rd_ad` ORDER BY `id` DESC  LIMIT 10
+2016-12-20 08:51:19 SELECT * FROM `rd_system_setting`  LIMIT 1
+
+2016-12-20 08:51:21: SELECT * FROM `rd_ad` ORDER BY `id` DESC  LIMIT 10
+2016-12-20 08:51:25: SELECT * FROM `rd_news` ORDER BY `listorder` desc, `id` desc  LIMIT 10
+2016-12-20 08:51:32: SELECT * FROM `rd_pages` ORDER BY `id` desc  LIMIT 10
+2016-12-20 08:51:34 SELECT * FROM `rd_pages` WHERE `id` =0  LIMIT 1
+
+2016-12-20 08:52:43: SELECT * FROM `rd_ad` ORDER BY `id` DESC  LIMIT 10
+2016-12-20 08:54:02 SELECT * FROM `rd_system_setting`  LIMIT 1
+
+2016-12-20 08:54:55 SELECT * FROM `rd_system_setting`  LIMIT 1
+
+2016-12-20 08:54:57 UPDATE `rd_system_setting` SET `id` = '1', `setting` = '{\"site_title\":\"\\u4e03\\u5f69\\u9633\\u5149\",\"keywords\":\"\\u4e03\\u5f69\\u9633\\u5149\",\"description\":\"\\u4e03\\u5f69\\u9633\\u5149\",\"contact_tel\":\"\",\"contact_wechat\":\"\",\"contact_email\":\"\",\"service_line\":\"\",\"footinfo\":\"\",\"wechat_qr\":\"\"}' WHERE `id` = '1'
+
+2016-12-20 08:55:04 SELECT * FROM `rd_system_setting`  LIMIT 1
+
+2016-12-20 08:55:06 SELECT * FROM `rd_system_setting`  LIMIT 1
+
+2016-12-20 08:55:07: SELECT * FROM `rd_ad` ORDER BY `id` DESC  LIMIT 10

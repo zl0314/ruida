@@ -1,0 +1,127 @@
+2016-12-20 09:04:12 SELECT * FROM `rd_system_setting`  LIMIT 1
+
+2016-12-20 09:04:12 SELECT * FROM `rd_system_setting`  LIMIT 1
+
+2016-12-20 09:05:27 SELECT `rd_job` FROM `rd_ad` WHERE Count(id) as cnt  LIMIT 1
+
+2016-12-20 09:05:36 SELECT `rd_job` FROM `rd_job` WHERE Count(id) as cnt  LIMIT 1
+
+2016-12-20 09:05:46: SELECT Count(id) as cnt FROM `rd_job`  LIMIT 1
+2016-12-20 09:07:00: SELECT Count(id) as cnt FROM `rd_job`  LIMIT 1
+2016-12-20 09:07:47: SELECT * FROM `rd_job` ORDER BY `listorder` desc, `id` desc  LIMIT 10
+2016-12-20 09:08:07: SELECT * FROM `rd_job` ORDER BY `listorder` desc, `id` desc  LIMIT 10
+2016-12-20 09:08:26: SELECT * FROM `rd_job` ORDER BY `listorder` desc, `id` desc  LIMIT 10
+2016-12-20 09:08:27: SELECT * FROM `rd_job` ORDER BY `listorder` desc, `id` desc  LIMIT 10
+2016-12-20 09:08:30: SELECT * FROM `rd_job` ORDER BY `listorder` desc, `id` desc  LIMIT 10
+2016-12-20 09:08:53: SELECT * FROM `rd_job` ORDER BY `listorder` desc, `id` desc  LIMIT 10
+2016-12-20 09:08:54: SELECT * FROM `rd_job` ORDER BY `listorder` desc, `id` desc  LIMIT 10
+2016-12-20 09:08:55: SELECT * FROM `rd_job` ORDER BY `listorder` desc, `id` desc  LIMIT 10
+2016-12-20 09:09:46: SELECT * FROM `rd_job` ORDER BY `listorder` desc, `id` desc  LIMIT 10
+2016-12-20 09:10:10: SELECT * FROM `rd_job` ORDER BY `listorder` desc, `id` desc  LIMIT 10
+2016-12-20 09:10:32: SELECT * FROM `rd_job` ORDER BY `listorder` desc, `id` desc  LIMIT 10
+2016-12-20 09:19:14 SELECT * FROM `rd_system_setting`  LIMIT 1
+
+2016-12-20 09:19:15: SELECT * FROM `rd_ad` ORDER BY `id` DESC  LIMIT 10
+2016-12-20 09:19:24 SELECT * FROM `rd_system_setting`  LIMIT 1
+
+2016-12-20 09:19:25: SELECT * FROM `rd_ad` ORDER BY `id` DESC  LIMIT 10
+2016-12-20 09:20:10: SELECT * FROM `rd_job` ORDER BY `listorder` desc, `id` desc  LIMIT 10
+2016-12-20 09:20:32: SELECT * FROM `rd_job` ORDER BY `listorder` desc, `id` desc  LIMIT 10
+2016-12-20 09:21:01: SELECT * FROM `rd_job` ORDER BY `listorder` desc, `id` desc  LIMIT 10
+2016-12-20 09:21:44: SELECT * FROM `rd_job` ORDER BY `listorder` desc, `id` desc  LIMIT 10
+2016-12-20 09:22:17: SELECT * FROM `rd_job` ORDER BY `listorder` desc, `id` desc  LIMIT 10
+2016-12-20 09:22:43: SELECT * FROM `rd_job` ORDER BY `listorder` desc, `id` desc  LIMIT 10
+2016-12-20 09:22:49: SELECT * FROM `rd_job` ORDER BY `listorder` desc, `id` desc  LIMIT 10
+2016-12-20 09:23:10: SELECT * FROM `rd_job` ORDER BY `listorder` desc, `id` desc  LIMIT 10
+2016-12-20 09:23:17: SELECT * FROM `rd_job` ORDER BY `listorder` desc, `id` desc  LIMIT 10
+2016-12-20 09:24:56 SELECT * FROM `rd_system_setting`  LIMIT 1
+
+2016-12-20 09:27:27 SELECT * FROM `rd_system_setting`  LIMIT 1
+
+2016-12-20 09:27:28: SELECT * FROM `rd_ad` ORDER BY `id` DESC  LIMIT 10
+2016-12-20 09:32:01 SELECT * FROM `rd_system_setting`  LIMIT 1
+
+2016-12-20 09:34:27: SELECT * FROM `rd_ad` ORDER BY `id` DESC  LIMIT 10
+2016-12-20 09:40:09: SELECT * FROM `rd_friend_link` ORDER BY `id` DESC  LIMIT 10
+2016-12-20 09:40:11 SELECT * FROM `rd_pages` WHERE `id` =0  LIMIT 1
+
+2016-12-20 09:41:35: SELECT * FROM `rd_friend_link` ORDER BY `listorder` desc  LIMIT 10
+2016-12-20 09:41:35 SELECT * FROM `rd_pages` WHERE `id` =0  LIMIT 1
+
+2016-12-20 09:41:38 INSERT INTO `rd_pages` (`id`, `name`, `link_url`, `listorder`, `isshow`, `addtime`) VALUES (NULL, '123', '123', '0', '1', 1482198098)
+
+2016-12-20 09:41:57 INSERT INTO `rd_friend_link` (`id`, `name`, `link_url`, `listorder`, `isshow`, `addtime`) VALUES (NULL, '123', '123', '0', '1', 1482198117)
+
+2016-12-20 09:41:57: SELECT * FROM `rd_friend_link` ORDER BY `listorder` desc  LIMIT 10
+2016-12-20 09:42:30: SELECT * FROM `rd_friend_link` ORDER BY `listorder` desc  LIMIT 10
+2016-12-20 09:42:31 SELECT * FROM `rd_friend_link` WHERE `id` =0  LIMIT 1
+
+2016-12-20 09:43:51 SELECT * FROM `rd_pages` WHERE `id` =0  LIMIT 1
+
+2016-12-20 09:43:51: SELECT * FROM `rd_pages` ORDER BY `id` desc  LIMIT 10
+2016-12-20 09:43:53 SELECT * FROM `rd_pages` WHERE `id` =0  LIMIT 1
+
+2016-12-20 09:44:26 SELECT `id` FROM `rd_pages` WHERE `hook` = 'aboutus'  LIMIT 1
+
+2016-12-20 09:44:29: SELECT * FROM `rd_pages` ORDER BY `id` desc  LIMIT 10
+2016-12-20 09:44:52: SELECT * FROM `rd_pages` ORDER BY `id` desc  LIMIT 10
+2016-12-20 09:44:53 SELECT * FROM `rd_pages` WHERE `id` = 1  LIMIT 1
+
+2016-12-20 09:44:56: SELECT * FROM `rd_pages` ORDER BY `id` desc  LIMIT 10
+2016-12-20 09:45:54 SELECT * FROM `rd_pages` WHERE `id` = 1  LIMIT 1
+
+2016-12-20 09:47:39 SELECT * FROM `rd_pages` WHERE `id` = 1  LIMIT 1
+
+2016-12-20 09:48:05 SELECT * FROM `rd_pages` WHERE `id` = 1  LIMIT 1
+
+2016-12-20 09:48:16 SELECT * FROM `rd_pages` WHERE `id` = 1  LIMIT 1
+
+2016-12-20 09:49:00 SELECT * FROM `rd_pages` WHERE `id` = 1  LIMIT 1
+
+2016-12-20 09:49:01 SELECT * FROM `rd_pages` WHERE `id` = 1  LIMIT 1
+
+2016-12-20 09:49:03 SELECT * FROM `rd_pages` WHERE `id` =0  LIMIT 1
+
+2016-12-20 09:49:03 SELECT * FROM `rd_pages` WHERE `id` =0  LIMIT 1
+
+2016-12-20 09:49:15 SELECT * FROM `rd_pages` WHERE `id` = 1  LIMIT 1
+
+2016-12-20 09:54:53 SELECT * FROM `rd_pages` WHERE `id` = 1  LIMIT 1
+
+2016-12-20 09:55:34 SELECT * FROM `rd_pages` WHERE `id` = 1  LIMIT 1
+
+2016-12-20 09:55:51 SELECT * FROM `rd_pages` WHERE `id` = 1  LIMIT 1
+
+2016-12-20 09:56:06 SELECT * FROM `rd_pages` WHERE `id` = 1  LIMIT 1
+
+2016-12-20 09:56:52 SELECT * FROM `rd_pages` WHERE `id` = 1  LIMIT 1
+
+2016-12-20 09:57:03 SELECT `id` FROM `rd_pages` WHERE `hook` = 'aboutus'  LIMIT 1
+
+2016-12-20 09:57:03 UPDATE `rd_pages` SET `id` = '1', `name` = '关于我们', `hook` = 'aboutus', `content` = '<p>关于我们关于我们关于我们</p>' WHERE `id` = '1'
+
+2016-12-20 09:57:04: SELECT * FROM `rd_pages` ORDER BY `id` desc  LIMIT 10
+2016-12-20 09:57:27: SELECT * FROM `rd_pages` ORDER BY `id` desc  LIMIT 10
+2016-12-20 09:57:41: SELECT * FROM `rd_pages` ORDER BY `id` desc  LIMIT 10
+2016-12-20 09:57:53: SELECT * FROM `rd_pages` ORDER BY `id` desc  LIMIT 10
+2016-12-20 09:58:07: SELECT * FROM `rd_pages` ORDER BY `id` desc  LIMIT 10
+2016-12-20 09:58:09 SELECT * FROM `rd_pages` WHERE `id` = 1  LIMIT 1
+
+2016-12-20 09:58:13 SELECT `id` FROM `rd_pages` WHERE `hook` = 'aboutus'  LIMIT 1
+
+2016-12-20 09:58:13 UPDATE `rd_pages` SET `id` = '1', `name` = '关于我们', `hook` = 'aboutus', `content` = '<p>关于我们关于我们关于我们</p>' WHERE `id` = '1'
+
+2016-12-20 09:58:14: SELECT * FROM `rd_pages` ORDER BY `id` desc  LIMIT 10
+2016-12-20 09:58:39 SELECT * FROM `rd_pages` WHERE `id` = 1  LIMIT 1
+
+2016-12-20 09:59:23 SELECT * FROM `rd_pages` WHERE `id` = 1  LIMIT 1
+
+2016-12-20 09:59:27 SELECT `id` FROM `rd_pages` WHERE `hook` = 'aboutus'  LIMIT 1
+
+2016-12-20 09:59:27 UPDATE `rd_pages` SET `id` = '1', `name` = '关于我们', `hook` = 'aboutus', `content` = '<p>关于我们关于我们关于我们</p>' WHERE `id` = '1'
+
+2016-12-20 09:59:29: SELECT * FROM `rd_pages` ORDER BY `id` desc  LIMIT 10
+2016-12-20 09:59:50 SELECT * FROM `rd_system_setting`  LIMIT 1
+
+2016-12-20 09:59:51: SELECT * FROM `rd_ad` ORDER BY `id` DESC  LIMIT 10
+2016-12-20 09:59:53: SELECT * FROM `rd_news` ORDER BY `listorder` desc, `id` desc  LIMIT 10

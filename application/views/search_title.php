@@ -1,0 +1,1 @@
+标题：<input type="text"  value="<?=request_get('title')?>" name="title" class="input-txt w100" style="">

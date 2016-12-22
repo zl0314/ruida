@@ -1,0 +1,1 @@
+2016-12-16 02:00:50: SELECT * FROM `stu` RIGHT JOIN `news` ON `news`.`id`=`stu`.`id` WHERE `title` LIKE '%巴西%' ESCAPE '!' AND  `source` LIKE '%新闻%' ESCAPE '!' ORDER BY `news`.`id` DESC  LIMIT 2, 10

@@ -1,0 +1,22 @@
+2016-12-21 22:15:26 SELECT * FROM `rd_adminuser` WHERE `username` = 'admin'  LIMIT 1
+
+2016-12-21 22:15:32 SELECT * FROM `rd_adminuser` WHERE `username` = 'admin'  LIMIT 1
+
+2016-12-21 22:15:36 SELECT * FROM `rd_adminuser` WHERE `username` = 'admin'  LIMIT 1
+
+2016-12-21 22:16:24 SELECT * FROM `rd_adminuser` WHERE `username` = 'admin'  LIMIT 1
+
+2016-12-21 22:16:35: SELECT * FROM `rd_ad` ORDER BY `id` DESC  LIMIT 10
+2016-12-21 22:28:16: SELECT * FROM `rd_ad` ORDER BY `id` DESC  LIMIT 10
+2016-12-21 22:28:17: SELECT * FROM `rd_ad` ORDER BY `id` DESC  LIMIT 10
+2016-12-21 22:28:47: SELECT * FROM `rd_ad` ORDER BY `id` DESC  LIMIT 10
+2016-12-21 22:29:14: SELECT * FROM `rd_ad` ORDER BY `id` DESC  LIMIT 10
+2016-12-21 22:42:45 SELECT * FROM `rd_adminuser` WHERE `username` = 'admin'  LIMIT 1
+
+2016-12-21 22:42:53: SELECT * FROM `rd_ad` ORDER BY `id` DESC  LIMIT 10
+2016-12-21 22:44:38: SELECT * FROM `rd_ad` ORDER BY `id` DESC  LIMIT 10
+2016-12-21 22:45:11 SELECT * FROM `rd_adminuser` WHERE `username` = 'admin'  LIMIT 1
+
+2016-12-21 22:45:18: SELECT * FROM `rd_ad` ORDER BY `id` DESC  LIMIT 10
+2016-12-21 22:47:20: SELECT * FROM `rd_ad` ORDER BY `id` DESC  LIMIT 10
+2016-12-21 22:49:59: SELECT * FROM `rd_ad` ORDER BY `id` DESC  LIMIT 10
