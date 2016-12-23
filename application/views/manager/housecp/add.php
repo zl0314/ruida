@@ -17,6 +17,34 @@
                     <input id="second_title" type="text" required name="data[second_title]" class="input-txt" value="<?=!empty($vo['second_title']) ? $vo['second_title'] : '';?>" />
                 </div>
             </div>
+             <div class="form-row">
+                <label for="village" class="form-field">小区名称</label>
+                <div class="form-cont">
+                    <input id="village" type="text" required name="data[village]" class="input-txt" value="<?=!empty($vo['village']) ? $vo['village'] : '';?>" />
+                </div>
+            </div>
+
+
+            <div class="form-row">
+                <label for="watch_time" class="form-field">看房时间</label>
+                <div class="form-cont">
+                    <input id="watch_time" type="text" required name="data[watch_time]" class="input-txt" value="<?=!empty($vo['watch_time']) ? $vo['watch_time'] : '';?>" />
+                </div>
+            </div>
+
+        <div class="form-row">
+                <label for="type" class="form-field">房源类型</label>
+                <div class="form-cont">
+                        <select name="data[type]" required> 
+                            <option value="0">请选择</option>
+                              <?php if(!empty($type)):?>
+                                <?php foreach ($type as $k => $r): ?>
+                                        <option value="<?php echo $k ?>" <?php if(!empty($vo) && $k == $vo['type']): ?> selected <?php endif; ?>  ><?php echo $r; ?></option>
+                                <?php endforeach ?>
+                            <?php endif; ?>
+                        </select>
+                </div>
+            </div>
 
             <div class="form-row">
                 <label for="second_title" class="form-field">出租/出售</label>
@@ -32,10 +60,17 @@
                 </div>
             </div>
 
-             <div class="form-row">
-                <label for="village" class="form-field">小区名称</label>
+            <div class="form-row">
+                <label for="total_price" class="form-field">总价</label>
                 <div class="form-cont">
-                    <input id="village" type="text" required name="data[village]" class="input-txt" value="<?=!empty($vo['village']) ? $vo['village'] : '';?>" />
+                    <input id="total_price" type="text"  name="data[total_price]" class="input-txt" value="<?=!empty($vo['total_price']) ? $vo['total_price'] : '';?>" /> 万/元
+                </div>
+            </div>
+
+            <div class="form-row">
+                <label for="unit_price" class="form-field">单价</label>
+                <div class="form-cont">
+                    <input id="unit_price" type="text" required name="data[unit_price]" class="input-txt" value="<?=!empty($vo['unit_price']) ? $vo['unit_price'] : '';?>" /> 元/平米
                 </div>
             </div>
 
@@ -67,29 +102,7 @@
                     地铁站
                       <select name="data[subway_station]" id="subway_station">
                         <option value="">请选择</option>
-                      </select>
-                    站<input type="text" name="data[meter]" id=""  class="short_txt"> 米
-                </div>
-            </div>
-
-            <div class="form-row">
-                <label for="watch_time" class="form-field">看房时间</label>
-                <div class="form-cont">
-                    <input id="watch_time" type="text" required name="data[watch_time]" class="input-txt" value="<?=!empty($vo['watch_time']) ? $vo['watch_time'] : '';?>" />
-                </div>
-            </div>
-
-            <div class="form-row">
-                <label for="total_price" class="form-field">总价</label>
-                <div class="form-cont">
-                    <input id="total_price" type="text"  name="data[total_price]" class="input-txt" value="<?=!empty($vo['total_price']) ? $vo['total_price'] : '';?>" /> 万/元
-                </div>
-            </div>
-
-            <div class="form-row">
-                <label for="unit_price" class="form-field">单价</label>
-                <div class="form-cont">
-                    <input id="unit_price" type="text" required name="data[unit_price]" class="input-txt" value="<?=!empty($vo['unit_price']) ? $vo['unit_price'] : '';?>" /> 元/平米
+                      </select>站<input type="text" name="data[meter]" id=""  class="short_txt">米
                 </div>
             </div>
 
@@ -185,19 +198,7 @@
                 </div>
             </div>
 
-        <div class="form-row">
-                <label for="type" class="form-field">房源类型</label>
-                <div class="form-cont">
-                        <select name="data[type]" required> 
-                            <option value="0">请选择</option>
-                              <?php if(!empty($type)):?>
-                                <?php foreach ($type as $k => $r): ?>
-                                        <option value="<?php echo $k ?>" <?php if(!empty($vo) && $k == $vo['type']): ?> selected <?php endif; ?>  ><?php echo $r; ?></option>
-                                <?php endforeach ?>
-                            <?php endif; ?>
-                        </select>
-                </div>
-            </div>
+        
 
 
         <div class="form-row">
@@ -283,15 +284,15 @@
   }
 
   function get_sub_area(obj){
-    var id = typeof(obj) == 'number' ? obj : obj.value;
-    $.post('<?php echo site_url('linkage/get_lists')?>', {parent: id}, function(res) {
+    var parent = typeof(obj) == 'number' ? obj : obj.value;
+    $.post('<?php echo site_url('linkage/get_lists')?>', {parent: parent, 'id' : '<?php echo @$vo['  subway'] ?>'}, function(res) {
       $('#subarea_id').html(res.data);
     }, 'json');
   }
 
   function get_subway_station(obj){
-    var id = typeof(obj) == 'number' ? obj : obj.value;
-    $.post('<?php echo site_url('subway/get_lists')?>', {parent: id}, function(res) {
+    var parent = typeof(obj) == 'number' ? obj : obj.value;
+    $.post('<?php echo site_url('subway/get_lists')?>', {parent: parent, 'id' : '<?php echo @$vo['subway_station'] ?>'}, function(res) {
       $('#subway_station').html(res.data);
     }, 'json');
   }

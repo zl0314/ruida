@@ -11,7 +11,7 @@ class Job extends MY_Controller {
         $this->load->model('ad_model');
 
         $where = array(
-            'pos' => 'index-index'
+            'pos' => 'job-index'
         );
         $ad_row = $this->ad_model->get_pos_ad($where);
         $vars = array(

@@ -27,4 +27,12 @@ class MY_Controller extends Common_Controller {
 			$this->load->view('message', $this->data);
 		}
 	}
+
+
+	//设置页面标题
+	public function set_page_title($title){
+		if($title){
+			$this->data['pagetitle'] = $title;
+		}
+	}
 }

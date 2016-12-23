@@ -11,7 +11,8 @@ class Pagescp extends Base_Controller{
 		$this->data['template_arr'] = array(
 				'aboutus' => '关于我们',
 				'contactus' => ' 联系我们',
-				'statement' => ' 隐私声明',
+				'statement' => '隐私声明',
+				'agreement' => '注册协议',
 		);
 	}
 

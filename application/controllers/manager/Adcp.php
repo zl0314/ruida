@@ -16,7 +16,8 @@ class Adcp extends Base_Controller {
             'page-index-aboutus' => '关于我们',
             'page-index-contactus' => '联系我们',
             'page-index-statement' => '隐私声明',
-			'job-index' => '加入我们',
+            'job-index' => '加入我们',
+			'page-index-agreement' => '注册协议',
 		);
 		$this->data['posArr'] = $this->posArr;
     }

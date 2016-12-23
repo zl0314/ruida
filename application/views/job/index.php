@@ -8,7 +8,7 @@
         <img src="/static/web/images/jr_banner.jpg" alt="">
 	<?php endif; ?>
     </div>
-    <?php if(!empty($lists)): ?>
+    <?php if(!empty($list)): ?>
     	<?php foreach ($list as $key => $r): ?>
     		
     	<?php endforeach ?>

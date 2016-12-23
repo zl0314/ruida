@@ -22,7 +22,7 @@ class Subway extends MY_Controller {
 		if(!empty($this->subway)){
 			foreach($this->subway as $k => $r){
 				$sel = '';
-				if($r['parentid'] == request_post('parent')){
+				if($r['id'] == request_post('id')){
 					$sel = 'selected';
 				}
 				$opt .= '<option value="'.$r['id'].'" '.$sel.' >'.$r['name'].'</option>';

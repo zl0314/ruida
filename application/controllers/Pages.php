@@ -17,7 +17,7 @@ class Pages extends MY_Controller {
      */
     public function index($hook = ''){
         $where = array(
-            'pos' => 'page-index-aboutus'
+            'pos' => 'page-index-'.$hook
         );
         $ad_row = $this->ad_model->get_pos_ad($where);
 
@@ -32,7 +32,7 @@ class Pages extends MY_Controller {
 		$vars = array(
             'ad_row' => $ad_row,
             'page' => $page,
-            'posname' => '关于我们',
+            'posname' => $page['name'],
             'hook' => $hook
         );
         $this->tpl->assign($vars);
