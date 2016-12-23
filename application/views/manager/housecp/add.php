@@ -18,6 +18,20 @@
                 </div>
             </div>
 
+            <div class="form-row">
+                <label for="second_title" class="form-field">出租/出售</label>
+                <div class="form-cont">
+                    <select name="data[sales_type]" required> 
+                          <option value="0">请选择</option>
+                            <?php if(!empty($sales_type)):?>
+                              <?php foreach ($sales_type as $k => $r): ?>
+                                      <option value="<?php echo $k ?>" <?php if(!empty($vo) && $k == $vo['sales_type']): ?> selected <?php endif; ?>  ><?php echo $r; ?></option>
+                              <?php endforeach ?>
+                          <?php endif; ?>
+                      </select>
+                </div>
+            </div>
+
              <div class="form-row">
                 <label for="village" class="form-field">小区名称</label>
                 <div class="form-cont">
@@ -28,11 +42,11 @@
             <div class="form-row">
                 <label for="area" class="form-field">所在区域</label>
                 <div class="form-cont">
-                    <select name="data[area_id]" id="area_id" required> 
+                    <select name="data[area_id]" id="area_id" required onchange="get_sub_area(this)"> 
                         <option value="0">请选择</option>
                          <?php if(!empty($area)):?>
                                 <?php foreach ($area as $k => $r): ?>
-                                        <option value="<?php echo $r['id'] ?>" <?php if($r['id'] == $vo['area']): ?> selected <?php endif; ?>  ><?php echo $r['name']; ?></option>
+                                        <option value="<?php echo $r['id'] ?>" <?php if(!empty($vo) && $r['id'] == $vo['area']): ?> selected <?php endif; ?>  ><?php echo $r['name']; ?></option>
                                 <?php endforeach ?>
                             <?php endif; ?>
                     </select>
@@ -40,9 +54,21 @@
                         <option value="0">请选择</option>
                     </select>
                     位于 <input type="text" name="data[huan]" id="" class="short_txt"> 环，
-                    临近地铁 <input type="text" name="data[subway]" id=""  class="short_txt"> 线，
-                    地铁站 <input type="text" name="data[subway_station]" id=""  class="short_txt"> 站，
-                    距离 <input type="text" name="data[meter]" id=""  class="short_txt"> 米
+                    距地铁 
+                      <select name="data[subway]"  required onchange="get_subway_station(this)">
+                        <option value="">请选择</option>
+                        <?php if(!empty($subway)): ?>
+                          <?php foreach ($subway as $key => $r): ?>
+                            <option value="<?php echo $r['id'] ?>" <?php if(!empty($vo) && $r['id'] == $vo['area']): ?> selected <?php endif; ?>><?php echo $r['name'] ?></option>
+                          <?php endforeach ?>
+                        <?php endif; ?>
+                      </select>
+                    线，
+                    地铁站
+                      <select name="data[subway_station]" id="subway_station">
+                        <option value="">请选择</option>
+                      </select>
+                    站<input type="text" name="data[meter]" id=""  class="short_txt"> 米
                 </div>
             </div>
 
@@ -75,7 +101,7 @@
                        <option value="0">请选择</option>
                        <?php if(!empty($chaoxiang)):?>
                                 <?php foreach ($chaoxiang as $k => $r): ?>
-                                        <option value="<?php echo $k ?>" <?php if($k == $vo['chaoxiang']): ?> selected <?php endif; ?>  ><?php echo $r; ?></option>
+                                        <option value="<?php echo $k ?>" <?php if(!empty($vo) && $k == $vo['chaoxiang']): ?> selected <?php endif; ?>  ><?php echo $r; ?></option>
                                 <?php endforeach ?>
                             <?php endif; ?>
                    </select>
@@ -109,7 +135,7 @@
                             <option value="0">请选择</option>
                             <?php if(!empty($zhuangxiu)):?>
                                 <?php foreach ($zhuangxiu as $k => $r): ?>
-                                        <option value="<?php echo $k ?>" <?php if($k == $vo['zhuangxiu']): ?> selected <?php endif; ?>  ><?php echo $r; ?></option>
+                                        <option value="<?php echo $k ?>" <?php if(!empty($vo) && $k == $vo['zhuangxiu']): ?> selected <?php endif; ?>  ><?php echo $r; ?></option>
                                 <?php endforeach ?>
                             <?php endif; ?>
                         </select>
@@ -124,7 +150,7 @@
                             <option value="0">请选择</option>
                               <?php if(!empty($dianti)):?>
                                 <?php foreach ($dianti as $k => $r): ?>
-                                        <option value="<?php echo $k ?>" <?php if($k == $vo['dianti']): ?> selected <?php endif; ?>  ><?php echo $r; ?></option>
+                                        <option value="<?php echo $k ?>" <?php if(!empty($vo) && $k == $vo['dianti']): ?> selected <?php endif; ?>  ><?php echo $r; ?></option>
                                 <?php endforeach ?>
                             <?php endif; ?>
                         </select>
@@ -138,7 +164,7 @@
                             <option value="0">请选择</option>
                               <?php if(!empty($yongtu)):?>
                                 <?php foreach ($yongtu as $k => $r): ?>
-                                        <option value="<?php echo $k ?>" <?php if($k == $vo['yongtu']): ?> selected <?php endif; ?>  ><?php echo $r; ?></option>
+                                        <option value="<?php echo $k ?>" <?php if(!empty($vo) && $k == $vo['yongtu']): ?> selected <?php endif; ?>  ><?php echo $r; ?></option>
                                 <?php endforeach ?>
                             <?php endif; ?>
                         </select>
@@ -152,7 +178,7 @@
                             <option value="0">请选择</option>
                               <?php if(!empty($weizhi)):?>
                                 <?php foreach ($weizhi as $k => $r): ?>
-                                        <option value="<?php echo $k ?>" <?php if($k == $vo['weizhi']): ?> selected <?php endif; ?>  ><?php echo $r; ?></option>
+                                        <option value="<?php echo $k ?>" <?php if(!empty($vo) && $k == $vo['weizhi']): ?> selected <?php endif; ?>  ><?php echo $r; ?></option>
                                 <?php endforeach ?>
                             <?php endif; ?>
                         </select>
@@ -166,7 +192,7 @@
                             <option value="0">请选择</option>
                               <?php if(!empty($type)):?>
                                 <?php foreach ($type as $k => $r): ?>
-                                        <option value="<?php echo $k ?>" <?php if($k == $vo['type']): ?> selected <?php endif; ?>  ><?php echo $r; ?></option>
+                                        <option value="<?php echo $k ?>" <?php if(!empty($vo) && $k == $vo['type']): ?> selected <?php endif; ?>  ><?php echo $r; ?></option>
                                 <?php endforeach ?>
                             <?php endif; ?>
                         </select>
@@ -230,10 +256,10 @@
         <div class="form-row">
             <label for="recomment_house" class="form-field">推荐房源</label>
             <div class="form-cont"  >
-                    <select name="data[recomment_house]" > 
+                    <select name="data[recomment_house]" id="recomment_house" > 
                         <option value="0">请选择</option>
                     </select>
-                    <a href="javascript:;">点击加载房源</a>
+                    <a href="javascript:;" onclick="get_recomment_house()">点击加载房源</a>
             </div>
         </div>
 
@@ -249,7 +275,27 @@
 <script type="text/javascript" charset="utf-8" src="/static/ueditor1_4_3/ueditor.config.js"></script>
 <script type="text/javascript" charset="utf-8" src="/static/ueditor1_4_3/editor_api.js"></script>
 <script type="text/javascript" charset="utf-8" src="/static/ueditor1_4_3/lang/zh-cn/zh-cn.js"></script>
+<script>
+  function get_recomment_house(){
+    $.post('<?php echo site_url('manager/housecp/public_get_recomment_house')?>', {id: '<?php echo !empty($vo['id']) ? $vo['id'] : 0 ?>'}, function(res) {
+      $('#recomment_house').html(res.data);
+    }, 'json');
+  }
 
+  function get_sub_area(obj){
+    var id = typeof(obj) == 'number' ? obj : obj.value;
+    $.post('<?php echo site_url('linkage/get_lists')?>', {parent: id}, function(res) {
+      $('#subarea_id').html(res.data);
+    }, 'json');
+  }
+
+  function get_subway_station(obj){
+    var id = typeof(obj) == 'number' ? obj : obj.value;
+    $.post('<?php echo site_url('subway/get_lists')?>', {parent: id}, function(res) {
+      $('#subway_station').html(res.data);
+    }, 'json');
+  }
+</script>
 <script type="text/javascript" charset="utf-8">
 var ue = UE.getEditor('base_intro');
 var ue = UE.getEditor('trade_intro');

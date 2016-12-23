@@ -1,29 +1,43 @@
+ALTER TABLE  `rd_house` ADD  `sales_type` TINYINT( 1 ) NOT NULL DEFAULT  '0' COMMENT  'é”€å”®ç±»å‹ 1å‡ºç§Ÿ  2å‡ºå”®',
+ADD INDEX (  `sales_type` )
+
+
+
+
+
+
+
+
+
+
+
+
 DROP TABLE rd_job;
 CREATE TABLE IF NOT EXISTS `rd_job` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
-  `people_count` int(10) NOT NULL COMMENT 'ÕĞÆ¸ÈËÊı',
-  `duty` text NOT NULL COMMENT 'Ö°Ôğ',
-  `ability` text NOT NULL COMMENT 'ÒªÇó',
+  `people_count` int(10) NOT NULL COMMENT 'Ã•ÃÃ†Â¸ÃˆÃ‹ÃŠÃ½',
+  `duty` text NOT NULL COMMENT 'Ã–Â°Ã”Ã°',
+  `ability` text NOT NULL COMMENT 'Ã’ÂªÃ‡Ã³',
   `addtime` int(10) NOT NULL,
-  `title` varchar(100) NOT NULL COMMENT '±êÌâ',
-  `toppic` varchar(255) DEFAULT NULL COMMENT 'ÏêÇé¶¥²¿Í¼Æ¬',
+  `title` varchar(100) NOT NULL COMMENT 'Â±ÃªÃŒÃ¢',
+  `toppic` varchar(255) DEFAULT NULL COMMENT 'ÃÃªÃ‡Ã©Â¶Â¥Â²Â¿ÃÂ¼Ã†Â¬',
   `listorder` int(3) NOT NULL DEFAULT '0',
-  `worker_age` varchar(50) DEFAULT NULL COMMENT '¹¤×÷ÄêÏŞ',
-  `fuli` varchar(100) NOT NULL COMMENT '¸£Àû´ıÓö',
-  `intro` text NOT NULL COMMENT 'ÁĞ±íÒ³ÃæÃèÊö',
+  `worker_age` varchar(50) DEFAULT NULL COMMENT 'Â¹Â¤Ã—Ã·Ã„ÃªÃÃ',
+  `fuli` varchar(100) NOT NULL COMMENT 'Â¸Â£Ã€Ã»Â´Ã½Ã“Ã¶',
+  `intro` text NOT NULL COMMENT 'ÃÃÂ±Ã­Ã’Â³ÃƒÃ¦ÃƒÃ¨ÃŠÃ¶',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 
 CREATE TABLE IF NOT EXISTS `rd_user` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `username` varchar(200) DEFAULT NULL COMMENT 'ÓÃ»§Ãû(´ı¶¨)',
-  `password` varchar(64) DEFAULT NULL COMMENT 'ÃÜÂëmd5',
-  `mobile` varchar(11) DEFAULT NULL COMMENT 'ÊÖ»úºÅÂë',
-  `email` varchar(100) DEFAULT NULL COMMENT 'ÓÊÏä',
-  `addtime` int(11) unsigned NOT NULL COMMENT 'Ìí¼ÓÊ±¼ä',
-  `salt` char(7) DEFAULT NULL COMMENT 'ÃÜÂëËæ»úÂë',
+  `username` varchar(200) DEFAULT NULL COMMENT 'Ã“ÃƒÂ»Â§ÃƒÃ»(Â´Ã½Â¶Â¨)',
+  `password` varchar(64) DEFAULT NULL COMMENT 'ÃƒÃœÃ‚Ã«md5',
+  `mobile` varchar(11) DEFAULT NULL COMMENT 'ÃŠÃ–Â»ÃºÂºÃ…Ã‚Ã«',
+  `email` varchar(100) DEFAULT NULL COMMENT 'Ã“ÃŠÃÃ¤',
+  `addtime` int(11) unsigned NOT NULL COMMENT 'ÃŒÃ­Â¼Ã“ÃŠÂ±Â¼Ã¤',
+  `salt` char(7) DEFAULT NULL COMMENT 'ÃƒÃœÃ‚Ã«Ã‹Ã¦Â»ÃºÃ‚Ã«',
   `last_login_time` int(10) DEFAULT NULL,
-  `sex` tinyint(1) DEFAULT '1' COMMENT '1ÄĞ 2Å®',
+  `sex` tinyint(1) DEFAULT '1' COMMENT '1Ã„Ã 2Ã…Â®',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='ÓÃ»§±í' AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='Ã“ÃƒÂ»Â§Â±Ã­' AUTO_INCREMENT=1 ;

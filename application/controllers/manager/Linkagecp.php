@@ -51,7 +51,6 @@ class Linkagecp extends Base_Controller {
 			if($msg == ''){
 				if(!empty($data['id'])){
 					$this->model->save($data);
-					$this->cache->file->delete('linkage');
 					redirect(site_url('manager/linkagecp/index/'.$data['parentid']));
 				}else if(empty($data['id'])){
 					$data['parentid'] = !empty($data['parentid']) ? intval($data['parentid']) : 0;
@@ -69,12 +68,12 @@ class Linkagecp extends Base_Controller {
 								$this->model->save($save_data);
 							}
 						}
-						$this->cache->file->delete('linkage');
 						redirect(site_url('manager/linkagecp/index/'.$data['parentid']));
 					}else{
 						$msg = '请输入城市名';
 					}
 				}
+				$this->cache->file->delete('linkage');
 			}
 			$vo = $data;
 		}else{

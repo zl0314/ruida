@@ -11,7 +11,7 @@ class Hresource{
 			'3' => '地铁线',
 			'4' => '学校'
 		);
-		return !empty( $arr[$type] ) ? $arr[$type] : array();
+		return $arr;
 	}
 
 	//面积区间
@@ -35,7 +35,7 @@ class Hresource{
 				'6' => '500平以上',
 			)
 		);
-		return !empty( $arr[$type] ) ? $arr[$type] : array();
+		return !empty( $arr[$type] ) ? $arr[$type] : $arr;
 	}
 
 	//价格区间
@@ -66,7 +66,7 @@ class Hresource{
 				'5' => '1500万以上',
 			)
 		);
-		return !empty( $arr[$type] ) ? $arr[$type] : array();
+		return !empty( $arr[$type] ) ? $arr[$type] : $arr;
 	}
 
 	//用途
@@ -86,7 +86,7 @@ class Hresource{
 				'3' => '四合院',
 			)
 		);
-		return !empty( $arr[$type] ) ? $arr[$type] : array();
+		return !empty( $arr[$type] ) ? $arr[$type] : $arr;
 	}
 
 	//得到房型 
@@ -147,5 +147,11 @@ class Hresource{
 			'4' => '新房',
 		);
 	}
-	
+	//出租出售
+	public static function get_sales_type(){
+		return array(
+			'1' => '出租',
+			'2' => '出售',
+		);
+	}
 }

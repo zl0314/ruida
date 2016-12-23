@@ -8,9 +8,20 @@ class Housecp extends Base_Controller {
     public function __construct()
     {
         parent::__construct();
-        $this->checkAdminLogin();
+        // $this->checkAdminLogin();
 		$this->load->model('Result_model');
-
+        $vars = array(
+            'zhuangxiu' => Hresource::get_zhuangxiu(),
+            'type' => Hresource::get_house_type(),
+            'chaoxiang' => Hresource::get_chaoxiang(),
+            'dianti' => Hresource::get_dianti(),
+            'sales_type' => Hresource::get_sales_type(),
+            'weizhi' => Hresource::get_position(),
+            'yongtu' => Hresource::get_functionality(),
+            'area' => $this->get_cache('linkage', array('parentid' => 0), '*', 'id asc'),
+            'subway' => $this->get_cache('subway', array('parentid' => 0), '*', 'listorder desc, id asc'),
+        );
+        $this->tpl->assign($vars);
     }
 
     /**
@@ -46,7 +57,7 @@ class Housecp extends Base_Controller {
                 $data['addtime'] = time();
                 $data['id'] = null;
             }
-
+            
             $this->model->save($data);
             $this->message('保存成功' , site_url('manager/'.$this->siteclass));
         }else{
@@ -60,6 +71,25 @@ class Housecp extends Base_Controller {
             $this->data['id'] = $id;
             $this->tpl->display();
         }
+    }
+
+    //得到所有房源列表，添加房源的时候，推荐房源会用到
+    public function public_get_recomment_house(){
+        $opt = '<option value="">请选择</option>';
+        if(request_post()){
+            $id = request_post('id');
+            $where = array();
+            if($id){
+                $where = array('id <>' => $id);
+            }
+            $lists = $this->Result_model->getList('house', 'id,title', $where );
+            if(!empty($lists)){
+                foreach($lists as $k => $r){
+                    $opt .= '<option value="'.$r['id'].'">'.$r['title'].'</option>';
+                }
+            }
+        }
+        success($opt);
     }
 
 }

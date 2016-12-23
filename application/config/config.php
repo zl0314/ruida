@@ -119,6 +119,9 @@ $config['subclass_prefix'] = 'MY_';
 //管理后台继类
 $config['back_subclass_prefix'] = 'Base_';
 
+//公共继承类前缀
+$config['common_subclass_prefix'] = 'Common_';
+
 /*
 |--------------------------------------------------------------------------
 | Composer auto-loading

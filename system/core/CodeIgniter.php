@@ -165,6 +165,10 @@ if(SHOW_DEBUG_BACKTRACE){
 	{
 		get_config(array('back_subclass_prefix' => $assign_to_config['back_subclass_prefix']));
 	}
+		if ( ! empty($assign_to_config['common_subclass_prefix']))
+	{
+		get_config(array('common_subclass_prefix' => $assign_to_config['common_subclass_prefix']));
+	}
 /*
  * ------------------------------------------------------
  *  Should we use a Composer autoloader?
@@ -374,6 +378,10 @@ if(SHOW_DEBUG_BACKTRACE){
 		return CI_Controller::get_instance();
 	}
 
+	if (file_exists(APPPATH.'core/'.$CFG->config['common_subclass_prefix'].'Controller.php'))
+	{
+		require_once APPPATH.'core/'.$CFG->config['common_subclass_prefix'].'Controller.php';
+	}
 	if (file_exists(APPPATH.'core/'.$CFG->config['subclass_prefix'].'Controller.php'))
 	{
 		require_once APPPATH.'core/'.$CFG->config['subclass_prefix'].'Controller.php';

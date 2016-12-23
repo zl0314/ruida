@@ -1,29 +1,15 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Base_Controller extends CI_Controller {
-	public $model;
-	public $CI;
+class Base_Controller extends Common_Controller {
 	function __construct(){
 		parent::__construct() ;
-		$this->CI = get_instance();
 		
-		$this->data['webset'] = $this->cache->file->get('system_setting');
-
 		$admin_id = $this->session->userdata('admin_id');
 		$this->admin_id = $admin_id;
 		$this->is_root = $this->session->userdata('is_root');
 
-        $site_class = $this->router->class;
-        $site_method = $this->router->method;
-        $this->siteclass = strtolower($site_class);
-        $this->sitemethod = strtolower($site_method);
-
         $this->data['header'] = 'manager/common_header';
         $this->data['footer'] = 'manager/common_footer';
-        
-        $this->data['sitemethod'] = $this->sitemethod;
-        $this->data['siteclass'] = $this->siteclass;
-
 	}
 	
 	/**
