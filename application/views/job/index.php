@@ -8,7 +8,7 @@
         <img src="/static/web/images/jr_banner.jpg" alt="">
 	<?php endif; ?>
     </div>
-    <?php if(!empty($list)): ?>
+    <?php if(!empty($lists)): ?>
     	<?php foreach ($list as $key => $r): ?>
     		
     	<?php endforeach ?>
@@ -31,7 +31,7 @@
     <?php endif; ?>
     </div>
 <?php else: ?>
-	<div style="width:100%;height:50px;line-height: 50px;text-align: center;">暂时没有信息...</div>
+	<div style="width:100%;height:50px;line-height: 50px;text-align: center; font-size:19px">暂时没有任何招聘信息...</div>
     <?php endif; ?>
     <?php if(!empty($page_html)): ?>
     <div class="page">

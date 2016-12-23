@@ -24,7 +24,7 @@ class Job extends MY_Controller {
     public function index(){
         //招聘列表
         $where  = array();
-        $data = get_page('job', $where, $this->Result_model, 1, 'listorder desc, id desc');
+        $data = get_page('job', $where, $this->Result_model, 10, 'listorder desc, id desc');
 		$vars = array(
             'posname' => '加入我们'
         );
