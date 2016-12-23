@@ -4,7 +4,7 @@
     <div class="warp clearfix">
         <div class="footer_top">
             <a href="<?php echo site_url('pages/aboutus') ?>">关于我们</a>
-            <a href="<?php echo site_url('pages/contactus') ?>">联系我们</a>
+            <!-- <a href="<?php echo site_url('pages/contactus') ?>">联系我们</a> -->
             <a href="<?php echo site_url('pages/statement') ?>">隐私声明</a>
         </div>
         <div class="footer_center clearfix">

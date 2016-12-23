@@ -52,11 +52,11 @@
                             新房
                         </a>
                     </li>
-                    <li>
+                   <!--  <li>
                         <a href="javascript:;">
                             全国地产服务
                         </a>
-                    </li>
+                    </li> -->
                     <li  <?php if(in_array($siteclass, array('job'))): ?>class="cur"<?php endif; ?>>
                         <a href="<?php echo site_url('job') ?>">
                             加入我们
