@@ -6,7 +6,7 @@
                 马上登录
             </a>
         </span>
-        <a href="index.html">返回首页</a>
+        <a href="<?php echo site_url() ?>">返回首页</a>
     </div>
     <form action="" id="regForm" method="post">
     <div class="login_center">
