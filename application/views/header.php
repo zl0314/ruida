@@ -83,3 +83,6 @@
         </div>
     </div>
 </div>
+<script>
+    var ping = 0;
+</script>

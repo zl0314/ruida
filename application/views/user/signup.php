@@ -37,11 +37,18 @@
 </form>
 <script>
 function reg(obj){
+    if(ping == 1){
+        return;
+    }
+    ping == 1;
+    $(obj).html('数据提交中..');
 	var str = $('#regForm').serialize();
 	$.post('<?php echo site_url('user/signup') ?>', str, function(res) {
 		if(res.success == 1){
+            $(obj).html('注册成功');
 			window.location.href = '<?php echo site_url('/') ?>';
 		}else{
+            $(obj).html('立即注册');
 			alert(res.message);
 		}
 	}, 'json');	

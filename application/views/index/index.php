@@ -25,7 +25,7 @@ background-attachment:fixed; background-position:center top;
 			</a>
 		</div>
 		<div class="search_bottom">
-			<input type="text" value="请输入区域、商圈或小区名开始找房" class="i_ss_wbk left">
+			<input type="text" placeholder ="请输入区域、商圈或小区名开始找房" class="i_ss_wbk left">
 			<input type="button" value="" class="i_ss_but left">
 		</div>
 		<script type="text/javascript">
@@ -178,7 +178,7 @@ background-attachment:fixed; background-position:center top;
 <!-- ======弹窗======== -->
 <form action="" method="post" id="zxForm">
 <input type="hidden" name="type" id="zx_type" value="1">
-<div class="tc">
+<div class="tc" id="tc">
 	<div class="tc_title">
 		委托找房
 	</div>
@@ -241,10 +241,20 @@ background-attachment:fixed; background-position:center top;
 
 	function submitzx(obj){
 		var str = $('#zxForm').serialize();
+		if(ping == 1){
+			return false;
+		}
+		ping = 1;
+		$(obj).val('数据提交中..')
 		$.post('<?php echo site_url('/index/zx')?>', str, function(res) {
+			ping = 0;
 			if(res.success == 1){
+				$('#tc').hide();
+				$('.bgzzc').hide();
+				$('#zxForm')[0].reset();
 				alert(res.message)
 			}else{
+				$(obj).val('提交')
 				alert(res.message);
 			}
 		}, 'json');

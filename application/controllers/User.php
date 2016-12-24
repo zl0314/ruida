@@ -203,8 +203,6 @@ class User extends MY_Controller {
         $cookie = array('name' => 'userinfo', 'value' => '', 'expire' => '-3000');
         $this->input->set_cookie($cookie);
         set_cookie('userinfo', '', time() - 86400 );
-        session_destroy();
-        $_SESESSION['userinfo'] = '';
         $this->session->set_userdata('userinfo', '');
         redirect(site_url(''));
     }

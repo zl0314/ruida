@@ -49,29 +49,41 @@ $ADMIN_MENU = array(
 							),
 					),
 					'adcp' => array(
-				
-					'name' => 'Banner管理',
+						'name' => 'Banner管理',
+						'status' => 1,
+						'method' => array(
+							'index' => array(
+								'name' => 'Banner列表',
+								'status' => 1
+							),
+							'add' => array(
+								'name' => 'Banner编辑',
+								'status' => 1
+							),
+							
+							'del' => array(
+								'name' => 'Banner删除',
+								'status' => 0
+							)
+						)
+				),
+				'zxcp' => array(
+					'name' => '资询管理',
 					'status' => 1,
 					'method' => array(
 						'index' => array(
-							'name' => 'Banner列表',
+							'name' => '资询列表',
 							'status' => 1
 						),
-						'add' => array(
-							'name' => 'Banner编辑',
-							'status' => 1
-						),
-						
 						'del' => array(
-							'name' => 'Banner删除',
+							'name' => '资询删除',
 							'status' => 0
 						)
 					)
-				),
+			),
 				'newscp' => array(
-				
 					'name' => '新闻管理',
-					'status' => 1,
+					'status' => 0,
 					'method' => array(
 						'index' => array(
 							'name' => '新闻列表',

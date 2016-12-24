@@ -32,11 +32,18 @@
 
 <script>
 function login(obj){
+    if(ping == 1){
+        return;
+    }
+    ping == 1;
+    $(obj).html('数据提交中..');
     var str = $('#loginForm').serialize();
     $.post('<?php echo site_url('user/signin') ?>', str, function(res) {
         if(res.success == 1){
+            $(obj).html('登录成功');
             window.location.href = '<?php echo site_url('/') ?>';
         }else{
+            $(obj).html('立即登录');
             alert(res.message);
         }
     }, 'json'); 
