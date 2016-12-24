@@ -16,7 +16,7 @@ class Userinfo{
 		return $uid ;	
 	}
 	
-	public static function getUserinfo($field = 'username', $uid = ''){
+	public static function getUserinfo($field = 'mobile', $uid = ''){
 		$uid = $uid ? $uid : self::getUserAuthinfo('id');
 		$sql = "select $field from ".tname('user')." where id = '$uid'";
 		if($field == '*'){
@@ -38,15 +38,15 @@ class Userinfo{
 		
 		// && $sess_userinfo
 		if($cookieInfo){
-			@list($uid, $pwd, $username) = explode('|', $cookieInfo);
+			@list($uid, $pwd, $mobile) = explode('|', $cookieInfo);
 //			@list($sess_uid, $sess_pwd, $sess_username) = explode('|', $sess_userinfo);
 			
 			$sql = "select * from ".tname('user')." where id = '$uid'";
 			$userinfo = getRow($sql);
-			
+			$return = '';
 			//|| $userinfo['password'] == $sess_pwd
 			if( $userinfo['password'] == $pwd ){
-				$array = array('id' => $uid, 'password' => $pwd, 'username' => $username);
+				$array = array('id' => $uid, 'password' => $pwd, 'mobile' => $mobile);
 				switch ($fetch){
 					case 'id' :
 						$return = $uid;
@@ -54,8 +54,8 @@ class Userinfo{
 					case 'password' :
 						$return = $pwd;
 						break;
-					case 'username' :
-						$return = $username;
+					case 'mobile' :
+						$return = $mobile;
 						break;
 					case '*' :
 						$return = $array;

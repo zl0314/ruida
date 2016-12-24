@@ -377,3 +377,116 @@ function authcode($string, $operation = 'DECODE', $key = '', $expiry = 0) {
         return $keyc.str_replace('=', '', base64_encode($result));
     }
 }
+
+
+/**
+ +----------------------------------------------------------
+ * 字符串命名风格转换
+ * type
+ * =0 将Java风格转换为C的风格
+ * =1 将C风格转换为Java的风格
+ +----------------------------------------------------------
+ * @access protected
+ +----------------------------------------------------------
+ * @param string $name 字符串
+ * @param integer $type 转换类型
+ +----------------------------------------------------------
+ * @return string
+ +----------------------------------------------------------
+ */
+function parse_name($name,$type=0) {
+    if($type) {
+        return ucfirst(preg_replace("/_([a-zA-Z])/e", "strtoupper('\\1')", $name));
+    }else{
+        $name = preg_replace("/[A-Z]/", "_\\0", $name);
+        return strtolower(trim($name, "_"));
+    }
+}
+
+
+
+//判断是否为邮箱格式
+function isemail($email) {
+    return strlen ( $email ) > 8 && preg_match ( "/^[-_+.[:alnum:]]+@((([[:alnum:]]|[[:alnum:]][[:alnum:]-]*[[:alnum:]])\.)+([a-z]{2,4})|(([0-9][0-9]?|[0-1][0-9][0-9]|[2][0-4][0-9]|[2][5][0-5])\.){3}([0-9][0-9]?|[0-1][0-9][0-9]|[2][0-4][0-9]|[2][5][0-5]))$/i", $email );
+}
+
+function isusername($string){
+    //只允许汉字，大小写字母，数字作为用户名
+    return preg_match("/^[\x{4e00}-\x{9fa5}|a-z|A-Z|0-9]+$/u", $string);
+}
+
+//是否是正确的URL
+function is_url($url){
+    return preg_match('/http:\/\/([a-zA-Z0-9-]*\.)+[a-zA-Z]{2,3}/', $url);
+}
+
+//姓名格式判断
+function isrealname($string){
+    //只允许汉字，大小写字母，数字作为用户名
+    return preg_match("/^[\x{4e00}-\x{9fa5}]+$/u", $string);
+}
+
+/**
+ * @desc 检查是否是合法的手机号格式，现阶段合法的格式：以13,15,18,17开头的11位数字
+ * @param $cellphone
+ */
+function istelphone($cellphone) {
+    $pattern = "/^(13|15|18|17|14){1}\d{9}$/";
+    return str_match($pattern, $cellphone);
+}
+//检查是否是合法的固定电话
+function iscellphone($telphone) {
+    $pattern = "/^(0){1}[0-9]{2,3}\-\d{7,8}(\-\d{1,6})?$/";
+    return str_match($pattern, $telphone);
+}
+
+//是否身份证号
+function isidcard($idcard){
+    $cardnumPattern = '/^\d{6}((1[89])|(2\d))\d{2}((0\d)|(1[0-2]))((3[01])|([0-2]\d))\d{3}(\d|X)$/i';
+    $match = preg_match($cardnumPattern, $idcard);
+    return $match;
+}
+//字符串匹配
+function str_match($pattern, $str){
+    if(!empty($str)){
+        if(preg_match($pattern, $str)) {
+            return TRUE;
+        }
+    }
+    return FALSE;
+}
+
+//用户密码获取随机码，
+function password_salt($len = 6){
+    $salt = substr(md5(time().uniqid().SITEKEY), 0, $len);
+    return $salt;
+}
+
+//用户密码加密  密码+salt
+function password($password, $salt = '', $returnarr = false){
+    $salt = $salt ? $salt : password_salt();
+    $password = md5(md5($password).$salt);
+    if($returnarr){
+        return array('password' => $password, 'salt' => $salt);
+    }
+    return $password;
+}
+
+//检查用户密码是否正确
+/**
+ * $post_password 用户输入密码
+ * $salt 此用户名下salt字段
+ * $dbpassword 此用户 表中的密码
+ */
+function check_password($post_password, $salt, $dbpassword){
+    if($post_password && $salt && $dbpassword){
+        $password = md5(md5($post_password).$salt);
+        if($password == $dbpassword){
+            return true;
+        }else{
+            return false;
+        }
+    }else{
+        return false;
+    }
+}

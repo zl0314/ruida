@@ -26,7 +26,7 @@
             <input type="password" value="" name="repwd"  placeholder="请重新输入密码"  class="zc_wbk"><font>*</font>
         </div>
         <div class="login_nr">
-            <label><input type="checkbox">我已阅读并同意《<a href="javascript:;">瑞达联行用户使用协议</a>》</label>
+            <label><input type="checkbox" name="agree" value="1">我已阅读并同意《<a href="javascript:;">瑞达联行用户使用协议</a>》</label>
         </div>
         <div class="login_nr">
             <a href="javascript:;" onclick="reg(this)" class="login_but">
@@ -40,7 +40,7 @@ function reg(obj){
 	var str = $('#regForm').serialize();
 	$.post('<?php echo site_url('user/signup') ?>', str, function(res) {
 		if(res.success == 1){
-
+			window.location.href = '<?php echo site_url('/') ?>';
 		}else{
 			alert(res.message);
 		}

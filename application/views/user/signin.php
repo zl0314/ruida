@@ -35,7 +35,7 @@ function login(obj){
     var str = $('#loginForm').serialize();
     $.post('<?php echo site_url('user/signin') ?>', str, function(res) {
         if(res.success == 1){
-
+            window.location.href = '<?php echo site_url('/') ?>';
         }else{
             alert(res.message);
         }

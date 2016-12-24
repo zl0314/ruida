@@ -1,11 +1,20 @@
 ALTER TABLE  `rd_house` ADD  `sales_type` TINYINT( 1 ) NOT NULL DEFAULT  '0' COMMENT  '销售类型 1出租  2出售',
 ADD INDEX (  `sales_type` )
 
+ALTER TABLE `rd_user` DROP `address`;
 
 
 
+CREATE TABLE IF NOT EXISTS `rd_zx` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `mobile` char(11) NOT NULL,
+  `email` char(50) NOT NULL,
+  `addtime` int(10) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='投放房源/委托找房的资讯热，' AUTO_INCREMENT=1 ;
 
 
+ALTER TABLE `rd_zx` ADD `type` TINYINT(1) NOT NULL DEFAULT '1' COMMENT '类型1委托找房 2投放房源' ;
 
 
 

@@ -126,7 +126,7 @@ class Result_model extends CI_Model{
     public function save( $tb, $data ){
         $this->get_db(true);
         if( empty( $data ['id'])){
-            $id = $this->insert( $data , TRUE );
+            $id = $this->insert( $tb, $data , TRUE );
         }else {
             $id = $data['id'];
             unset($data['id']);
@@ -143,6 +143,7 @@ class Result_model extends CI_Model{
      * @return (bool)(int)      返回 Bool 或 插入 自增ID
      */
     public function insert( $tb, $data , $new_id = FALSE ){
+        $tb = tname($tb);
         $this->get_db(true);
         $result = $this->db->insert( $tb , $data);
         if( $result && $new_id){
@@ -157,6 +158,7 @@ class Result_model extends CI_Model{
      * @return (bool)               返回操作结果
      */
     public function update($tb,$where, $data ){
+        $tb = tname($tb);
         $this->get_db(true);
         return $this->db->update( $tb, $where , $data );
     }
@@ -166,6 +168,7 @@ class Result_model extends CI_Model{
      * @return bool     返回操作结果
      */
     public function delete( $tb, $where ){
+        $tb = tname($tb);
         $this->get_db(true);
         $result =  $this->db->delete( $tb , $where );
         return $result;

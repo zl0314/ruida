@@ -11,6 +11,7 @@
 <div class="header">
     <div class="warp clearfix">
         <div class="hd_top">
+            <?php if(!Userinfo::uid()): ?>
             <span>
                 <a href="<?php echo site_url('user/signin') ?>">
                     <i class="dl_ico"></i>登录
@@ -19,6 +20,16 @@
                     <i class="zc_ico"></i>立即注册
                 </a>
             </span>
+        <?php else: ?>
+            <span>
+                <a href="javascript:;">
+                    <?php echo Userinfo::getUserInfo('mobile') ?>
+                </a>
+                <a href="<?php echo site_url('user/logout') ?>">
+                    <i ></i>退出
+                </a>
+            </span>
+        <?php endif; ?>
             服务热线：<?php echo $webset['service_line'] ?>
         </div>
         <div class="hd_bottom">
