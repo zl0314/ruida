@@ -15,6 +15,14 @@ $(function(){
       <input type="hidden" name="data[id]" id="recordid" value="<?php echo !empty($vo['id']) ? $vo['id'] : '';?>" />
       <div class="form">
       
+         <div class="form-row">
+          <label for="title" class="form-field">标题</label>
+          <div class="form-cont">
+            <input class="input-txt" id="title" type="text" name="data[title]"value="<?php echo !empty($vo['url']) ? $vo['title'] : '';?>">
+            可以留空
+          </div>
+        </div>
+
       <div class="form-row">
           <label for="pos" class="form-field" >所属位置</label>
           <div class="form-cont">
@@ -44,8 +52,13 @@ $(function(){
             <input id="pic" type="text" name="data[pic]" readonly class="input-txt" value="<?php echo !empty($vo['pic']) ? $vo['pic'] : '';?>" />
             <input type="button" class="ajaxUploadBtn" id="pic_button" onclick="ajaxUpload('pic','scrollpic')" value="上传图片" style="width:70px; height:25px;">
             <p>
+              首页第一屏背景图：宽1920像素，高640像素<br>
+              首页第二屏：宽1095像素，高524像素<br>
               房源列表页面：宽1920像素，高398像素，<br>
-              关于我们， 隐私声明，加入我们：宽1100像素，高266像素
+              关于我们， 隐私声明，加入我们：宽1100像素，高266像素<br>
+              热门商圈：宽347像素，高260像素<br>
+              热门商圈长版：宽724像素，高260像素<br>
+
             </p>
           </div>
         </div>

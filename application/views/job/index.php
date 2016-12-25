@@ -21,6 +21,7 @@
         </h2>
         工作年限： <?php echo $r['worker_age'] ?>&nbsp;&nbsp;发布时间： <?php echo date('Y-m-d', $r['addtime']) ?><br>
         <?php echo $r['intro'] ?>
+        <?php $r['fuli'] = str_replace('，', ',', $r['fuli']); ?>
         <?php $label = explode(',', $r['fuli']) ?>
         <?php if(!empty($label)): ?>
         <span class="fl_bq">

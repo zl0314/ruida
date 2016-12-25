@@ -13,10 +13,13 @@ class Ad_model extends MY_Model
     }
 
     public function get_pos_ad($where){
-    	$ad_row = array();
+    	$ad_list = array();
     	if(!empty($where)){
-    		$ad_row = $this->getRow('*', $where);
+    		$ad_list = $this->getList('*', $where, null);
     	}
-    	return $ad_row;
+        if(count($ad_list) == 1){
+            return $ad_list[0];
+        }
+    	return $ad_list;
     }
 }

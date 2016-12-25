@@ -53,13 +53,7 @@
             <td><input type="checkbox" value="<?php echo $v['id'];?>" ></td>
             <td><?php echo $k;?></td>
             <td><?php
-            if($v['poscontent']){
-				echo @$posArr[$v['pos'].'|'.$v['poscontent']];	
-			}else{
-				echo @$posArr[$v['pos']];
-			}
-            
-            
+				    echo @$posArr[$v['pos']];
             ?></td>
            
             <td><a href="<?php echo $v['url']?>" target="_blank"><?php echo $v['url'];?></a></td>

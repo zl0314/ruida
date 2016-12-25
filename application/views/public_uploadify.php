@@ -32,7 +32,7 @@ $spicname = !empty($this->data['spicname']) ? $this->data['spicname'] : 'pic';
      </div>
      <ul class="ipost-list ui-sortable" id="<?php echo $spicname?>_fileList"  style="width:1000px;height:100%;margin-left:90px;margin-top:15px;clear:both;">
 <?php 
-$scrollpic = !empty($this->data['pic']) ? $this->data['pic'] : ( !empty($vo['pic']) ? $vo['pic'] : '' );
+$scrollpic = !empty($this->data['pic']) ? $this->data['pic'] : ( !empty($vo['scrollpic']) ? $vo['scrollpic'] : '' );
 
 if (!empty($scrollpic)  && $scrollpic != 'null'){
 $scrollpic = json_decode($scrollpic, 1);

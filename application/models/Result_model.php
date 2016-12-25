@@ -160,7 +160,7 @@ class Result_model extends CI_Model{
     public function update($tb,$where, $data ){
         $tb = tname($tb);
         $this->get_db(true);
-        return $this->db->update( $tb, $where , $data );
+        return $this->db->update( $tb, $data , $where );
     }
     /**
      * 物理删除数据

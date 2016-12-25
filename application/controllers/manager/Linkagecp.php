@@ -23,7 +23,7 @@ class Linkagecp extends Base_Controller {
 				'name' =>  request_get('name')
 			);
 		}
-		$data = get_page('linkage',$where, $this->Result_model,10,'id desc');
+		$data = get_page('linkage',$where, $this->Result_model,10,'id asc');
 		$parent_linkage = array();
 		if($parentid){
 			$parent_linkage = $this->model->getRow('name', array('id' => $parentid));

@@ -30,4 +30,22 @@ class Linkage extends MY_Controller {
 		}
 		success($opt);
 	}
+
+	public function get_list_house(){
+		$html = '';
+		if(!empty($this->linkage)){
+			foreach($this->linkage as $k => $r){
+				$sel = '';
+				if($r['id'] == request_post('id')){
+					$sel = 'class="active"';
+				}
+				$html .= '<dd '.$sel.'>
+                        <a href="javascript:;" onclick="fill_input(\'house_address_id\',\''.$r['id'].'\')">
+                            '.$r['name'].'
+                        </a>
+                    </dd>';
+			}
+		}
+		success($html);
+	}
 }

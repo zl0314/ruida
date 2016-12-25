@@ -15,38 +15,20 @@ CREATE TABLE IF NOT EXISTS `rd_zx` (
 
 
 ALTER TABLE `rd_zx` ADD `type` TINYINT(1) NOT NULL DEFAULT '1' COMMENT '类型1委托找房 2投放房源' ;
+ALTER TABLE `rd_house` ADD `to_index` TINYINT(1) NOT NULL DEFAULT '0' COMMENT '是否推荐到首页' ;
+ALTER TABLE `rd_ad` ADD `title` VARCHAR(255) NOT NULL COMMENT '标题' AFTER `id`;
 
 
+ALTER TABLE `rd_house` ADD `month_price` DECIMAL(10,2) NULL COMMENT '价格/月' ;
+ALTER TABLE `rd_house` CHANGE `total_price` `total_price` DECIMAL(10,2) NULL COMMENT '总价', CHANGE `unit_price` `unit_price` DECIMAL(10,2) NULL COMMENT '单价';
+ALTER TABLE `rd_house` ADD `thumb` VARCHAR(255) NOT NULL COMMENT '缩略图' ;
+ALTER TABLE `rd_house` ADD `ting_shi_txt` VARCHAR(255) NULL COMMENT '厅室下方提示文字' ;
+ALTER TABLE `rd_house` CHANGE `area_id` `province_id` INT(10) NOT NULL COMMENT '省ID', CHANGE `subarea_id` `city_id` INT(10) NOT NULL COMMENT '市ID';
+ALTER TABLE `rd_house` ADD `area_id` INT(11) NULL COMMENT '分区ID' AFTER `city_id`, ADD `address_id` INT(11) NULL COMMENT '位置ID' AFTER `area_id`;
+ALTER TABLE `rd_house` ADD `label` CHAR(100) NULL COMMENT '标签' ;
+ALTER TABLE `rd_house` ADD `house_cert_year` CHAR(20) NULL COMMENT '房本满多少年' ;
+ALTER TABLE `rd_house` ADD `address` VARCHAR(255) NULL COMMENT '新房详细地址' ;
+ALTER TABLE `rd_house` ADD `biaoqian` TINYINT(1) NULL DEFAULT '0' COMMENT '标签，投资地产标签' ;
+ALTER TABLE `rd_house` ADD `build_acreage` VARCHAR(100) NULL COMMENT '建筑面积' ;
+ALTER TABLE `rd_house` ADD `house_type` TINYINT(1) NULL DEFAULT '0' COMMENT '房型， 1室2室3室' ;
 
-
-
-
-DROP TABLE rd_job;
-CREATE TABLE IF NOT EXISTS `rd_job` (
-  `id` int(10) NOT NULL AUTO_INCREMENT,
-  `people_count` int(10) NOT NULL COMMENT 'ÕÐÆ¸ÈËÊý',
-  `duty` text NOT NULL COMMENT 'Ö°Ôð',
-  `ability` text NOT NULL COMMENT 'ÒªÇó',
-  `addtime` int(10) NOT NULL,
-  `title` varchar(100) NOT NULL COMMENT '±êÌâ',
-  `toppic` varchar(255) DEFAULT NULL COMMENT 'ÏêÇé¶¥²¿Í¼Æ¬',
-  `listorder` int(3) NOT NULL DEFAULT '0',
-  `worker_age` varchar(50) DEFAULT NULL COMMENT '¹¤×÷ÄêÏÞ',
-  `fuli` varchar(100) NOT NULL COMMENT '¸£Àû´ýÓö',
-  `intro` text NOT NULL COMMENT 'ÁÐ±íÒ³ÃæÃèÊö',
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
-
-
-CREATE TABLE IF NOT EXISTS `rd_user` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `username` varchar(200) DEFAULT NULL COMMENT 'ÓÃ»§Ãû(´ý¶¨)',
-  `password` varchar(64) DEFAULT NULL COMMENT 'ÃÜÂëmd5',
-  `mobile` varchar(11) DEFAULT NULL COMMENT 'ÊÖ»úºÅÂë',
-  `email` varchar(100) DEFAULT NULL COMMENT 'ÓÊÏä',
-  `addtime` int(11) unsigned NOT NULL COMMENT 'Ìí¼ÓÊ±¼ä',
-  `salt` char(7) DEFAULT NULL COMMENT 'ÃÜÂëËæ»úÂë',
-  `last_login_time` int(10) DEFAULT NULL,
-  `sex` tinyint(1) DEFAULT '1' COMMENT '1ÄÐ 2Å®',
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='ÓÃ»§±í' AUTO_INCREMENT=1 ;

@@ -36,7 +36,7 @@ class Housecp extends Base_Controller {
             $where['search']['like']['title'] = request_get('title');
         }
 
-        $data = get_page('house', $where,$this->Result_model);
+        $data = get_page('house', $where,$this->Result_model, 10, 'fb_time desc');
         
         $this->tpl->assign($data);
         $this->tpl->assign($search);
@@ -57,15 +57,18 @@ class Housecp extends Base_Controller {
                 $data['addtime'] = time();
                 $data['id'] = null;
             }
+            $data['fb_time'] = strtotime($data['fb_time']);
+            $data['recomment_house'] = !empty($data['recomment_house']) ? implode(',', $data['recomment_house']) : '';
+            $data['scrollpic'] = !empty($data['scrollpic']) ? json_encode($data['scrollpic']) : '';
             
-            $this->model->save($data);
+            $this->Result_model->save('house', $data);
             $this->message('保存成功' , site_url('manager/'.$this->siteclass));
         }else{
             if ($id) {
                 $where = array(
                     'id' => $id
                 );
-                $this->data['vo'] = $this->Result_model->getRow('hresource', '*' , $where );
+                $this->data['vo'] = $this->Result_model->getRow('house', '*' , $where );
             }
             
             $this->data['id'] = $id;

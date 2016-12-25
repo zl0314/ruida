@@ -14,10 +14,12 @@ class Adcp extends Base_Controller {
 		$this->posArr = array(
 			'index-index' => '首页',
             'page-index-aboutus' => '关于我们',
-            'page-index-contactus' => '联系我们',
             'page-index-statement' => '隐私声明',
             'job-index' => '加入我们',
 			'page-index-agreement' => '注册协议',
+            'index-index-banner2' => '首页第二2屏背景图',
+            'index-index-rmsq' => '热门商圈',
+            'house-index-4' => '房源列表页面',
 		);
 		$this->data['posArr'] = $this->posArr;
     }

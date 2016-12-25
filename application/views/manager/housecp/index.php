@@ -7,10 +7,15 @@
         <thead class="tb-tit-bg">
           <tr>
             <th><div class="th-gap">ID</div></th>
-            <th><div class="th-gap">用户名</div></th>
-            <th><div class="th-gap">真实姓名</div></th>
-            
-            <th><div class="th-gap">最后编辑时间</div></th>
+            <th><div class="th-gap">标题</div></th>
+            <th><div class="th-gap">小区名称</div></th>
+            <th><div class="th-gap">总价</div></th>
+            <th><div class="th-gap">单价</div></th>
+            <th><div class="th-gap">面积</div></th>
+            <th><div class="th-gap">房产类型</div></th>
+
+            <th><div class="th-gap">最后发布时间</div></th>
+            <th><div class="th-gap">添加时间</div></th>
             <th><div class="th-gap">操作</div></th>
           </tr>
         </thead>
@@ -24,12 +29,18 @@
           <?php foreach( $list as $k => $v ):?>
           <tr>
             <td><?php echo $v['id'];?></td>
-            <td><?php echo $v['username'];?></td>
-            <td><?php echo $v['nickname'];?></td>
+            <td><?php echo $v['title'];?></td>
+            <td><?php echo $v['village'];?></td>
+            <td><?php echo $v['total_price'];?></td>
+            <td><?php echo $v['unit_price'];?></td>
+            <td><?php echo $v['acreage'];?></td>
+            <td><?php echo $type[$v['type']];?></td>
+            <td><?php echo date('Y-m-d H:i:s' , $v['fb_time']);?></td>
+            
            
             <td><?php echo date('Y-m-d H:i:s' , $v['addtime']);?></td>
             <td>
-              <a class="icon-edit" title="编辑" href="<?php echo site_url(sprintf($siteclass."/add/%s" , $v['id']));?>">编辑</a>
+              <a class="icon-edit" title="编辑" href="<?php echo site_url(sprintf('manager/'.$siteclass."/add/%s" , $v['id']));?>">编辑</a>
 
             	<a class="icon-del" onclick="if( !confirm('您确定要删除？')){ return false;}"  title="删除" href="<?php echo site_url( sprintf($siteclass."/del/%s" , $v['id']));?>">删除</a>
                 

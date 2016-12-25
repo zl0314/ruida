@@ -15,11 +15,50 @@ class Index extends MY_Controller {
      * 站点首页
      */
     public function index($source = 0){
+        //第一屏背景图
         $where = array(
             'pos' => 'index-index'
         );
 		$ad_row = $this->ad_model->get_pos_ad($where);
-		$vars = array();
+
+        //第二屏背景图
+        $where = array(
+            'pos' => 'index-index-banner2'
+        );
+        $ad_row_banner2 = $this->ad_model->get_pos_ad($where);
+
+        //第三屏热门商圈
+        $where = array(
+            'pos' => 'index-index-rmsq'
+        );
+        $ad_row_rmsq = $this->ad_model->get_pos_ad($where);
+
+        //商业地产推荐列表 最新发布， 限5条
+        $where = array(
+            'type' => 1
+        );
+        $house_list_bussness = $this->Result_model->getList('house', 'id,title,unit_price,total_price,thumb', $where, 5, null, 'fb_time desc');
+        //投资地产， 最新发布， 限5条
+        $where = array(
+            'type' => 2
+        );
+        $house_list_tz = $this->Result_model->getList('house', 'id,title,unit_price,total_price,thumb', $where, 5, null, 'fb_time desc');
+
+        //学区房/豪宅， 最新发布， 限5条
+        $where = array(
+            'type' => 3
+        );
+        $house_list_xqhz = $this->Result_model->getList('house', 'id,title,unit_price,total_price,thumb', $where, 5, null, 'fb_time desc');
+
+		$vars = array(
+            'ad_row' => $ad_row,
+            'ad_row_banner2' => $ad_row_banner2,
+            'ad_row_rmsq' => $ad_row_rmsq,
+            'house_list_tz' => $house_list_tz,
+            'house_list_xqhz' => $house_list_xqhz,
+            'house_list_bussness' => $house_list_bussness,
+
+        );
         $this->tpl->assign($vars);
         $this->tpl->display();
     }

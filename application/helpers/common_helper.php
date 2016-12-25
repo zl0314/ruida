@@ -2,7 +2,7 @@
 
 function get_page($tb, $where = array(), $model = null, $perpage = 10, $order = '', $page_query = '', $pk_name= 'id' ){
     $order = $order == '' ? $pk_name . ' DESC' : $order;
-    $page['total_rows'] = $model->getOne($tb, 'Count('.$pk_name.') as cnt' , $where);
+    $page['total_rows'] = $model->getOne($tb, 'Count(*) as cnt' , $where);
     // 加载分页类
     $CI =& get_instance();
     $CI->load->library('pagination');
@@ -38,6 +38,8 @@ function get_page($tb, $where = array(), $model = null, $perpage = 10, $order = 
 
     //查询数据
     $data = array();
+    $data['total_rows'] = $page['total_rows'];
+    
     if($model){
         $data['list'] = $model->getList($tb, '*' , $where ,$page['per_page'] , $page['offset'] , $order);
         $page['base_url'] = '';
@@ -489,4 +491,50 @@ function check_password($post_password, $salt, $dbpassword){
     }else{
         return false;
     }
+}
+//如果URL没有HTTP， 添加HTTP， 如果URL为空，则链接为javascript:;
+function get_add_http_url($url){
+    if($url){
+        if(strpos($url, 'http') !== false){
+            return $url;
+        }else{
+            return 'http://'.$url;
+        }
+    }else{
+        return 'javascript:;';
+    }
+}
+
+function mdate($time = NULL) {
+    $text = '';
+    $time = $time === NULL || $time > time() ? time() : intval($time);
+    $t = time() - $time; //时间差 （秒）
+    $y = date('Y', $time)-date('Y', time());//是否跨年
+    switch($t){
+     case $t == 0:
+       $text = '刚刚';
+       break;
+     case $t < 60:
+      $text = $t . '秒前'; // 一分钟内
+      break;
+     case $t < 60 * 60:
+      $text = floor($t / 60) . '分钟前'; //一小时内
+      break;
+     case $t < 60 * 60 * 24:
+      $text = floor($t / (60 * 60)) . '小时前'; // 一天内
+      break;
+     case $t < 60 * 60 * 24 * 3:
+      $text = floor($time/(60*60*24)) ==1 ?'昨天 ' . date('H:i', $time) : '前天 ' . date('H:i', $time) ; //昨天和前天
+      break;
+     case $t < 60 * 60 * 24 * 30:
+      $text = date('m月d日 H:i', $time); //一个月内
+      break;
+     case $t < 60 * 60 * 24 * 365&&$y==0:
+      $text = date('m月d日', $time); //一年内
+      break;
+     default:
+      $text = date('Y年m月d日', $time); //一年以前
+      break; 
+    }
+    return $text;
 }

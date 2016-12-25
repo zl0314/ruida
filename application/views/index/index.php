@@ -1,8 +1,9 @@
 <style>
-	body{
-		background-image: url(/static/web/images/top_bg.jpg); background-repeat:no-repeat;
-background-attachment:fixed; background-position:center top;
-	}
+body{
+	background-image: url(<?php echo !empty(!empty($ad_row)) ? $ad_row['pic'] : '/static/web/images/top_bg.jpg' ; ?>); 
+	background-repeat:no-repeat;
+	background-attachment:fixed; background-position:center top;
+}
 </style>
 <!-- ====main=== -->
 <div class="warp clearfix">
@@ -11,21 +12,22 @@ background-attachment:fixed; background-position:center top;
 	</div>
 	<div class="search">
 		<div class="search_top">
-			<a href="javascript:;" class="active">
+			<a href="javascript:;" class="active" onclick="$('#house_type').val(1)">
 				商业地产
 			</a>
-			<a href="javascript:;">
+			<a href="javascript:;"  onclick="$('#house_type').val(2)">
 				  投资地产
 			</a>
-			<a href="javascript:;">
+			<a href="javascript:;"  onclick="$('#house_type').val(3)">
 				 学区房/豪宅
 			</a>
-			<a href="javascript:;">
+			<a href="javascript:;"  onclick="$('#house_type').val(4)">
 				 新房
 			</a>
 		</div>
 		<div class="search_bottom">
-			<input type="text" placeholder ="请输入区域、商圈或小区名开始找房" class="i_ss_wbk left">
+			<input type="hidden" name="type" value="1" id="house_type">
+			<input type="text" placeholder ="请输入区域、商圈或小区名开始找房" name="k" class="i_ss_wbk left">
 			<input type="button" value="" class="i_ss_but left">
 		</div>
 		<script type="text/javascript">
@@ -39,7 +41,11 @@ background-attachment:fixed; background-position:center top;
 <div class="lxwm">
 	<div class="warp clearfix">
 		<div class="lxwm_box clearfix">
-			<img src="/static/web/images/lxwm.png" alt="">
+			<?php if(!empty($ad_row_banner2)): ?>
+				<img src="<?php echo $ad_row_banner2['pic'] ?>" alt="">
+			<?php else: ?>
+				<img src="/static/web/images/lxwm.png" alt="">
+			<?php endif; ?>
 			<div class="lxwm_anniu">
 				<a href="javascript:;">
 					委托找房
@@ -51,6 +57,8 @@ background-attachment:fixed; background-position:center top;
 		</div>
 	</div>
 </div>
+
+<?php if(!empty($ad_row_rmsq)): ?>
 <!-- 热门商圈 -->
 <div class="rmsp clearfix">
 	<div class="warp clearfix">
@@ -61,120 +69,148 @@ background-attachment:fixed; background-position:center top;
 			<p>核心地段，成熟配套</p>
 		</div>
 		<div class="rmsq_bottom clearfix">
+		<?php if(!empty($ad_row_rmsq[0])): ?>
 			<div class="rmsq_bottom_list left ml">
-				<a href="#">
-					<img src="/static/web/images/i1.jpg" alt="">
-					<span>国贸</span>
+				<a href="<?php echo get_add_http_url($ad_row_rmsq[0]['url']) ?>">
+					<img src="<?php echo $ad_row_rmsq[0]['pic'] ?>" alt="">
+					<span><?php echo $ad_row_rmsq[0]['title'] ?></span>
 				</a>
 			</div>
+		<?php endif; ?>
+		<?php if(!empty($ad_row_rmsq[1])): ?>
 			<div class="rmsq_bottom_list left">
-				<a href="#">
-					<img src="/static/web/images/i2.jpg" alt="">
-					<span>中关村</span>
+				<a href="<?php echo get_add_http_url($ad_row_rmsq[1]['url']) ?>">
+					<img src="<?php echo $ad_row_rmsq[1]['pic'] ?>" alt="">
+					<span><?php echo $ad_row_rmsq[1]['title'] ?></span>
 				</a>
 			</div>
+		<?php endif; ?>	
+
+		<?php if(!empty($ad_row_rmsq[2])): ?>
 			<div class="rmsq_bottom_list left">
-				<a href="#">
-					<img src="/static/web/images/i3.jpg" alt="">
-					<span>知春路</span>
+				<a href="<?php echo get_add_http_url($ad_row_rmsq[2]['url']) ?>">
+					<<img src="<?php echo $ad_row_rmsq[2]['pic'] ?>" alt="">
+					<span><?php echo $ad_row_rmsq[2]['title'] ?></span>
 				</a>
 			</div>
+		<?php endif; ?>	
+		<?php if(!empty($ad_row_rmsq[3])): ?>
 			<div class="rmsq_bottom_list_2 left ml">
-				<a href="#">
-					<img src="/static/web/images/i4.jpg" alt="">
-					<span>朝外</span>
+				<a href="<?php echo get_add_http_url($ad_row_rmsq[3]['url']) ?>">
+					<img src="<?php echo $ad_row_rmsq[3]['pic'] ?>" alt="">
+					<span><?php echo $ad_row_rmsq[3]['title'] ?></span>
 				</a>
 			</div>
+		<?php endif; ?>
+		<?php if(!empty($ad_row_rmsq[4])): ?>
 			<div class="rmsq_bottom_list left">
-				<a href="#">
-					<img src="/static/web/images/i5.jpg" alt="">
-					<span>上地</span>
+				<a href="<?php echo get_add_http_url($ad_row_rmsq[4]['url']) ?>">
+					<img src="<?php echo $ad_row_rmsq[4]['pic'] ?>" alt="">
+					<span><?php echo $ad_row_rmsq[4]['title'] ?></span>
 				</a>
 			</div>
+		<?php endif; ?>			
 		</div>
 	</div>
 </div>
+<?php endif; ?>
+
+<?php if(!empty($house_list_bussness)): ?>
 <!-- ====商业地产==== -->
 <div class="sydc clearfix">
 	<div class="warp clearfix">
 		<div class="sydc_title">
 			<span>
-				<a href="javascript:;">
+				<a href="<?php echo site_url('house?t=1') ?>">
 					更多商业地产
 				</a>
 			</span>
 			商业地产
 		</div>
 		<div class="sydc_bottom clearfix">
-			<div class="sydc_bottom_list ml">
-				<a href="javascript:;">
-					<img src="/static/web/images/i_img.jpg" alt="">
+			<?php foreach ($house_list_bussness as $key => $r): ?>
+			<div class="sydc_bottom_list  <?php if($key == 0): ?>ml<?php endif;?>"">
+				<a href="<?php echo site_url('house/show/'.$r['id']) ?>">
+					<img src="<?php echo $r['thumb'] ?>" alt="">
 				</a>
 				<div class="sydc_bottom_nr">
-					<a href="#">
-						天畅园精装户型方正两居室视野好可观万达大湖
+					<a href="<?php echo site_url('house/show/'.$r['id']) ?>">
+						<?php echo $r['title'] ?>
 					</a>
-					<p>单价102141元/平米 1050万</p>
+					<p>单价<?php echo intval($r['unit_price'])?>元/平米 <?php echo intval($r['total_price']) ?>万</p>
 				</div>
 			</div>
+			<?php endforeach ?>
 		</div>
 	</div>
 </div>
+<?php endif; ?>
+<?php if(!empty($house_list_tz)): ?>
+
 <!-- ====投资地产==== -->
 <div class="tzdc clearfix">
 	<div class="warp clearfix">
 		<div class="sydc_title">
 			<span>
-				<a href="javascript:;">
+				<a href="<?php echo site_url('house?t=2') ?>">
 					更多投资地产
 				</a>
 			</span>
 			投资地产
 		</div>
 		<div class="sydc_bottom clearfix">
-			<div class="sydc_bottom_list ml">
-				<a href="#">
-					<img src="/static/web/images/i_img.jpg" alt="">
+			<?php foreach ($house_list_tz as $key => $r): ?>
+			<div class="sydc_bottom_list  <?php if($key == 0): ?>ml<?php endif;?>"">
+				<a href="<?php echo site_url('house/show/'.$r['id']) ?>">
+					<img src="<?php echo $r['thumb'] ?>" alt="">
 				</a>
 				<div class="sydc_bottom_nr">
-					<a href="#">
-						天畅园精装户型方正两居室视野好可观万达大湖
+					<a href="<?php echo site_url('house/show/'.$r['id']) ?>">
+						<?php echo $r['title'] ?>
 					</a>
-					<p>单价102141元/平米 1050万</p>
+					<p>单价<?php echo intval($r['unit_price'])?>元/平米 <?php echo intval($r['total_price']) ?>万</p>
 				</div>
 			</div>
-			
+			<?php endforeach ?>
 		</div>
 	</div>
 </div>
+<?php endif; ?>
+
+<?php if(!empty($house_list_xqhz)): ?>
+
 <!-- ====学区房/豪宅==== -->
 <div class="sydc clearfix">
 	<div class="warp clearfix">
 		<div class="sydc_title">
 			<span>
-				<a href="#">
+				<a href="<?php echo site_url('house/?t=3') ?>">
 					更多学区房/豪宅
 				</a>
 			</span>
 			学区房/豪宅
 		</div>
 		<div class="sydc_bottom clearfix">
-			<div class="sydc_bottom_list ml">
-				<a href="#">
-					<img src="/static/web/images/i_img.jpg" alt="">
+			<?php foreach ($house_list_xqhz as $key => $r): ?>
+			<div class="sydc_bottom_list <?php if($key == 0): ?>ml<?php endif;?>">
+				<a href="<?php echo site_url('house/show/'.$r['id']) ?>">
+					<img src="<?php echo $r['thumb'] ?>" alt="">
 				</a>
 				<div class="sydc_bottom_nr">
-					<a href="#">
-						天畅园精装户型方正两居室视野好可观万达大湖
+					<a href="<?php echo site_url('house/show/'.$r['id']) ?>">
+						<?php echo $r['title'] ?>
 					</a>
-					<p>单价102141元/平米 1050万</p>
+					<p>单价<?php echo intval($r['unit_price'])?>元/平米 <?php echo intval($r['total_price']) ?>万</p>
 				</div>
 			</div>
-
+			<?php endforeach ?>
 		</div>
 	</div>
 </div>
-
+<?php endif; ?>
+<script>
+	
+</script>
 <!-- ======弹窗======== -->
 <form action="" method="post" id="zxForm">
 <input type="hidden" name="type" id="zx_type" value="1">
