@@ -103,9 +103,9 @@
 
           <div class="house_type" id="new_house_div" style="display: <?php if(!empty($vo) && $vo['type'] == 4){ echo 'block'; }else{ echo 'none';} ?>;">
               <div class="form-row">
-                  <label for="month_price" class="form-field">每月价格</label>
+                  <label for="avg_price" class="form-field">均价</label>
                   <div class="form-cont">
-                      <input id="month_price" type="text"  name="data[month_price]" class="input-txt" value="<?=!empty($vo['month_price']) ? $vo['month_price'] : '';?>" /> 元/月
+                      <input id="avg_price" type="text"  name="data[avg_price]" class="input-txt" value="<?=!empty($vo['avg_price']) ? $vo['avg_price'] : '';?>" /> 元/平
                   </div>
               </div>
 

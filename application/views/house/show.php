@@ -29,8 +29,13 @@
     <?php endif; ?>
         <div class="xx_center_right">
             <div class="xx_center_right_1">
+                <?php if($row['type'] != 4): ?>
                 <span><?php echo intval( $row['total_price']) ?></span><font>万</font>
                 单价<?php echo intval($row['unit_price']) ?>元/平米
+            <?php else: ?>
+                <span><?php echo intval($row['avg_price']) ?></span><font>元/平</font>
+
+            <?php endif; ?>
             </div>
             <div class="xx_center_right_2 clearfix">
                 <ul>

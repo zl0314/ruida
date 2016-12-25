@@ -185,14 +185,20 @@
                 </h2>
                 <ul>
                     <li>
-                        <i class="yi"></i><?php echo $r['village'] ?>&nbsp;&nbsp;|&nbsp;&nbsp;<?php echo $r['shi'] ?>室<?php echo $r['ting']?>厅&nbsp;&nbsp;|&nbsp;&nbsp;102.8平米&nbsp;&nbsp;|&nbsp;&nbsp;<?php echo $chaoxiang[$r['chaoxiang']] ?>&nbsp;&nbsp;|&nbsp;&nbsp;<?php echo $zhuangxiu[$r['zhuangxiu']] ?>&nbsp;&nbsp;|&nbsp;&nbsp; <?php echo $dianti[$r['dianti']] ?>
+                        <i class="yi"></i><?php echo $r['village'] ?>
+                        <?php if($r['type'] != 4): ?>
+                        &nbsp;&nbsp;|&nbsp;&nbsp;<?php echo $r['shi'] ?>室<?php echo $r['ting']?>厅&nbsp;&nbsp;|&nbsp;&nbsp;102.8平米&nbsp;&nbsp;|&nbsp;&nbsp;<?php echo $chaoxiang[$r['chaoxiang']] ?>&nbsp;&nbsp;|&nbsp;&nbsp;<?php echo $zhuangxiu[$r['zhuangxiu']] ?>&nbsp;&nbsp;|&nbsp;&nbsp; <?php echo $dianti[$r['dianti']] ?>
+                    <?php endif; ?>
                     </li>
+                    <?php if($r['type'] != 4): ?>
                     <li>
                         <i class="er"></i><?php echo $r['ting_shi_txt'] ?> <?php echo $r['acreage_txt'] ?> - <?php echo !empty($r['subway_info']['1']['name']) ? $r['subway_info']['1']['name'] : ''?>
                     </li>
                     <li>
                         <i class="san"></i><!--181人关注 / 共112次带看 / --> <?php echo mdate($r['fb_time']) ?>发布
                     </li>
+                <?php endif; ?>
+
                 </ul>
                 <div class="tag">
                     <span>距离
@@ -218,13 +224,18 @@
                     <span><?php echo $r['watch_time'] ?></span>
                 </div>
             </div>
-			<?php if(!empty($r['total_price'])): ?>
+			<?php if(!empty($r['total_price']) && $r['type'] != 4): ?>
             <div class="lb_bottom_list_jg">
                 <div class="lb_bottom_list_jg_1">
                     <span><?php echo intval($r['total_price']); ?></span>万
                 </div>
                 单价<?php echo intval($r['unit_price']); ?>元/平米
             </div>
+        <?php else: ?>
+             <div class="lb_bottom_list_jg_1">
+                   均价 <span><?php echo intval($r['avg_price']); ?></span>元/平
+                </div>
+                建面<?php echo intval($r['build_acreage']); ?>m²
             <?php endif; ?>
         </div>
 		<?php endforeach ?>

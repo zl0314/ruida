@@ -31,4 +31,5 @@ ALTER TABLE `rd_house` ADD `address` VARCHAR(255) NULL COMMENT '新房详细地�
 ALTER TABLE `rd_house` ADD `biaoqian` TINYINT(1) NULL DEFAULT '0' COMMENT '标签，投资地产标签' ;
 ALTER TABLE `rd_house` ADD `build_acreage` VARCHAR(100) NULL COMMENT '建筑面积' ;
 ALTER TABLE `rd_house` ADD `house_type` TINYINT(1) NULL DEFAULT '0' COMMENT '房型， 1室2室3室' ;
+ALTER TABLE `rd_house` CHANGE `month_price` `avg_price` DECIMAL(10,2) NULL DEFAULT NULL COMMENT '价格/月';
 

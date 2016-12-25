@@ -86,14 +86,14 @@
                 <span class="tj_pm">
                     <?php if(!empty($r['build_acreage'])): ?>建面 <?php echo $r['build_acreage'] ?>m² <?php endif; ?>
                 </span>
-                均价：<font><?php echo intval($r['month_price']) ?> 元/平</font>
+                均价：<font><?php echo intval($r['avg_price']) ?> 元/平</font>
             </div>
         </div>
     <?php endforeach ?>
 
     </div>
     <div class="tj_but">
-        <a href="javascript:;">
+        <a href="<?php echo site_url('house/lists?t=4') ?>">
             查看更多
         </a>
     </div>
