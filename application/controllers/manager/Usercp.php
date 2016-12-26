@@ -20,18 +20,10 @@ class Usercp extends Base_Controller {
 		
 		
 		//搜索条件
-		if(request_get('username')){
-			$where['like'] = array('username' => request_get('username') );
-		}
-		if(request_get('realname')){
-			$where['like']['realname'] = request_get('realname');
-		}
 		if(request_get('mobile')){
 			$where['like']['mobile'] = request_get('mobile');
 		}
-		if(request_get('patriarch')){
-			$where['like']['patriarch'] = request_get('patriarch');
-		}
+		
 		
 		if($id){
 			$where = array('id' => $id);
@@ -39,14 +31,7 @@ class Usercp extends Base_Controller {
 		
 		$data = get_page('user',$where, $this->Result_model, null, 'id desc');
 		$this->data['list'] = $data['list'];
-		foreach($this->data['list'] as $k => $r){
-			$sex = '男/女';
-			if($r['sex'] == 1) $sex = '男';
-			if($r['sex'] == 2) $sex = '女';
-			if($r['sex'] == 0) $sex = '未知';
-			
-			$regtime = date('Y-m-d H:i:s', $r['addtime']);
-		}
+		
 		$this->tpl->assign($data);
 		$this->data['search'] = request_get();
 		$this->data['search']['status'] = isset( $_GET['status'] ) ? $_GET['status'] : 'all';

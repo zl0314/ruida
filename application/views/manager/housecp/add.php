@@ -87,15 +87,16 @@
         </div>
     </div>
 </div>
-
+      <div class="form-row">
+          <label for="total_price" class="form-field">总价</label>
+          <div class="form-cont">
+              <input id="total_price" type="text"  name="data[total_price]" class="input-txt" value="<?=!empty($vo['total_price']) ? $vo['total_price'] : '';?>" /> 万/元
+          </div>
+      </div>
+      
 <!-- 商业地产， 投资，学区/豪放 要显示的内容 -->
 <div class="show_hide_item" id="bus_tz_div" style="display: <?php if(!empty($vo) && $vo['type'] != 4){ echo 'block'; }else{echo 'none';} ?>;">
-            <div class="form-row">
-                <label for="total_price" class="form-field">总价</label>
-                <div class="form-cont">
-                    <input id="total_price" type="text"  name="data[total_price]" class="input-txt" value="<?=!empty($vo['total_price']) ? $vo['total_price'] : '';?>" /> 万/元
-                </div>
-            </div>
+
             <div class="form-row">
                 <label for="unit_price" class="form-field">单价</label>
                 <div class="form-cont">

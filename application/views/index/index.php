@@ -10,6 +10,7 @@ body{
 	<div class="i_banner">
 		<img src="/static/web/images/i_banner.png" alt="">
 	</div>
+	<form action="<?php echo site_url('house') ?>" method="get">
 	<div class="search">
 		<div class="search_top">
 			<a href="javascript:;" class="active" onclick="$('#house_type').val(1)">
@@ -26,17 +27,18 @@ body{
 			</a>
 		</div>
 		<div class="search_bottom">
-			<input type="hidden" name="type" value="1" id="house_type">
-			<input type="text" placeholder ="请输入区域、商圈或小区名开始找房" name="k" class="i_ss_wbk left">
-			<input type="button" value="" class="i_ss_but left">
+			<input type="hidden" name="t" value="1" id="house_type">
+			<input type="text" placeholder ="请输入小区名开始找房" name="village" class="i_ss_wbk left">
+			<input type="submit" value="" class="i_ss_but left">
 		</div>
-		<script type="text/javascript">
-			$(".search_top a").click(function() {
-				$(this).addClass('active').siblings().removeClass('active');
-			});
-		</script>
 	</div>
+	</form>
 </div>
+<script type="text/javascript">
+	$(".search_top a").click(function() {
+		$(this).addClass('active').siblings().removeClass('active');
+	});
+</script>
 <!-- 联系我们 -->
 <div class="lxwm">
 	<div class="warp clearfix">

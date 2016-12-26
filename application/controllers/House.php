@@ -78,11 +78,11 @@ class House extends MY_Controller {
         }
         if(request_get('mianji_min') && request_get('mianji_max')){
             $where['acreage >='] = request_get('mianji_min');
-            $where['acreage >='] = request_get('mianji_max');
+            $where['acreage <='] = request_get('mianji_max');
         }
-
-        if(request_get('price') && !request_get('price_min') && !request_get('price_max')){
-            if($type != 4){
+        
+        if(request_get('price') && !request_get('price_min') && !request_get('price_max') ){
+            // if($type != 4){
                 $price = $this->data['jiage'];
                 $price = $price[request_get('price')];
                 $price_arr = explode('-', $price);
@@ -94,11 +94,11 @@ class House extends MY_Controller {
                 if(!empty($price_arr[1])){
                     $where['total_price <='] = intval($price_arr[1]);
                 }
-            }
+            // }
         }
         if(request_get('price_min') && request_get('price_max')){
             $where['total_price >='] = request_get('price_min');
-            $where['total_price >='] = request_get('price_min');
+            $where['total_price <='] = request_get('price_max');
         }
 
         if(request_get('yongtu')){

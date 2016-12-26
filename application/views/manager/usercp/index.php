@@ -17,8 +17,6 @@
           <tr>
          <th><div class="th-gap"><input type="checkbox" onclick="selallck(this)"> </div></th>
             <th><div class="th-gap">ID</div></th>
-            <th><div class="th-gap">用户名</div></th>
-            <th><div class="th-gap">姓名</div></th>
             <th><div class="th-gap">手机号</div></th>
              <th><div class="th-gap">注册时间</div></th>
 
@@ -41,14 +39,11 @@
           <tr id="item_<?=$v['id']?>">
             <td><input type="checkbox" value="<?php echo $v['id'];?>" ></td> 
             <td><?php echo $v['id'];?></td>
-            <td><?php echo $v['username'];?></td>
-             <td><?php echo $v['realname'];?></td>
             <td> <?php echo $v['mobile'];?></td>
             <td><?php echo date('Y-m-d H:i:s' , $v['addtime']);?></td>
 
             <td>
 	
-            <a  title="编辑" href="<?php echo site_url(sprintf($siteclass."/edit/%s" , $v['id']));?>">编辑</a> 
             <a  onclick="delitem('<?php echo $v['id']?>',this)"  title="删除" href="javascript:;">删除</a>
             
             </td>

@@ -33,8 +33,8 @@ class Adcp extends Base_Controller {
         $this->data['pos'] = request_get('pos');
         $search = array();
         $where = array();
-        if(request_get('title')){
-            $where['like']['title'] = request_get('title');
+        if(request_get('pos')){
+            $where['pos'] = request_get('pos');
         }
 
         $data = get_page('ad', $where,$this->Result_model);

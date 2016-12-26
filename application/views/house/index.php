@@ -132,7 +132,7 @@
                     
                     <dd class="pm_k">
                         <input type=""  name="price_min" class="pm_wbk" value="<?php echo request_get('price_min') ?>">-
-                        <input type=""  name="price_max" value="<?php echo request_get('price_max') ?>" onblur="$(this).next().show()"class="pm_wbk">平米
+                        <input type=""  name="price_max" value="<?php echo request_get('price_max') ?>" onblur="$(this).next().show()"class="pm_wbk">万
                         <input type="button" value="确定" class="lb_but" onclick="$('#searchForm').submit()" style="float:right" >
                     </dd>
                 </dl>
