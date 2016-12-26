@@ -47,7 +47,7 @@ class House extends MY_Controller {
         if(request_get('k')){
             $where['like']['village'] = request_get('k');
         }
-        if(request_get('area_id')){
+        if(request_get('area_id') != 'all'){
             $where['area_id'] = request_get('area_id');
         }
         if(request_get('address_id')){

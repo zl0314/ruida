@@ -28,12 +28,12 @@
                     <dt>
                         位置：
                     </dt>
-                    <dd <?php if(!request_get('city_id')): ?>class="active"<?php endif; ?>>
-                        <a href="javascript:;" onclick="fill_input('house_area_id', '0'),fill_input('house_address_id', '0'),fill_input('house_subway_input', '0')">
+                    <dd <?php if(request_get('city_id') == 'all'): ?>class="active"<?php endif; ?>>
+                        <a href="javascript:;" onclick="fill_input('house_area_id', 'all'),fill_input('house_address_id', '0'),fill_input('house_subway_input', '0')">
                             不限
                         </a>
                     </dd>
-                    <dd <?php if(request_get('city_id')): ?>class="active"<?php endif; ?> >
+                    <dd <?php if(request_get('city_id') || !request_get('city_id')): ?>class="active"<?php endif; ?> >
                        <a href="javascript:;"  onclick="filter_pos(this, 'house_area')">
                             行政区域
                         </a>
