@@ -29,7 +29,7 @@
                         位置：
                     </dt>
                     <dd <?php if(request_get('city_id') == 'all'): ?>class="active"<?php endif; ?>>
-                        <a href="javascript:;" onclick="fill_input('house_area_id', 'all'),fill_input('house_address_id', '0'),fill_input('house_subway_input', '0')">
+                        <a href="javascript:;" onclick="fill_input('house_area_id', 'all'),fill_input('house_area_id', '0'),fill_input('house_subway_input', '0')">
                             不限
                         </a>
                     </dd>
@@ -45,8 +45,9 @@
                     </dd>
                 </dl>
                <input type="hidden" name="city_id" id="house_area_id" value="<?php echo request_get('city_id') ?>">
-               <input type="hidden" name="area_id" id="house_address_id" value="<?php echo request_get('area_id') ?>">
-                <dl class="erji"  id="house_area" style="display:<?php if(request_get('city_id') || request_get('area_id')){ echo 'block'; }else{ echo 'none'; } ?>">
+               <input type="hidden" name="area_id" id="house_area_id" value="<?php echo request_get('area_id') ?>">
+
+                <dl class="erji"  id="house_area" style="display:<?php if(!request_get('city_id') || request_get('city_id') || request_get('area_id')){ echo 'block'; }else{ echo 'none'; } ?>">
                 <?php foreach ($area as $k => $r): ?>
                 	<dd <?php if(request_get('city_id') == $r['id']): ?> class="active" <?php endif; ?>>
                         <a href="javascript:;" onclick="fill_input('house_area_id', '<?php echo $r['id'] ?>')">
@@ -55,8 +56,9 @@
                     </dd>
                 <?php endforeach ?>
                 </dl>
-
-                <dl class="erji" id="house_address" style="display:<?php if(!request_get('city_id') || request_get('city_id')  || request_get('area_id')){ echo 'block'; }else{ echo 'none'; } ?>"></dl>
+                <dl class="erji" id="house_area" style="display:<?php if(!request_get('city_id') || request_get('city_id')  || request_get('area_id') || !request_get('area_id')){ echo 'block'; }else{ echo 'none'; } ?>">
+                    
+                </dl>
 
 
 				<input type="hidden" name="subway" id="house_subway_input" value="<?php echo request_get('subway') ?>">			
@@ -324,7 +326,7 @@
 		$('#'+tar).show();
 	}
 	<?php if(request_get('city_id') || request_get('area_id')): ?>
-	get_subarea('','<?php echo request_get('city_id') ?>', 'house_address');
+	get_subarea('','<?php echo request_get('city_id') ?>', 'house_area');
 	<?php endif; ?>
 	function get_subarea(obj,parent, tar){
 		if(obj){
