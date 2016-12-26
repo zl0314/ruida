@@ -20,7 +20,9 @@ class House extends MY_Controller {
             'mianji' => Hresource::get_acreage(),
             'jiage' => Hresource::get_prices($type),
             'htype' => Hresource::get_htype(),
-            'yongtu' => Hresource::get_functionality(),
+            'biaoqian' => Hresource::get_label(),
+            'new_house_type' => Hresource::get_new_house_type(),
+            'yongtu' => Hresource::get_functionality($type),
             'area' => $this->Result_model->getList('linkage', 'id,name', array('parentid' => 2)),
             'subway' => $this->get_cache('subway', array('parentid' => 0), '*', 'listorder desc, id asc'),
         );
@@ -36,6 +38,9 @@ class House extends MY_Controller {
         $where = array(
             'type' => $type
         );
+        if($type == 1 && !request_get('sales_type')){
+            $where['sales_type'] = 2;
+        }
         if(!$type){
             $this->message('参数错误');
         }
@@ -58,9 +63,12 @@ class House extends MY_Controller {
             $acreage = $this->data['mianji'];
             $acreage = $acreage[request_get('mianji')];
             $acreage_arr = explode('-', $acreage);
-            if(!empty($acreage_arr[0])){
+            if(!empty($acreage_arr[0]) && empty($acreage_arr[1])){
+                $where['acreage <='] = intval($acreage_arr[0]);
+            }else{
                 $where['acreage >='] = intval($acreage_arr[0]);
             }
+
             if(!empty($acreage_arr[1])){
                 $where['acreage <='] = intval($acreage_arr[1]);
             }
@@ -71,11 +79,13 @@ class House extends MY_Controller {
         }
 
         if(request_get('price') && !request_get('price_min') && !request_get('price_max')){
-            if($type == 1){
+            if($type != 4){
                 $price = $this->data['jiage'];
                 $price = $price[request_get('price')];
                 $price_arr = explode('-', $price);
-                if(!empty($price_arr[0])){
+                if(!empty($price_arr[0]) && empty($price_arr[1])){
+                    $where['total_price <='] = intval($price_arr[0]);
+                }else{
                     $where['total_price >='] = intval($price_arr[0]);
                 }
                 if(!empty($price_arr[1])){

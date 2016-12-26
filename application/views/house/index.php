@@ -91,6 +91,27 @@
                         <input type="button" style="float:right" value="确定" onclick="$('#searchForm').submit()" class="lb_but">
                     </dd>
                 </dl>
+                <?php if($type == 3 || $type == 4): ?>
+                <dl>
+                    <dt>
+                        房型：
+                    </dt>
+                       <dd <?php if(!request_get('htype')):?> class="active"<?php endif;?>>
+                        <a href="javascript:;" onclick="fill_input('house_htype', '0')">
+                            不限
+                        </a>
+                    </dd>
+                    <input type="hidden" name="htype"  id="house_htype" value="<?php echo request_get('htype') ?>">
+                    <?php foreach ($htype as $k => $r): ?>
+                        <dd  <?php if(request_get('htype') == $k):?> class="active"<?php endif;?>>
+                        <a href="javascript:;" onclick="fill_input('house_htype','<?php echo $k ?>')">
+                           <?php echo $r; ?>
+                        </a>
+                    </dd>
+                    <?php endforeach ?>
+
+                </dl>
+                <?php endif; ?>
                 <dl>
                     <dt>
                         价格：
@@ -115,6 +136,7 @@
                         <input type="button" value="确定" class="lb_but" onclick="$('#searchForm').submit()" style="float:right" >
                     </dd>
                 </dl>
+                <?php if($type != 4): ?>
                 <dl>
                     <dt>
                         用途： 
@@ -134,7 +156,28 @@
                     </dd>
                     <?php endforeach ?>
                 </dl>
+            <?php elseif($type == 4): ?>
+                <?php endif; ?>
+                <dl>
+                    <dt>
+                        类型： 
+                    </dt>
+                        <dd <?php if(!request_get('new_house_type')):?> class="active"<?php endif;?>>
+                        <a href="javascript:;" onclick="fill_input('house_new_house_type', '0')">
+                            不限
+                        </a>
+                    </dd>
+                    <input type="hidden" name="new_house_type"  id="house_new_house_type" value="<?php echo request_get('new_house_type') ?>">
 
+                    <?php foreach ($new_house_type as $k => $r): ?>
+                        <dd  <?php if(request_get('new_house_type') == $k):?> class="active"<?php endif;?>>
+                        <a href="javascript:;" onclick="fill_input('house_new_house_type','<?php echo $k ?>')">
+                           <?php echo $r; ?>
+                        </a>
+                    </dd>
+                    <?php endforeach ?>
+                </dl>
+                <?php if($type == 1): ?>
                 <dl>
                     <dt>
                         装修： 
@@ -153,6 +196,27 @@
                     </dd>
                     <?php endforeach ?>
                 </dl>
+                    <?php elseif($type == 2): ?>
+                        <dl>
+                        <dt>
+                            标签： 
+                        </dt>
+                        <input type="hidden" name="biaoqian"  id="house_biaoqian" value="<?php echo request_get('zhuangxiu') ?>">
+                        <dd <?php if(!request_get('biaoqian')):?> class="active"<?php endif;?>>
+                            <a href="javascript:;" onclick="fill_input('house_biaoqian', '0')">
+                                不限
+                            </a>
+                        </dd>
+                        <?php foreach ($biaoqian as $k => $r): ?>
+                            <dd  <?php if(request_get('biaoqian') == $k):?> class="active"<?php endif;?>>
+                            <a href="javascript:;" onclick="fill_input('house_biaoqian','<?php echo $k ?>')">
+                               <?php echo $r; ?>
+                            </a>
+                        </dd>
+                        <?php endforeach ?>
+                    </dl>
+                <?php endif; ?>
+
             </div>
         </div>
         </form>

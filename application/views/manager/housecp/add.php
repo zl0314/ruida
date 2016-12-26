@@ -47,46 +47,49 @@
                     <input id="watch_time" type="text" required name="data[watch_time]" class="input-txt" value="<?=!empty($vo['watch_time']) ? $vo['watch_time'] : '';?>" />
                 </div>
             </div>
-  <div class="form-row">
-                <label for="thumb" class="form-field">缩略图</label>
-                <div class="form-cont">
-                  <input id="thumb" type="text" name="data[thumb]"  class="input-txt" value="<?=!empty($vo['thumb']) ? $vo['thumb'] : '';?>" />
-                  <input type="button"class="ajaxUploadBtn"  id="thumb_button" onclick="ajaxUpload('thumb','house')" value="上传图片" style="width:70px; height:25px;">
-                  <span class="form-tips">宽232px, 高174px</span>
+
+            <div class="form-row">
+                  <label for="thumb" class="form-field">缩略图</label>
+                  <div class="form-cont">
+                    <input id="thumb" type="text" name="data[thumb]"  class="input-txt" required value="<?=!empty($vo['thumb']) ? $vo['thumb'] : '';?>" />
+                    <input type="button"class="ajaxUploadBtn"  id="thumb_button" onclick="ajaxUpload('thumb','house')" value="上传图片" style="width:70px; height:25px;">
+                    <span class="form-tips">宽232px, 高174px</span>
+                  </div>
                 </div>
+
+            <div class="form-row">
+                  <label for="type" class="form-field">房源类型</label>
+                  <div class="form-cont">
+                          <select name="data[type]" required onchange="show_type(this)"> 
+                              <option value="0">请选择</option>
+                                <?php if(!empty($type)):?>
+                                  <?php foreach ($type as $k => $r): ?>
+                                          <option value="<?php echo $k ?>" <?php if(!empty($vo) && $k == $vo['type']): ?> selected <?php endif; ?>  ><?php echo $r; ?></option>
+                                  <?php endforeach ?>
+                              <?php endif; ?>
+                          </select>
+                  </div>
               </div>
 
-        <div class="form-row">
-                <label for="type" class="form-field">房源类型</label>
-                <div class="form-cont">
-                        <select name="data[type]" required onchange="show_type(this)"> 
-                            <option value="0">请选择</option>
-                              <?php if(!empty($type)):?>
-                                <?php foreach ($type as $k => $r): ?>
-                                        <option value="<?php echo $k ?>" <?php if(!empty($vo) && $k == $vo['type']): ?> selected <?php endif; ?>  ><?php echo $r; ?></option>
-                                <?php endforeach ?>
-                            <?php endif; ?>
-                        </select>
-                </div>
-            </div>
-
-      <div class="house_type" id="rent_salse_type" style="display: <?php if(!empty($vo) && $vo['type'] == 1){ echo 'block'; }else{echo 'none';} ?>;">
-            <div class="form-row">
-                <label for="second_title" class="form-field">出租/出售</label>
-                <div class="form-cont">
-                    <select name="data[sales_type]" required> 
-                          <option value="0">请选择</option>
-                            <?php if(!empty($sales_type)):?>
-                              <?php foreach ($sales_type as $k => $r): ?>
-                                      <option value="<?php echo $k ?>" <?php if(!empty($vo) && $k == $vo['sales_type']): ?> selected <?php endif; ?>  ><?php echo $r; ?></option>
-                              <?php endforeach ?>
-                          <?php endif; ?>
-                      </select>
-                </div>
-            </div>
+<!-- 商业地产 出租 / 出售 -->
+<div class="show_hide_item" id="rent_salse_type" style="display: <?php if(!empty($vo) && $vo['type'] == 1){ echo 'block'; }else{echo 'none';} ?>;">
+    <div class="form-row">
+        <label for="second_title" class="form-field">出租/出售</label>
+        <div class="form-cont">
+            <select name="data[sales_type]" required> 
+                  <option value="0">请选择</option>
+                    <?php if(!empty($sales_type)):?>
+                      <?php foreach ($sales_type as $k => $r): ?>
+                              <option value="<?php echo $k ?>" <?php if(!empty($vo) && $k == $vo['sales_type']): ?> selected <?php endif; ?>  ><?php echo $r; ?></option>
+                      <?php endforeach ?>
+                  <?php endif; ?>
+              </select>
         </div>
+    </div>
+</div>
 
-<div class="house_type" id="bus_house_div" style="display: <?php if(!empty($vo) && $vo['type'] != 4){ echo 'block'; }else{echo 'none';} ?>;">
+<!-- 商业地产， 投资，学区/豪放 要显示的内容 -->
+<div class="show_hide_item" id="bus_tz_div" style="display: <?php if(!empty($vo) && $vo['type'] != 4){ echo 'block'; }else{echo 'none';} ?>;">
             <div class="form-row">
                 <label for="total_price" class="form-field">总价</label>
                 <div class="form-cont">
@@ -101,38 +104,77 @@
             </div>
 </div>
 
-          <div class="house_type" id="new_house_div" style="display: <?php if(!empty($vo) && $vo['type'] == 4){ echo 'block'; }else{ echo 'none';} ?>;">
-              <div class="form-row">
-                  <label for="avg_price" class="form-field">均价</label>
-                  <div class="form-cont">
-                      <input id="avg_price" type="text"  name="data[avg_price]" class="input-txt" value="<?=!empty($vo['avg_price']) ? $vo['avg_price'] : '';?>" /> 元/平
-                  </div>
+<!-- 投资要显示的内容 -->
+<div class="show_hide_item" id="tz_house_div" style="display: <?php if(!empty($vo) && $vo['type'] == 2){ echo 'block'; }else{echo 'none';} ?>;">
+          <div class="form-row">
+              <label for="biaoqian" class="form-field">总价</label>
+              <div class="form-cont">
+                 <select name="data[biaoqian]" required>
+                     <option value="0">请选择</option>
+                     <?php if(!empty($biaoqian)):?>
+                              <?php foreach ($biaoqian as $k => $r): ?>
+                                      <option value="<?php echo $k ?>" <?php if(!empty($vo) && $k == $vo['biaoqian']): ?> selected <?php endif; ?>  ><?php echo $r; ?></option>
+                              <?php endforeach ?>
+                          <?php endif; ?>
+                 </select>
               </div>
+          </div>
+</div>
 
-                            <div class="form-row">
-                  <label for="build_acreage" class="form-field">建筑面积</label>
-                  <div class="form-cont">
-                      <input id="build_acreage" type="text"  name="data[build_acreage]" class="input-txt" value="<?=!empty($vo['build_acreage']) ? $vo['build_acreage'] : '';?>" /> m²
-                  </div>
-              </div>
+<!-- 新房要显示的内容 -->
+<div class="show_hide_item" id="new_house_div" style="display: <?php if(!empty($vo) && $vo['type'] == 4){ echo 'block'; }else{ echo 'none';} ?>;">
+    
+    <div class="form-row">
+        <label for="avg_price" class="form-field">均价</label>
+        <div class="form-cont">
+            <input id="avg_price" type="text"  name="data[avg_price]" class="input-txt" value="<?=!empty($vo['avg_price']) ? $vo['avg_price'] : '';?>" /> 元/平
+        </div>
+    </div>
 
-              <div class="form-row">
-                  <label for="address" class="form-field">详细地址</label>
-                  <div class="form-cont">
-                      <input id="address" type="text"  name="data[address]" class="input-txt" value="<?=!empty($vo['address']) ? $vo['address'] : '';?>" />
-                  </div>
-              </div>
-            </div>
+    <div class="form-row">
+        <label for="build_acreage" class="form-field">建筑面积</label>
+        <div class="form-cont">
+            <input id="build_acreage" type="text"  name="data[build_acreage]" class="input-txt" value="<?=!empty($vo['build_acreage']) ? $vo['build_acreage'] : '';?>" /> m²
+        </div>
+    </div>
+
+    <div class="form-row">
+        <label for="address" class="form-field">详细地址</label>
+        <div class="form-cont">
+            <input id="address" type="text"  name="data[address]" class="input-txt" value="<?=!empty($vo['address']) ? $vo['address'] : '';?>" />
+        </div>
+    </div>
+
+    <div class="form-row">
+        <label for="new_house_type" class="form-field">新房类型</label>
+        <div class="form-cont">
+            <select name="data[new_house_type]" required>
+             <option value="0">请选择</option>
+             <?php if(!empty($new_house_type)):?>
+                      <?php foreach ($new_house_type as $k => $r): ?>
+                              <option value="<?php echo $k ?>" <?php if(!empty($vo) && $k == $vo['new_house_type']): ?> selected <?php endif; ?>  ><?php echo $r; ?></option>
+                      <?php endforeach ?>
+                  <?php endif; ?>
+         </select>
+        </div>
+    </div>
+
+  </div>
+
+                          
 <script>
   function show_type(obj){
-    $('.house_type').hide();
-    if(obj.value == 4){
-        $('#new_house_div').show();
-    }else if(obj.value == 1){
-        $('#bus_house_div').show();
-        $('#rent_salse_type').show();
-    }else if(obj.value != 4){
-        $('#bus_house_div').show();
+    $('.show_hide_item').hide().find('input,select').removeAttr('required');
+    if(obj.value == 1){
+        $('#bus_tz_div').show().find('input,select').attr('required', 'true');
+        $('#rent_salse_type').show().find('input,select').attr('required', 'true');
+    }else if(obj.value == 2){
+        $('#bus_tz_div').show().find('input,select').attr('required', 'true');
+    }else if(obj.value == 3){
+        $('#bus_tz_div').show().find('input,select').attr('required', 'true');
+    }else if(obj.value == 4){
+        $('#new_house_div').show().find('input,select').attr('required', 'true');
+        $('#bus_house_div').hide().find('input,select').attr('required', 'true');
     }
   }
 </script>
