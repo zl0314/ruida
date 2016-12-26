@@ -1253,7 +1253,7 @@ label {
 	border:1px solid #fff;
 	margin:10px 10px 0 0;
 	float: left;
-	background: none;
+	background: hsla(213, 89%, 25%, 0.9);
 	border-radius: 5px;
 	color: #fff;
 }

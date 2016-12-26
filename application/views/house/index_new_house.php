@@ -5,7 +5,7 @@
         <div class="xf_ss">
             <div class="xf_ss_1">
             	<input type="hidden" name="t" value="<?php echo request_get('t') ?>">
-                <input type="text" name="k" class="js_wbk" placeholder="楼盘名/关键字">
+                <input type="text" name="village" class="js_wbk" placeholder="楼盘名/关键字">
                 <input type="button" class="js_but" onClick="$('#searchForm').submit()">
             </div>
             <div class="xf_ss_2 clearfix">
