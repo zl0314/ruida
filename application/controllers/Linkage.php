@@ -40,7 +40,7 @@ class Linkage extends MY_Controller {
 					$sel = 'class="active"';
 				}
 				$html .= '<dd '.$sel.'>
-                        <a href="javascript:;" onclick="fill_input(\'house_address_id\',\''.$r['id'].'\')">
+                        <a href="javascript:;" onclick="fill_input(\'house_area_id\',\''.$r['id'].'\')">
                             '.$r['name'].'
                         </a>
                     </dd>';

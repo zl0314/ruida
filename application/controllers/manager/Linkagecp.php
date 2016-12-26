@@ -45,13 +45,14 @@ class Linkagecp extends Base_Controller {
 		$msg = '';
 		if(request_post()){
 			$data = request_post('data');
+			$parentid  = !empty($data['parentid']) ? $data['parentid'] : '';
 			if(empty($data['name'])){
 				$msg = '城市名称不能为空';
 			}
 			if($msg == ''){
 				if(!empty($data['id'])){
 					$this->model->save($data);
-					redirect(site_url('manager/linkagecp/index/'.$data['parentid']));
+					redirect(site_url('manager/linkagecp/index/'.$parentid));
 				}else if(empty($data['id'])){
 					$data['parentid'] = !empty($data['parentid']) ? intval($data['parentid']) : 0;
 					$names = str_replace(array("\r","\n","\t"), ',', $data['name']);
@@ -68,7 +69,7 @@ class Linkagecp extends Base_Controller {
 								$this->model->save($save_data);
 							}
 						}
-						redirect(site_url('manager/linkagecp/index/'.$data['parentid']));
+						redirect(site_url('manager/linkagecp/index/'.$parentid));
 					}else{
 						$msg = '请输入城市名';
 					}

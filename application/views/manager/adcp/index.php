@@ -15,15 +15,7 @@
     <br>
     <form method="post" id="form1" action="#">
       <table class="table table-s1" width="100%" cellpadding="0" cellspacing="0" border="0">
-        <colgroup>
-        <col class="w90">
-        <col class="w160">
-       <col class="w160">
- 
-        <col class="w170">
-        <col class="">
-        </colgroup>
-        
+      
         <thead class="tb-tit-bg">
           <tr>
         	 <th><div class="th-gap"><input type="checkbox" onclick="selallck(this)"> </div></th> 

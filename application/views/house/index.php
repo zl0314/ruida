@@ -9,9 +9,10 @@
             <input type="text" name="k" placeholder="请输入小区" value="<?php echo request_get('k') ?>" class="ss_wbk">
             <input type="button" value="搜索" onclick="$('#searchForm').submit();" class="ss_but">
         </div>
+
         <?php if($type == 1): ?>
         <div class="lb_top_2 clearfix">
-        <input type="hidden" name="sales_type" id="sales_type"  value="<?php echo request_get('zhuangxiu') ? request_get('zhuangxiu') : 2 ?>" >
+        <input type="hidden" name="sales_type" id="sales_type"  value="<?php echo request_get('sales_type') ? request_get('sales_type') : 2 ?>" >
             <a href="javascript:;" <?php if( request_get('sales_type') == 2 || request_get('sales_type') == ''){echo 'class="active" ';} ?> onclick="fill_input('sales_type',2)">
                 出售
                 <i></i>
@@ -22,6 +23,7 @@
             </a>
         </div>
     <?php endif; ?>
+
         <div class="lb_top_3 clearfix">
             <div class="qh">
                 <dl>
@@ -29,12 +31,12 @@
                         位置：
                     </dt>
                     <dd <?php if(request_get('city_id') == 'all'): ?>class="active"<?php endif; ?>>
-                        <a href="javascript:;" onclick="fill_input('house_area_id', 'all'),fill_input('house_area_id', '0'),fill_input('house_subway_input', '0')">
+                        <a href="javascript:;" onclick="fill_input('house_city_id', 'all',0),fill_input('house_area_id', '',0),fill_input('house_subway_input', '', 1)">
                             不限
                         </a>
                     </dd>
                     <dd <?php if(request_get('city_id') || !request_get('city_id')): ?>class="active"<?php endif; ?> >
-                       <a href="javascript:;"  onclick="filter_pos(this, 'house_area')">
+                       <a href="javascript:;"  onclick="filter_pos(this, 'house_city')">
                             行政区域
                         </a>
                     </dd>
@@ -44,13 +46,14 @@
                         </a>
                     </dd>
                 </dl>
-               <input type="hidden" name="city_id" id="house_area_id" value="<?php echo request_get('city_id') ?>">
+               <input type="hidden" name="city_id" id="house_city_id" value="<?php echo request_get('city_id') ?>">
                <input type="hidden" name="area_id" id="house_area_id" value="<?php echo request_get('area_id') ?>">
 
-                <dl class="erji"  id="house_area" style="display:<?php if(!request_get('city_id') || request_get('city_id') || request_get('area_id')){ echo 'block'; }else{ echo 'none'; } ?>">
+
+                <dl class="erji"  id="house_city" style="display:<?php if(!request_get('city_id') || request_get('city_id') || request_get('area_id')){ echo 'block'; }else{ echo 'none'; } ?>">
                 <?php foreach ($area as $k => $r): ?>
                 	<dd <?php if(request_get('city_id') == $r['id']): ?> class="active" <?php endif; ?>>
-                        <a href="javascript:;" onclick="fill_input('house_area_id', '<?php echo $r['id'] ?>')">
+                        <a href="javascript:;" onclick="fill_input('house_city_id', '<?php echo $r['id'] ?>', 0),fill_input('house_area_id', '0', 1)">
                             <?php echo $r['name'] ?>
                         </a>
                     </dd>
@@ -303,15 +306,22 @@
                 </div>
                 单价<?php echo intval($r['unit_price']); ?>元/平米
             </div>
-        <?php else: ?>
+        <?php elseif($r['type'] == 4): ?>
              <div class="lb_bottom_list_jg_1">
                    均价 <span><?php echo intval($r['avg_price']); ?></span>元/平
                 </div>
                 建面<?php echo intval($r['build_acreage']); ?>m²
-            <?php endif; ?>
         </div>
+        <?php elseif($r['type'] == 1 && $vo['sales_type'] == 1): ?>
+             <div class="lb_bottom_list_jg_1">
+                   均价 <span><?php echo intval($r['avg_price']); ?></span>元/月
+                </div>
+                <?php echo date('Y.m.d',$r['fb_time']); ?>更新
+    <?php endif; ?>
+
 		<?php endforeach ?>
     <?php endif; ?>
+        </div>
 
     </div>
     <div class="page">
@@ -338,8 +348,11 @@
 	      }
 	    }, 'json');
 	}
-	function fill_input(tar, v){
+	function fill_input(tar, v, submit){
+        submit = typeof( submit) == 'undefined' ? 1 : submit;
 		$('#'+tar).val(v);
-		$('#searchForm').submit();
+		if(submit){
+            $('#searchForm').submit();
+        }
 	}
 </script> 

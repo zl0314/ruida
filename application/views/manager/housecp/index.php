@@ -6,6 +6,8 @@
         </colgroup>
         <thead class="tb-tit-bg">
           <tr>
+           <th><div class="th-gap"><input type="checkbox" onclick="selallck(this)"> </div></th> 
+
             <th><div class="th-gap">ID</div></th>
             <th><div class="th-gap">标题</div></th>
             <th><div class="th-gap">小区名称</div></th>
@@ -19,15 +21,21 @@
             <th><div class="th-gap">操作</div></th>
           </tr>
         </thead>
-        <tfoot class="td-foot-bg">
+       
+         <tfoot class="td-foot-bg">
           <tr>
-            <td colspan="5"><div class="pre-next"> <?php echo $page_html;?></div></td>
+            <td colspan=" "> 
+           <input type="button" class="batch delect_batch" value="删 除" onclick="delitem('a', this)">
+            <div class="pre-next"> <?php if(!empty($page_html)){ echo $page_html;}?></div></td>
           </tr>
         </tfoot>
+        
         <tbody>
         <?php if( $list):?>
           <?php foreach( $list as $k => $v ):?>
           <tr>
+            <td><input type="checkbox" value="<?php echo $v['id'];?>" ></td>
+
             <td><?php echo $v['id'];?></td>
             <td><?php echo $v['title'];?></td>
             <td><?php echo $v['village'];?></td>
@@ -42,7 +50,7 @@
             <td>
               <a class="icon-edit" title="编辑" href="<?php echo site_url(sprintf('manager/'.$siteclass."/add/%s" , $v['id']));?>">编辑</a>
 
-            	<a class="icon-del" onclick="if( !confirm('您确定要删除？')){ return false;}"  title="删除" href="<?php echo site_url( sprintf($siteclass."/del/%s" , $v['id']));?>">删除</a>
+            <a class="icon-del" onclick="delitem('<?php echo $v['id']?>',this)"  title="删除" href="javascript:;">删除</a></td>
                 
                 </td>
           </tr>
