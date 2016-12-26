@@ -98,7 +98,7 @@ class Index extends MY_Controller {
                     'addtime' => time(), 
                     'type' => $post['type']
                 );
-                $res = $this->Result_model->save('zx',$data);
+                $res = $this->Result_model->insert('zx',$data, true);
                 success($res, '信息提交成功,稍后客服人员会跟您联系');
             }
         }else{

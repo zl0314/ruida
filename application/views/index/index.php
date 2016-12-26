@@ -232,7 +232,7 @@ body{
 			</tr>
 			<tr align="left">
 				<td>
-					<input type="text" class="i_wbk1" name="captcha" placeholder="验证码"><img src="<?php echo site_url('api/captcha') ?>" title="点击切换验证码" style="cursor: pointer" onclick="this.src='<?php echo site_url('api/captcha') ?>'" class="inputcheckbox" width="80" alt="">
+					<input type="text" class="i_wbk1" name="captcha" placeholder="验证码"><img src="<?php echo site_url('Api/captcha') ?>" title="点击切换验证码" style="cursor: pointer" onclick="this.src='<?php echo site_url('Api/captcha') ?>'" class="inputcheckbox" width="80" alt="">
 				</td>
 			</tr>
 			<tr align="center">

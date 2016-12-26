@@ -10,8 +10,8 @@ class Captcha extends MY_Controller{
         $this->load->helper('captcha');
         $config = array(
 //             'word'      => 'Random word',
-            'img_path'  => dirname(BASEPATH).'/static/captcha/',
-            'img_url'   => '/static/captcha/',
+            // 'img_path'  => dirname(BASEPATH).'/static/captcha/',
+            // 'img_url'   => '/static/captcha/',
             //'font_path' => './path/to/fonts/texb.ttf',
             'img_width' => 50,
             'img_height'    => 30,
@@ -29,7 +29,6 @@ class Captcha extends MY_Controller{
                 'grid' => array(255, 40, 40)
             ),
         );
-        
         $cap = create_captcha($config);
         $this->session->set_userdata('captcha', $cap['word']);
     }

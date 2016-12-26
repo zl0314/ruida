@@ -26,25 +26,25 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  *
- * @package	CodeIgniter
- * @author	EllisLab Dev Team
- * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (https://ellislab.com/)
- * @copyright	Copyright (c) 2014 - 2016, British Columbia Institute of Technology (http://bcit.ca/)
- * @license	http://opensource.org/licenses/MIT	MIT License
- * @link	https://codeigniter.com
- * @since	Version 1.0.0
- * @filesource
+ * package	CodeIgniter
+ * author	EllisLab Dev Team
+ * copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (https://ellislab.com/)
+ * copyright	Copyright (c) 2014 - 2016, British Columbia Institute of Technology (http://bcit.ca/)
+ * license	http://opensource.org/licenses/MIT	MIT License
+ * link	https://codeigniter.com
+ * since	Version 1.0.0
+ * filesource
  */
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
  * CodeIgniter CAPTCHA Helper
  *
- * @package		CodeIgniter
- * @subpackage	Helpers
- * @category	Helpers
- * @author		EllisLab Dev Team
- * @link		https://codeigniter.com/user_guide/helpers/captcha_helper.html
+ * package		CodeIgniter
+ * subpackage	Helpers
+ * category	Helpers
+ * author		EllisLab Dev Team
+ * link		https://codeigniter.com/user_guide/helpers/captcha_helper.html
  */
 
 // ------------------------------------------------------------------------
@@ -54,11 +54,11 @@ if ( ! function_exists('create_captcha'))
 	/**
 	 * Create CAPTCHA
 	 *
-	 * @param	array	$data		data for the CAPTCHA
-	 * @param	string	$img_path	path to create the image in
-	 * @param	string	$img_url	URL to the CAPTCHA image folder
-	 * @param	string	$font_path	server path to font
-	 * @return	string
+	 * param	array	$data		data for the CAPTCHA
+	 * param	string	$img_path	path to create the image in
+	 * param	string	$img_url	URL to the CAPTCHA image folder
+	 * param	string	$font_path	server path to font
+	 * return	string
 	 */
 	function create_captcha($data = '', $img_path = '', $img_url = '', $font_path = '')
 	{
@@ -80,9 +80,8 @@ if ( ! function_exists('create_captcha'))
 				'text'		=> array(204,153,153),
 				'grid'		=> array(255,182,182)
 			), 
-		    'issave' => false
+		    'issave' => FALSE
 		);
-
 		foreach ($defaults as $key => $val)
 		{
 			if ( ! is_array($data) && empty($$key))
@@ -95,30 +94,34 @@ if ( ! function_exists('create_captcha'))
 			}
 		}
 
-		if ($img_path === '' OR $img_url === ''
-			OR ! is_dir($img_path) OR ! is_really_writable($img_path)
-			OR ! extension_loaded('gd'))
-		{
-			return FALSE;
+		// if ($img_path === '' OR $img_url === ''
+		// 	OR ! is_dir($img_path) OR ! is_really_writable($img_path)
+		// 	OR ! extension_loaded('gd'))
+		// {
+		// 	return FALSE;
+		// }
+		if(! extension_loaded('gd')){
+			return;
 		}
-
 		// -----------------------------------
 		// Remove old images
 		// -----------------------------------
 
 		$now = microtime(TRUE);
-
-		$current_dir = @opendir($img_path);
-		while ($filename = @readdir($current_dir))
-		{
-			if (in_array(substr($filename, -4), array('.jpg', '.png'))
-				&& (str_replace(array('.jpg', '.png'), '', $filename) + $expiration) < $now)
+		if(!empty($img_path)){
+			$current_dir = opendir($img_path);
+			while ($filename = readdir($current_dir))
 			{
-				@unlink($img_path.$filename);
+				if (in_array(substr($filename, -4), array('.jpg', '.png'))
+					&& (str_replace(array('.jpg', '.png'), '', $filename) + $expiration) < $now)
+				{
+					unlink($img_path.$filename);
+				}
 			}
+
+			closedir($current_dir);
 		}
 
-		@closedir($current_dir);
 
 		// -----------------------------------
 		// Do we have a "word" yet?
@@ -263,7 +266,6 @@ if ( ! function_exists('create_captcha'))
 		$radius		= 16;
 		$circles	= 20;
 		$points		= 32;
-
 		for ($i = 0, $cp = ($circles * $points) - 1; $i < $cp; $i++)
 		{
 			$theta += $thetac;
@@ -335,6 +337,7 @@ if ( ! function_exists('create_captcha'))
 		{
 			return FALSE;
 		}
+		$img = '';
         if($issave){
             $img = '<img '.($img_id === '' ? '' : 'id="'.$img_id.'"').' src="'.$img_url.$img_filename.'" style="width: '.$img_width.'; height: '.$img_height .'; border: 0;" alt=" " />';
             ImageDestroy($im);

@@ -8,6 +8,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  */
 class Result_model extends CI_Model{
     public $db;
+    public $rwdb;
     public function __construct(){
         parent::__construct();
     }
@@ -21,7 +22,6 @@ class Result_model extends CI_Model{
      * @return array            返回一查询结果
      */
     public function getRow($tb, $field = '*', $where = array(), $order = ''){
-       $tb = tname($tb);
        $this->get_db();
        $this->db->select($field);
        $this->db->from($tb);
@@ -100,7 +100,7 @@ class Result_model extends CI_Model{
      * @return array
      */
     public function getList($tb, $field = '*', $where = array(), $limit = 0, $offset = 0, $order = ''){
-        $tb = tname($tb);
+        
         $this->get_db();
         $this->db->select($field);
         $this->db->from($tb);
@@ -143,11 +143,12 @@ class Result_model extends CI_Model{
      * @return (bool)(int)      返回 Bool 或 插入 自增ID
      */
     public function insert( $tb, $data , $new_id = FALSE ){
-        $tb = tname($tb);
-        $this->get_db(true);
-        $result = $this->db->insert( $tb , $data);
+        if(empty($this->rwdb)){
+            $this->get_db(true);
+        }
+        $result = $this->rwdb->insert( $tb , $data);
         if( $result && $new_id){
-            return $this->db->insert_id();
+            return $this->rwdb->insert_id();
         }
         return $result;
     }
@@ -158,9 +159,10 @@ class Result_model extends CI_Model{
      * @return (bool)               返回操作结果
      */
     public function update($tb,$where, $data ){
-        $tb = tname($tb);
-        $this->get_db(true);
-        return $this->db->update( $tb, $data , $where );
+        if(empty($this->rwdb)){
+            $this->get_rwdb(true);
+        }
+        return $this->rwdb->update( $tb, $data , $where );
     }
     /**
      * 物理删除数据
@@ -168,9 +170,8 @@ class Result_model extends CI_Model{
      * @return bool     返回操作结果
      */
     public function delete( $tb, $where ){
-        $tb = tname($tb);
         $this->get_db(true);
-        $result =  $this->db->delete( $tb , $where );
+        $result =  $this->rwdb->delete( $tb , $where );
         return $result;
     }
     
@@ -220,10 +221,12 @@ class Result_model extends CI_Model{
      */
     public function get_db($isrw = false){
         if($isrw){    
-            $this->db = $this->load->database('rw', true);
+            // $this->rwdb = $this->load->database('rw', TRUE);
         }else{
-            $this->db = $this->load->database('default', true);
+            // $this->db = $this->load->database('default', TRUE);
         }
+        $this->rwdb = $this->load->database('default', TRUE);
+        $this->db = $this->rwdb;
     }
 
 	/**
