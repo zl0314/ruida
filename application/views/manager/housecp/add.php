@@ -107,7 +107,7 @@
 <!-- 投资要显示的内容 -->
 <div class="show_hide_item" id="tz_house_div" style="display: <?php if(!empty($vo) && $vo['type'] == 2){ echo 'block'; }else{echo 'none';} ?>;">
           <div class="form-row">
-              <label for="biaoqian" class="form-field">总价</label>
+              <label for="biaoqian" class="form-field">投资地产标签</label>
               <div class="form-cont">
                  <select name="data[biaoqian]" required>
                      <option value="0">请选择</option>
@@ -170,6 +170,7 @@
         $('#rent_salse_type').show().find('input,select').attr('required', 'true');
     }else if(obj.value == 2){
         $('#bus_tz_div').show().find('input,select').attr('required', 'true');
+        $('#tz_house_div').show().find('input,select').attr('required', 'true');
     }else if(obj.value == 3){
         $('#bus_tz_div').show().find('input,select').attr('required', 'true');
     }else if(obj.value == 4){
@@ -311,7 +312,7 @@
             </div>
 
         <div class="form-row">
-          <label for="fb_time" class="form-field">发布时间</label>
+          <label for="fb_time" class="form-field">发布时间 <?php echo $vo['fb_time'] ?></label>
           <div class="form-cont">
             <input type="text" name="data[fb_time]" class="input-txt Wdate"   onClick="WdatePicker({ dateFmt:'yyyy-MM-dd H:m:s',readOnly:true})" value="<?=!empty($vo['fb_time']) ? date('Y-m-d H:i:s',$vo['fb_time']) : date('Y-m-d H:i:s');?>">
           </div>

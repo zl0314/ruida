@@ -56,7 +56,6 @@ class Housecp extends Base_Controller {
         $vo = array();
         if(!empty($_POST)){
             $data = $this->input->post('data');
-            $vo = $data;
 
             if(!$data['id']){
                 $data['addtime'] = time();
@@ -64,6 +63,8 @@ class Housecp extends Base_Controller {
             }
             $msg = $this->checkdate($data);
             $data['fb_time'] = strtotime($data['fb_time']);
+            $vo = $data;
+            
             if($msg ==''){
                 $data['recomment_house'] = !empty($data['recomment_house']) ? implode(',', $data['recomment_house']) : '';
                 $data['scrollpic'] = !empty($data['scrollpic']) ? json_encode($data['scrollpic']) : '';

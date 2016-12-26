@@ -136,6 +136,7 @@
                         <input type="button" value="确定" class="lb_but" onclick="$('#searchForm').submit()" style="float:right" >
                     </dd>
                 </dl>
+
                 <?php if($type != 4): ?>
                 <dl>
                     <dt>
@@ -156,9 +157,8 @@
                     </dd>
                     <?php endforeach ?>
                 </dl>
-            <?php elseif($type == 4): ?>
-                <?php endif; ?>
-                <dl>
+                <?php elseif($type == 4): ?>
+                     <dl>
                     <dt>
                         类型： 
                     </dt>
@@ -177,6 +177,9 @@
                     </dd>
                     <?php endforeach ?>
                 </dl>
+                <?php endif; ?>
+
+               
                 <?php if($type == 1): ?>
                 <dl>
                     <dt>

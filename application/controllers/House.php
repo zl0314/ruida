@@ -59,6 +59,9 @@ class House extends MY_Controller {
         if(request_get('subway')){
             $where['subway'] = request_get('subway');
         }
+        if(request_get('biaoqian')){
+            $where['biaoqian'] = request_get('biaoqian');
+        }
         if(request_get('mianji')  && !request_get('mianji_max') && !request_get('mianji_max')){
             $acreage = $this->data['mianji'];
             $acreage = $acreage[request_get('mianji')];
