@@ -29,12 +29,14 @@
     <?php endif; ?>
         <div class="xx_center_right">
             <div class="xx_center_right_1">
-                <?php if($row['type'] != 4): ?>
+                <?php if($row['type'] != 4 && $row['sales_type'] == 2): ?>
                 <span><?php echo intval( $row['total_price']) ?></span><font>万</font>
                 单价<?php echo intval($row['unit_price']) ?>元/平米
-            <?php else: ?>
+                 <?php elseif($row['sales_type'] == 1 && $row['type'] == 1): ?>
+                <span><?php echo intval($row['month_price']) ?></span><font>元/月</font>
+            <?php elseif($row['type'] == 3): ?>
                 <span><?php echo intval($row['avg_price']) ?></span><font>元/平</font>
-
+           
             <?php endif; ?>
             </div>
             <div class="xx_center_right_2 clearfix">
@@ -156,7 +158,7 @@
         <?php if(!empty($recomment_house)): ?>
         <?php foreach ($recomment_house as $k => $r): ?>
            <div class="tjfy_bottom_list <?php if($k == 0): ?>wu <?php endif; ?>">
-                <a href="<?php echo site_url('hosue/show/'.$r['id']) ?>">
+                <a href="<?php echo site_url('house/show/'.$r['id']) ?>">
                     <img src="<?php echo $r['thumb'] ?>" alt="">
                     <div class="tj_nr">
                         <span>

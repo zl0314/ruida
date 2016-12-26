@@ -186,6 +186,7 @@ class House extends MY_Controller {
             'subway_info' => $subway_info,
             'area_info' => $area_info,
             'recomment_house' => $recomment_house,
+            'type' => $row['type']
         );
         $this->tpl->assign($vars);
         $this->tpl->display();

@@ -130,9 +130,9 @@ class Housecp extends Base_Controller {
             $msg = '请选择房屋类型';
         }else if(empty($data['sales_type']) && $data['type'] == 4){
             $msg = '请选择出售类型';
-        }else if(empty($data['total_price']) && $data['type'] != 4){
+        }else if(empty($data['total_price']) && $data['type'] != 4 && $data['sales_type'] == 2){
             $msg = '总价不能为空';
-        }else if(empty($data['unit_price']) && $data['type'] != 4){
+        }else if(empty($data['unit_price']) && $data['type'] != 4  && $data['sales_type'] == 2){
             $msg = '单价不能为空';
         }else if(empty($data['biaoqian']) && $data['type'] == 2 ){
             $msg = '投资房屋标签不能为空';
@@ -144,7 +144,7 @@ class Housecp extends Base_Controller {
             $msg = '详细地址不能为空';
         }else if(empty($data['new_house_type']) && $data['type'] == 4){
             $msg = '新房类型不能为空';
-        }else if(empty($data['province_id']) || empty($data['city_id']) || empty($data['area_id']) || empty($data['address_id'])){
+        }else if(empty($data['province_id']) || empty($data['city_id']) || empty($data['area_id']) ){
             $msg = '请选择房屋所在的地区';
         }else if(empty($data['huan'])){
             $msg = '请填写房屋在几环';

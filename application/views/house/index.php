@@ -13,11 +13,11 @@
         <?php if($type == 1): ?>
         <div class="lb_top_2 clearfix">
         <input type="hidden" name="sales_type" id="sales_type"  value="<?php echo request_get('sales_type') ? request_get('sales_type') : 2 ?>" >
-            <a href="javascript:;" <?php if( request_get('sales_type') == 2 || request_get('sales_type') == ''){echo 'class="active" ';} ?> onclick="fill_input('sales_type',2)">
+            <a href="javascript:;" <?php if( request_get('sales_type') == 2 || request_get('sales_type') == ''){echo 'class="active" ';} ?> onclick="goto('<?php echo site_url('house?t='.$type.'&sales_type=2') ?>')">
                 出售
                 <i></i>
             </a>
-            <a href="javascript:;"   <?php if( request_get('sales_type') == 1){echo 'class="active" ';} ?>  onclick="fill_input('sales_type',1)">
+            <a href="javascript:;"   <?php if( request_get('sales_type') == 1){echo 'class="active" ';} ?>   onclick="goto('<?php echo site_url('house?t='.$type.'&sales_type=1') ?>')">
                 出租
                 <i></i>
             </a>
@@ -299,7 +299,7 @@
                     <span><?php echo $r['watch_time'] ?></span>
                 </div>
             </div>
-			<?php if(!empty($r['total_price']) && $r['type'] != 4): ?>
+			<?php if(!empty($r['total_price']) && $r['type'] != 4 && $r['sales_type'] == 2): ?>
             <div class="lb_bottom_list_jg">
                 <div class="lb_bottom_list_jg_1">
                     <span><?php echo intval($r['total_price']); ?></span>万
@@ -312,9 +312,9 @@
                 </div>
                 建面<?php echo intval($r['build_acreage']); ?>m²
         </div>
-        <?php elseif($r['type'] == 1 && $vo['sales_type'] == 1): ?>
+        <?php elseif($r['type'] == 1 && $r['sales_type'] == 1): ?>
              <div class="lb_bottom_list_jg_1">
-                   均价 <span><?php echo intval($r['avg_price']); ?></span>元/月
+                   <span><?php echo intval($r['month_price']); ?></span>元/月
                 </div>
                 <?php echo date('Y.m.d',$r['fb_time']); ?>更新
     <?php endif; ?>
@@ -330,6 +330,9 @@
 </div>
 
 <script>
+    function goto(url){
+        window.location.href = url;
+    }
 	function filter_pos(obj,tar){
 		$(obj).parent().addClass('active').siblings().removeClass('active');
 		$('.erji').hide();

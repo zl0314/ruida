@@ -1,5 +1,5 @@
 <?php
-// header('Content-type: image/jpg');
+header('Content-type: image/jpg');
 defined('BASEPATH') OR exit('No direct script access allowed');
 class Captcha extends MY_Controller{
     public function __construct(){
