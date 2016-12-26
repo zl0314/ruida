@@ -29,12 +29,14 @@
     <?php endif; ?>
         <div class="xx_center_right">
             <div class="xx_center_right_1">
-                <?php if($row['type'] != 4 && $row['sales_type'] == 2): ?>
-                <span><?php echo intval( $row['total_price']) ?></span><font>万</font>
-                单价<?php echo intval($row['unit_price']) ?>元/平米
-                 <?php elseif($row['sales_type'] == 1 && $row['type'] == 1): ?>
-                <span><?php echo intval($row['month_price']) ?></span><font>元/月</font>
-            <?php elseif($row['type'] == 3): ?>
+                 <?php if($row['sales_type'] == 1 && $row['type'] == 1): ?>
+                    <span><?php echo intval($row['month_price']) ?></span><font>元/月</font>
+                <?php elseif($row['type'] != 4 ): ?>
+                    <span><?php echo intval( $row['total_price']) ?></span><font>万</font>
+                    单价<?php echo intval($row['unit_price']) ?>元/平米
+
+
+                <?php elseif($row['type'] == 4): ?>
                 <span><?php echo intval($row['avg_price']) ?></span><font>元/平</font>
            
             <?php endif; ?>

@@ -63,11 +63,11 @@ class Housecp extends Base_Controller {
             }
             $msg = $this->checkdate($data);
             $data['fb_time'] = strtotime($data['fb_time']);
+            $data['scrollpic'] = !empty($data['scrollpic']) ? json_encode($data['scrollpic']) : '';
             $vo = $data;
             
             if($msg ==''){
                 $data['recomment_house'] = !empty($data['recomment_house']) ? implode(',', $data['recomment_house']) : '';
-                $data['scrollpic'] = !empty($data['scrollpic']) ? json_encode($data['scrollpic']) : '';
                 $data['ting'] = intval($data['ting']);
                 $data['shi'] = intval($data['shi']);
                 $this->Result_model->save('house', $data);
@@ -128,7 +128,7 @@ class Housecp extends Base_Controller {
             $msg = '缩略图不能为空';
         }else if(empty($data['type'])){
             $msg = '请选择房屋类型';
-        }else if(empty($data['sales_type']) && $data['type'] == 4){
+        }else if(empty($data['sales_type']) && $data['type'] == 1){
             $msg = '请选择出售类型';
         }else if(empty($data['total_price']) && $data['type'] != 4 && $data['sales_type'] == 2){
             $msg = '总价不能为空';

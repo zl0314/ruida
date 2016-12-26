@@ -815,7 +815,7 @@ label {
 	transform:scale(1.1)
 }
 .lb_bottom_list_nr{
-	width: 660px;
+	width: 610px;
 	float: left;
 	margin-left: 35px;
 	display: inline;
@@ -872,7 +872,7 @@ label {
 	background: #f4f7f9;
 }
 .lb_bottom_list_jg{
-	width: 150px;
+	width: 200px;
 	float: right;
 	padding-top: 40px;
 	text-align: right;

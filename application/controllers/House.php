@@ -62,12 +62,25 @@ class House extends MY_Controller {
         if(request_get('biaoqian')){
             $where['biaoqian'] = request_get('biaoqian');
         }
+        if(request_get('new_house_type')){
+            $where['new_house_type'] = request_get('new_house_type');
+        }
+        if(request_get('htype')){
+            $htype = request_get('htype') >=6 ? 5 : request_get('htype');
+            $where['shi'] = $htype;
+        }
+
+        
         if(request_get('mianji')  && !request_get('mianji_max') && !request_get('mianji_max')){
             $acreage = $this->data['mianji'];
             $acreage = $acreage[request_get('mianji')];
             $acreage_arr = explode('-', $acreage);
             if(!empty($acreage_arr[0]) && empty($acreage_arr[1])){
-                $where['acreage <='] = intval($acreage_arr[0]);
+                if(strpos($acreage_arr[0], '以上') !== false){
+                    $where['acreage >='] = intval($acreage_arr[0]);
+                }else{
+                    $where['acreage <='] = intval($acreage_arr[0]);
+                }
             }else{
                 $where['acreage >='] = intval($acreage_arr[0]);
             }
@@ -87,7 +100,12 @@ class House extends MY_Controller {
                 $price = $price[request_get('price')];
                 $price_arr = explode('-', $price);
                 if(!empty($price_arr[0]) && empty($price_arr[1])){
-                    $where['total_price <='] = intval($price_arr[0]);
+                    if(strpos($price_arr[0], '以上') !== false){
+                        $where['total_price >='] = intval($price_arr[0]);
+                    }else{
+                        $where['total_price <='] = intval($price_arr[0]);
+                    }
+
                 }else{
                     $where['total_price >='] = intval($price_arr[0]);
                 }
