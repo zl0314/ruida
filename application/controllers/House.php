@@ -47,11 +47,11 @@ class House extends MY_Controller {
         if(request_get('k')){
             $where['like']['village'] = request_get('k');
         }
-        if(request_get('area_id') != 'all'){
-            $where['area_id'] = request_get('area_id');
+        if(request_get('city_id') != 'all' && request_get('city_id')){
+            $where['city_id'] = request_get('city_id');
         }
-        if(request_get('address_id')){
-            $where['address_id'] = request_get('address_id');
+        if(request_get('area_id')){
+            $where['area_id'] = request_get('area_id');
         }
         if(request_get('sales_type')){
             $where['sales_type'] = request_get('sales_type');

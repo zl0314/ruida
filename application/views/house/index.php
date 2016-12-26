@@ -3,7 +3,7 @@
     <?php $this->load->view('location') ?>
     <form action="" method="get" name="searchForm" id="searchForm">
     <input type="hidden" name="t" value="<?php echo request_get('t');?>">
-    <input type="hidden" name="k" value="<?php echo request_get('k');?>">
+    <input type="hidden" name="village" value="<?php echo request_get('k');?>">
     <div class="lb_top">
         <div class="lb_top_1 clearfix">
             <input type="text" name="k" placeholder="请输入小区" value="<?php echo request_get('k') ?>" class="ss_wbk">
@@ -56,9 +56,12 @@
                 <?php endforeach ?>
                 </dl>
 
-                <dl class="erji" id="house_address" style="display:<?php if(request_get('city_id')  || request_get('area_id')){ echo 'block'; }else{ echo 'none'; } ?>"></dl>
-				<input type="hidden" name="subway" id="house_subway_input" value="<?php echo request_get('subway') ?>">				
+                <dl class="erji" id="house_address" style="display:<?php if(!request_get('city_id') || request_get('city_id')  || request_get('area_id')){ echo 'block'; }else{ echo 'none'; } ?>"></dl>
+
+
+				<input type="hidden" name="subway" id="house_subway_input" value="<?php echo request_get('subway') ?>">			
                 <dl class="erji" style="display:<?php if(request_get('subway')){ echo 'block'; }else{ echo 'none'; } ?>" id="house_subway">
+
                     <?php foreach ($subway as $k => $r): ?>
                 	<dd  <?php if(request_get('subway') == $r['id']): ?> class="active" <?php endif; ?>>
                         <a href="javascript:;" onclick="fill_input('house_subway_input', '<?php echo $r['id'] ?>')">
