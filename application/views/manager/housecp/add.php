@@ -76,7 +76,7 @@
     <div class="form-row">
         <label for="second_title" class="form-field">出租/出售</label>
         <div class="form-cont">
-            <select name="data[sales_type]" required> 
+            <select name="data[sales_type]" required onchange="show_rent_item(this)"> 
                   <option value="0">请选择</option>
                     <?php if(!empty($sales_type)):?>
                       <?php foreach ($sales_type as $k => $r): ?>
@@ -87,16 +87,24 @@
         </div>
     </div>
 </div>
-      <div class="form-row">
-          <label for="total_price" class="form-field">总价</label>
-          <div class="form-cont">
-              <input id="total_price" type="text"  name="data[total_price]" class="input-txt" value="<?=!empty($vo['total_price']) ? $vo['total_price'] : '';?>" /> 万/元
-          </div>
+<!-- 出租时显示 -->
+<div id="rent_div" style="display: <?php if( !empty($vo) && $vo['sales_type'] == 1 ){ echo 'block'; }else{ echo 'none'; }?>" class="show_hide_item">
+  <div class="form-row">
+      <label for="month_price" class="form-field">每月</label>
+      <div class="form-cont">
+          <input id="month_price" type="text"  name="data[month_price]" class="input-txt" value="<?=!empty($vo['month_price']) ? $vo['month_price'] : '';?>" /> 元
       </div>
+  </div>
+</div>
       
 <!-- 商业地产， 投资，学区/豪放 要显示的内容 -->
 <div class="show_hide_item" id="bus_tz_div" style="display: <?php if(!empty($vo) && $vo['type'] != 4){ echo 'block'; }else{echo 'none';} ?>;">
-
+            <div class="form-row">
+      <label for="total_price" class="form-field">总价</label>
+      <div class="form-cont">
+          <input id="total_price" type="text"  name="data[total_price]" class="input-txt" value="<?=!empty($vo['total_price']) ? $vo['total_price'] : '';?>" /> 万/元
+      </div>
+  </div>
             <div class="form-row">
                 <label for="unit_price" class="form-field">单价</label>
                 <div class="form-cont">
@@ -178,6 +186,16 @@
         $('#new_house_div').show().find('input,select').attr('required', 'true');
         $('#bus_house_div').hide().find('input,select').attr('required', 'true');
     }
+  }
+  function show_rent_item(obj){
+    $('.show_hide_item').hide().find('input,select').removeAttr('required');
+    $('#rent_salse_type').show();
+    if(obj.value == "1"){
+      $('#rent_div').show().find('input,select').attr('required', 'true');
+    }else{
+        $('#bus_tz_div').show().find('input,select').attr('required', 'true');
+    }
+
   }
 </script>
             <div class="form-row">
@@ -313,7 +331,7 @@
             </div>
 
         <div class="form-row">
-          <label for="fb_time" class="form-field">发布时间 <?php echo $vo['fb_time'] ?></label>
+          <label for="fb_time" class="form-field">发布时间 </label>
           <div class="form-cont">
             <input type="text" name="data[fb_time]" class="input-txt Wdate"   onClick="WdatePicker({ dateFmt:'yyyy-MM-dd H:m:s',readOnly:true})" value="<?=!empty($vo['fb_time']) ? date('Y-m-d H:i:s',$vo['fb_time']) : date('Y-m-d H:i:s');?>">
           </div>

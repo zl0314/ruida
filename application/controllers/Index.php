@@ -32,7 +32,6 @@ class Index extends MY_Controller {
             'pos' => 'index-index-rmsq'
         );
         $ad_row_rmsq = $this->ad_model->get_pos_ad($where);
-
         //商业地产推荐列表 最新发布， 限5条
         $where = array(
             'type' => 1

@@ -91,7 +91,7 @@ body{
 		<?php if(!empty($ad_row_rmsq[2])): ?>
 			<div class="rmsq_bottom_list left">
 				<a href="<?php echo get_add_http_url($ad_row_rmsq[2]['url']) ?>">
-					<<img src="<?php echo $ad_row_rmsq[2]['pic'] ?>" alt="">
+					<img src="<?php echo $ad_row_rmsq[2]['pic'] ?>" alt="">
 					<span><?php echo $ad_row_rmsq[2]['title'] ?></span>
 				</a>
 			</div>

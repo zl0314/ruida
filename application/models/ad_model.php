@@ -1,7 +1,7 @@
 <?php
 class Ad_model extends MY_Model
 {
-    public $table	= 'ad' ;
+    public $table   = 'ad' ;
 
     /**
      * @auther ZhangLong
@@ -13,10 +13,13 @@ class Ad_model extends MY_Model
     }
 
     public function get_pos_ad($where){
-    	$ad_row = array();
-    	if(!empty($where)){
-    		$ad_row = $this->getRow('*', $where);
-    	}
-    	return $ad_row;
+        $ad_row = array();
+        if(!empty($where)){
+            $ad_row = $this->getList('*', $where, 0, null, 'listorder desc');
+            if(count($ad_row) == 1){
+                return $ad_row['0'];
+            }
+        }
+        return $ad_row;
     }
 }
