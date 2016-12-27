@@ -1,5 +1,44 @@
-
   <div class="set-area">
+<?php $this->load->view('search_start') ?>    
+<?php $this->load->view('search_title') ?>    
+发布时间：<input type="text" id="start_time" name="start_time" class="input-txt Wdate"   onfocus="WdatePicker({ dateFmt:'yyyy-MM-dd',readOnly:true})" value="<?=!empty($_GET['start_time']) ? request_get('start_time') : '';?>" >--
+<input type="text"  class="input-txt Wdate" name="end_time" readonly="" onfocus="WdatePicker({ dateFmt:'yyyy-MM-dd',readOnly:true})"  value="<?=!empty($_GET['end_time']) ? request_get('end_time') : '';?>">
+
+小区名：<input type="text"  value="<?=request_get('village')?>" name="village" class="input-txt w100" style="">
+房产类型：<select name="type" id="" onchange="$('#searchForm').submit()">
+  <option value="">全部</option>
+  <?php foreach ($type as $key => $r): ?>
+  <option value="<?php echo $key ?>" <?php if($key == request_get('type')){ echo 'selected';} ?>><?php echo $r; ?></option>
+  <?php endforeach ?>
+</select>
+
+<?php if(request_get('type') == 1): ?>
+  <select name="sales_type" id="">
+    <option value="">全部</option>
+    <option value="1" <?php if(1 == request_get('sales_type')){ echo 'selected';} ?>>出租</option>
+    <option value="2" <?php if(2 == request_get('sales_type')){ echo 'selected';} ?>>出售</option>
+  </select>
+<?php endif; ?>
+
+<br><br>
+面积：<select name="acreage" id="">
+  <option value="">全部</option>
+  <option value="1" <?php if(1 == request_get('acreage')){ echo 'selected';} ?>>小于等于</option>
+  <option value="2" <?php if(2 == request_get('acreage')){ echo 'selected';} ?>>大于等于</option>
+</select>
+  <input type="text"  value="<?=request_get('acreage_str')?>" name="acreage_str" class="input-txt w100" style="">
+
+总价：<select name="total_price" id="">
+  <option value="">全部</option>
+  <option value="1" <?php if(1 == request_get('acreage')){ echo 'selected';} ?>>小于等于</option>
+  <option value="2" <?php if(2 == request_get('acreage')){ echo 'selected';} ?>>大于等于</option>
+</select>
+  <input type="text"  value="<?=request_get('total_price_str')?>" name="total_price_str" class="input-txt w100" style="">
+
+
+<?php $this->load->view('search_end') ?>    
+    <br>
+
     <form method="post" id="form1" action="#">
       <table class="table table-s1" width="100%" cellpadding="0" cellspacing="0" border="0">
         <colgroup>

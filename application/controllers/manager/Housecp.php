@@ -8,7 +8,7 @@ class Housecp extends Base_Controller {
     public function __construct()
     {
         parent::__construct();
-        // $this->checkAdminLogin();
+        $this->checkAdminLogin();
 		$this->load->model('Result_model');
         $vars = array(
             'zhuangxiu' => Hresource::get_zhuangxiu(),
@@ -34,8 +34,32 @@ class Housecp extends Base_Controller {
     {
         $search = array();
         $where = array();
+        if(request_get('village')){
+            $where['like']['village'] = request_get('village');
+        }
         if(request_get('title')){
-            $where['search']['like']['title'] = request_get('title');
+            $where['like']['title'] = request_get('title');
+        }
+        if(request_get('type')){
+            $where['type'] = request_get('type');
+        }
+        if(request_get('sales_type')){
+            $where['sales_type'] = request_get('sales_type');
+        }
+        
+        if(request_get('start_time')){
+            $where['fb_time >'] = strtotime(request_get('start_time'));
+        }
+        if(request_get('end_time')){
+            $where['fb_time <'] = strtotime(request_get('end_time'));
+        }
+        if(request_get('acreage') && request_get('acreage_str')){
+            $acreage_search_arr = array('1' => '<=', '2' => '>=');
+            $where['acreage '.$acreage_search_arr[request_get('acreage')]] = request_get('acreage_str');
+        }
+        if(request_get('total_price') && request_get('total_price_str')){
+            $acreage_search_arr = array('1' => '<=', '2' => '>=');
+            $where['total_price '.$acreage_search_arr[request_get('total_price')]] = request_get('total_price_str');
         }
 
         $data = get_page('house', $where,$this->Result_model, 10, 'fb_time desc');
