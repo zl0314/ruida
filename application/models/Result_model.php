@@ -218,6 +218,9 @@ class Result_model extends CI_Model{
                                 $this->db->having($sk, $sr);
                             }
                           break;
+                        case 'group_by' :
+                            $this->db->group_by($r);
+                          break;                          
                         default:
                            $this->db->where($k,$r);
                            break;

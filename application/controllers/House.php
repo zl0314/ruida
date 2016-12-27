@@ -48,8 +48,9 @@ class House extends MY_Controller {
             $q = request_get('q');
             $where['like'] = array('title' => $q);
             $where['or_like'] = array('second_title' => $q, 'village' => $q);
-            $where['having'] = array('type' => $type);
         }
+        $where['having'] = array('type' => $type);
+        $where['group_by'] = 'type';
 
         if(request_get('city_id') != 'all' && request_get('city_id')){
             $where['city_id'] = request_get('city_id');
@@ -130,7 +131,7 @@ class House extends MY_Controller {
         if(request_get('zhuangxiu')){
             $where['zhuangxiu'] = request_get('zhuangxiu');
         }
-        $data = get_page('house', $where,$this->Result_model, 10, null, null, 'id', 'type');
+        $data = get_page('house', $where,$this->Result_model, 10, '', null, 'id', 'type');
         foreach ($data['list'] as $key => $r) {
             if(!empty($r['subway']) || !empty($r['subway_station'])){
                 $data_where = array(
