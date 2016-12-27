@@ -30,7 +30,7 @@ class House extends MY_Controller {
     }
 
     /**
-     * 站点首页
+     * 
      */
     public function index($is_new_house = false){
         $type = request_get('t');
@@ -41,6 +41,7 @@ class House extends MY_Controller {
         if($type == 1 && !request_get('sales_type')){
             $where['sales_type'] = 2;
         }
+
         if(!$type){
             $this->message('参数错误');
         }
@@ -50,8 +51,13 @@ class House extends MY_Controller {
             $where['or_like'] = array('second_title' => $q, 'village' => $q);
         }
         $where['having'] = array('type' => $type);
+        if(!empty($where['sales_type'])){
+            $where['having']['sales_type'] = request_get('sales_type');
+        }
         $where['group_by'] = 'type';
-
+        if(!empty($where['sales_type'])){
+            $where['group_by'] = 'type,sales_type';
+        }
         if(request_get('city_id') != 'all' && request_get('city_id')){
             $where['city_id'] = request_get('city_id');
         }

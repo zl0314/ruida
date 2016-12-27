@@ -298,7 +298,12 @@
                     <span><?php echo $r['watch_time'] ?></span>
                 </div>
             </div>
-			<?php if(!empty($r['total_price']) && $r['type'] != 4 ): ?>
+            <?php if($r['type'] == 1 && $r['sales_type'] == 1): ?>
+            <div class="lb_bottom_list_jg">
+             <div class="lb_bottom_list_jg_1">
+                   <span><?php echo intval($r['month_price']); ?></span>元/月
+                </div>
+			<?php elseif(!empty($r['total_price']) && $r['type'] != 4 ): ?>
             <div class="lb_bottom_list_jg">
                 <div class="lb_bottom_list_jg_1">
                     <span><?php echo intval($r['total_price']); ?></span>万
@@ -312,12 +317,7 @@
                 </div>
                 建面<?php echo intval($r['build_acreage']); ?>m²
         </div>
-        <?php elseif($r['type'] == 1 && $r['sales_type'] == 1): ?>
-            <div class="lb_bottom_list_jg">
-             <div class="lb_bottom_list_jg_1">
-                   <span><?php echo intval($r['month_price']); ?></span>元/月
-                </div>
-                <?php echo date('Y.m.d',$r['fb_time']); ?>更新
+ <?php echo date('Y.m.d',$r['fb_time']); ?>更新
              </div>
     <?php endif; ?>
     </div>
