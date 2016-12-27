@@ -44,9 +44,12 @@ class House extends MY_Controller {
         if(!$type){
             $this->message('参数错误');
         }
-        if(request_get('k')){
-            $where['like']['village'] = request_get('k');
+        if(request_get('q')){
+            $q = request_get('q');
+            $where['like'] = array('title' => $q);
+            $where['or_like'] = array('second_title' => $q, 'village' => $q);
         }
+
         if(request_get('city_id') != 'all' && request_get('city_id')){
             $where['city_id'] = request_get('city_id');
         }

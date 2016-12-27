@@ -179,7 +179,7 @@ class Result_model extends CI_Model{
      * Usage
      * $where = array(
  	 *      'in' => array('news.id' => array(1,2,3)),
-     *       'or' => array('title' => '巴西6名警察枪杀2名贫民被捕', 'source' => '国际在线 '),
+     *      'or' => array('title' => '巴西6名警察枪杀2名贫民被捕', 'source' => '国际在线 '),
 	 *      'like' => array('title' => '巴西', 'source' => '新闻'),
 	 *      'join' => array('news', 'news.id=stu.id', 'right'),
 	 *      
@@ -190,25 +190,30 @@ class Result_model extends CI_Model{
         if(!empty($where)){
               foreach($where as $k => $r){
                   switch ($k){
-                      case 'in' :
-                          foreach ($r as $sk => $sr){
-                              $this->db->where_in($sk, $sr);
-                          }
-                          break;
-                      case 'or' :
-                          foreach ($r as $sk => $sr){
-                              $this->db->or_where($sk, $sr);
-                          }                          
-                          break;
-                      case 'join' :
+                        case 'in' :
+                            foreach ($r as $sk => $sr){
+                                $this->db->where_in($sk, $sr);
+                            }
+                            break;
+                        case 'or' :
+                            foreach ($r as $sk => $sr){
+                                $this->db->or_where($sk, $sr);
+                            }                          
+                            break;                      
+                        case 'join' :
                           $this->db->join($r[0], $r[1], $r[2]);
                           break;
-                      case 'like' :
+                        case 'like' :
                           foreach ($r as $sk => $sr){
                               $this->db->like($sk, $sr);
                           }
                           break;
-                       default:
+                        case 'or_like' :
+                            foreach ($r as $sk => $sr){
+                                $this->db->or_like($sk, $sr);
+                            }
+                          break;
+                        default:
                            $this->db->where($k,$r);
                            break;
                   }

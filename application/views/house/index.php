@@ -3,11 +3,10 @@
     <?php $this->load->view('location') ?>
     <form action="" method="get" name="searchForm" id="searchForm">
     <input type="hidden" name="t" value="<?php echo request_get('t');?>">
-    <input type="hidden" name="village" value="<?php echo request_get('k');?>">
     <div class="lb_top">
         <div class="lb_top_1 clearfix">
-            <input type="text" name="k" placeholder="请输入小区" value="<?php echo request_get('k') ?>" class="ss_wbk">
-            <input type="button" value="搜索" onclick="$('#searchForm').submit();" class="ss_but">
+            <input type="text" name="q" placeholder="请输入小区" value="<?php echo request_get('q') ?>" class="ss_wbk">
+            <input type="submit" value="搜索"  class="ss_but">
         </div>
 
         <?php if($type == 1): ?>

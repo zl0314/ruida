@@ -28,7 +28,7 @@ body{
 		</div>
 		<div class="search_bottom">
 			<input type="hidden" name="t" value="1" id="house_type">
-			<input type="text" placeholder ="请输入小区名开始找房" name="village" class="i_ss_wbk left">
+			<input type="text" placeholder ="请输入小区名开始找房" name="q" class="i_ss_wbk left">
 			<input type="submit" value="" class="i_ss_but left">
 		</div>
 	</div>

@@ -5,8 +5,8 @@
         <div class="xf_ss">
             <div class="xf_ss_1">
             	<input type="hidden" name="t" value="<?php echo request_get('t') ?>">
-                <input type="text" name="village" class="js_wbk" placeholder="楼盘名/关键字">
-                <input type="button" class="js_but" onClick="$('#searchForm').submit()">
+                <input type="text" name="q" class="js_wbk" placeholder="楼盘名/关键字">
+                <input type="submit" class="js_but" value="">
             </div>
             <div class="xf_ss_2 clearfix">
                 <h2>条件找房：</h2>
