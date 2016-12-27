@@ -213,6 +213,11 @@ class Result_model extends CI_Model{
                                 $this->db->or_like($sk, $sr);
                             }
                           break;
+                        case 'having' :
+                             foreach ($r as $sk => $sr){
+                                $this->db->having($sk, $sr);
+                            }
+                          break;
                         default:
                            $this->db->where($k,$r);
                            break;

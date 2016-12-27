@@ -10,7 +10,7 @@ body{
 	<div class="i_banner">
 		<img src="/static/web/images/i_banner.png" alt="">
 	</div>
-	<form action="<?php echo site_url('house') ?>" method="get">
+	<form action="<?php echo site_url('house') ?>" method="get" id="searchForm">
 	<div class="search">
 		<div class="search_top">
 			<a href="javascript:;" class="active" onclick="$('#house_type').val(1)">
@@ -22,7 +22,7 @@ body{
 			<a href="javascript:;"  onclick="$('#house_type').val(3)">
 				 学区房/豪宅
 			</a>
-			<a href="javascript:;"  onclick="$('#house_type').val(4)">
+			<a href="javascript:;"  onclick="$('#searchForm').attr('action','<?php echo site_url('house/lists') ?>'),$('#house_type').val(4)">
 				 新房
 			</a>
 		</div>

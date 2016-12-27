@@ -1,8 +1,11 @@
 <?php
 
-function get_page($tb, $where = array(), $model = null, $perpage = 10, $order = '', $page_query = '', $pk_name= 'id' ){
+function get_page($tb, $where = array(), $model = null, $perpage = 10, $order = '', $page_query = '', $pk_name= 'id', $having_field ='' ){
     $order = $order == '' ? $pk_name . ' DESC' : $order;
-    $page['total_rows'] = $model->getOne($tb, 'Count(*) as cnt' , $where);
+    $having_field = !empty($having_field) ? ','.$having_field : '';
+    $total_rows_row = $model->getRow($tb, 'Count(*) as cnt'.$having_field , $where);
+    $page['total_rows'] = $total_rows_row['cnt'];
+
     // 加载分页类
     $CI =& get_instance();
     $CI->load->library('pagination');
