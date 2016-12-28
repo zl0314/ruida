@@ -9,8 +9,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Result_model extends CI_Model{
     public $db;
     public $rwdb;
+    public $is_manager;
     public function __construct(){
         parent::__construct();
+        $this->is_manager = $this->uri->segment(1);
     }
     
     /**
@@ -100,7 +102,12 @@ class Result_model extends CI_Model{
      * @return array
      */
     public function getList($tb, $field = '*', $where = array(), $limit = 0, $offset = 0, $order = ''){
-        
+        $cache_id = md5($tb.$field.$limit.$offset.json_encode($where));
+        $result = $this->cache->file->get($cache_id);
+        if(!empty($result)){
+            return !empty($result) ? $result : array();
+        }
+
         $this->get_db();
         $this->db->select($field);
         $this->db->from($tb);
@@ -117,6 +124,10 @@ class Result_model extends CI_Model{
         //查询
         $query = $this->db->get();
         $result = $query->result_array();
+               $result = $query->result_array();
+        if(!empty($result) && $this->is_manager != 'manager'){
+            $this->cache->file->save($cache_id,$result, 300);
+        }
         return $result;
     }
     /**
