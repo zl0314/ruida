@@ -35,38 +35,58 @@ class House extends MY_Controller {
     public function index($is_new_house = false){
         $type = request_get('t');
 
+
+        //start 搜索条件==========================
         $where = array(
             'type' => $type
         );
         if($type == 1 && !request_get('sales_type')){
             $where['sales_type'] = 2;
+            $_GET['sales_type'] = 2;
+        }
+
+        if(request_get('sales_type')){
+            $where['sales_type'] = request_get('sales_type');
         }
 
         if(!$type){
             $this->message('参数错误');
         }
+        if(!in_array($type, array(1, 2, 3, 4))){
+            $this->message('参数错误');
+        }
+
         if(request_get('q')){
             $q = request_get('q');
-            $where['like'] = array('title' => $q);
-            $where['or_like'] = array('second_title' => $q, 'village' => $q);
+
+            //进行分组查询
+            if(request_get('sales_type')){
+                unset($where['sales_type']);
+                unset($where['type']);
+                $where['group_select']['group_start'] = array('type' => request_get('t'), 'sales_type' => request_get('sales_type'));
+                $where['group_select']['and_group_start'] = array(
+                    'like' => array('title' => $q),
+                    'or_like' => array('second_title' => $q, 'village' => $q)
+                );
+            }else{
+                unset($where['type']);
+                $where['group_select']['group_start'] = array('type' => request_get('t'));
+                $where['group_select']['and_group_start'] = array(
+                    'like' => array('title' => $q),
+                    'or_like' => array('second_title' => $q, 'village' => $q)
+                );
+            }
+
         }
-        $where['having'] = array('type' => $type);
-        if(!empty($where['sales_type'])){
-            $where['having']['sales_type'] = request_get('sales_type');
-        }
-        $where['group_by'] = 'type';
-        if(!empty($where['sales_type'])){
-            $where['group_by'] = 'type,sales_type';
-        }
+
         if(request_get('city_id') != 'all' && request_get('city_id')){
             $where['city_id'] = request_get('city_id');
         }
         if(request_get('area_id')){
             $where['area_id'] = request_get('area_id');
         }
-        if(request_get('sales_type')){
-            $where['sales_type'] = request_get('sales_type');
-        }        
+
+
         if(request_get('subway')){
             $where['subway'] = request_get('subway');
         }
@@ -81,8 +101,7 @@ class House extends MY_Controller {
             $where['shi'] = $htype;
         }
 
-
-        
+        //面积搜索的处理
         if(request_get('mianji')  && !request_get('mianji_max') && !request_get('mianji_max')){
             $acreage = $this->data['mianji'];
             $acreage = $acreage[request_get('mianji')];
@@ -106,6 +125,7 @@ class House extends MY_Controller {
             $where['acreage <='] = request_get('mianji_max');
         }
         
+        //价格搜索的处理
         if(request_get('price') && !request_get('price_min') && !request_get('price_max') ){
             // if($type != 4){
                 $price = $this->data['jiage'];
@@ -131,13 +151,16 @@ class House extends MY_Controller {
             $where['total_price <='] = request_get('price_max');
         }
 
+
         if(request_get('yongtu')){
             $where['yongtu'] = request_get('yongtu');
         }
         if(request_get('zhuangxiu')){
             $where['zhuangxiu'] = request_get('zhuangxiu');
         }
-        $data = get_page('house', $where,$this->Result_model, 10, '', null, 'id', 'type');
+        //end搜索条件==========================
+
+        $data = get_page('house', $where,$this->Result_model, 10, '', null, 'id');
         foreach ($data['list'] as $key => $r) {
             if(!empty($r['subway']) || !empty($r['subway_station'])){
                 $data_where = array(

@@ -303,6 +303,7 @@
              <div class="lb_bottom_list_jg_1">
                    <span><?php echo intval($r['month_price']); ?></span>元/月
                 </div>
+                </div>
 			<?php elseif(!empty($r['total_price']) && $r['type'] != 4 ): ?>
             <div class="lb_bottom_list_jg">
                 <div class="lb_bottom_list_jg_1">

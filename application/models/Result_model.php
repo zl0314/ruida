@@ -116,7 +116,8 @@ class Result_model extends CI_Model{
         }
         //查询
         $query = $this->db->get();
-        return $query->result_array();
+        $result = $query->result_array();
+        return $result;
     }
     /**
      * 保存数据
@@ -178,7 +179,7 @@ class Result_model extends CI_Model{
     /**
      * Usage
      * $where = array(
- 	 *      'in' => array('news.id' => array(1,2,3)),
+ 	 *      'in' => array('id' => array(1,2,3)),
      *      'or' => array('title' => '巴西6名警察枪杀2名贫民被捕', 'source' => '国际在线 '),
 	 *      'like' => array('title' => '巴西', 'source' => '新闻'),
 	 *      'join' => array('news', 'news.id=stu.id', 'right'),
@@ -191,14 +192,14 @@ class Result_model extends CI_Model{
               foreach($where as $k => $r){
                   switch ($k){
                         case 'in' :
-                            foreach ($r as $sk => $sr){
+                            foreach ($r as $sk => $sr) {
                                 $this->db->where_in($sk, $sr);
                             }
                             break;
                         case 'or' :
-                            foreach ($r as $sk => $sr){
+                            foreach ($r as $sk => $sr) {
                                 $this->db->or_where($sk, $sr);
-                            }                          
+                            }
                             break;                      
                         case 'join' :
                           $this->db->join($r[0], $r[1], $r[2]);
@@ -214,13 +215,14 @@ class Result_model extends CI_Model{
                             }
                           break;
                         case 'having' :
-                             foreach ($r as $sk => $sr){
-                                $this->db->having($sk, $sr);
-                            }
-                          break;
+                            $this->db->having($k, $r);
+                            break;
                         case 'group_by' :
-                            $this->db->group_by($r);
-                          break;                          
+                            $this->db->group_by($where);
+                          break;
+                            case 'group_select':
+                            $this->group_select($r);
+                          break;
                         default:
                            $this->db->where($k,$r);
                            break;
@@ -228,6 +230,74 @@ class Result_model extends CI_Model{
               }
         }
     }
+
+    /**
+     * 进行分组查询
+     * @param  array $where 查询条件
+     * 使用方法 
+     *          $where['group_select']['group_start'] = array('sales_type' => request_get('sales_type'));
+     *          $where['group_select']['and_group_start'] = array(
+     *               'like' => array('title' => $q),
+     *               'or_like' => array('second_title' => $q, 'village' => $q)
+     *           )
+     *           生成的SQL如：
+     *           SELECT * FROM `tb` WHERE   ( `a` = '1' AND `a` = '2'  ) AND   ( `title` LIKE '%温莎大道1231%'  OR  `second_title` LIKE '%温莎大道1231%'  OR  `village` LIKE '%温莎大道1231%'   ) ORDER BY `id` DESC  LIMIT 10
+     *          $where['group_select']['or_group_start'] = array(
+     *               'like' => array('title' => $q),
+     *               'or_like' => array('second_title' => $q, 'village' => $q)
+     *           )
+     *           生成的SQL如：
+     *           SELECT * FROM `tb` WHERE   ( `a` = '1' AND `a` = '2'  ) OR   ( `title` LIKE '%温莎大道1231%'  OR  `second_title` LIKE '%温莎大道1231%'  OR  `village` LIKE '%温莎大道1231%'   ) ORDER BY `id` DESC  LIMIT 10
+     *           
+     */
+    public function group_select($where){
+        if(!empty($where['group_start'])){
+
+            $group_start = $where['group_start'];
+            $this->db->group_start();
+            foreach ($group_start as $k => $r) {
+                if(in_array($k, array('like', 'or_like', 'or', 'or_where'))){
+                    foreach ($r as $sk => $sr) {
+                        $this->db->$k($sk, $sr);
+                    }
+                }else{
+                    $this->db->where($k ,$r);
+                }
+            }
+            $this->db->group_end();
+
+            if(!empty($where['or_group_start'])){
+                $or_group_start = $where['or_group_start'];
+                $this->db->or_group_start();
+                foreach ($or_group_start as $k => $r) {
+                    if(in_array($k, array('like', 'or_like', 'or', 'or_where'))){
+                        foreach ($r as $sk => $sr) {
+                            $this->db->$k($sk, $sr);
+                        }
+                    }else{
+                        $this->db->where($k ,$r);
+                    }
+                }
+                $this->db->group_end();
+            }
+
+            if(!empty($where['and_group_start'])){
+                $and_group_start = $where['and_group_start'];
+                $this->db->group_start();
+                foreach ($and_group_start as $k => $r) {
+                    if(in_array($k, array('like', 'or_like', 'or', 'or_where'))){
+                        foreach ($r as $sk => $sr) {
+                            $this->db->$k($sk, $sr);
+                        }
+                    }else{
+                        $this->db->where($k ,$r);
+                    }
+                }
+                $this->db->group_end();
+            }
+        }
+    }
+
     /**
      * 决定从 main 还是从 slave 服务器查询
      * @param boolean $isrw     是否加载主服务器
