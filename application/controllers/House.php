@@ -96,8 +96,8 @@ class House extends MY_Controller {
         if(request_get('new_house_type')){
             $where['new_house_type'] = request_get('new_house_type');
         }
-        if(request_get('htype')){
-            $htype = request_get('htype') >=6 ? 5 : request_get('htype');
+        if(request_get('house_type')){
+            $htype = request_get('house_type') >=6 ? 5 : request_get('house_type');
             $where['shi'] = $htype;
         }
 
