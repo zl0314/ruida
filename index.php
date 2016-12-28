@@ -1,4 +1,5 @@
 <?php
+
 ini_set('session.auto_start', 1);
 ini_set('session.save_path', dirname(__FILE__).'/tmp');
 
