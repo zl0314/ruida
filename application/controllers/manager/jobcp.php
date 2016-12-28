@@ -19,7 +19,7 @@ class Jobcp extends Base_Controller {
         $where = array();
 		$search = array();
         if(request_get('title')){
-            $where['search']['like']['title'] = request_get('title');
+            $where['like']['title'] = request_get('title');
         }
         // 列表数据  分页数据
         $data =  get_page('job',$where, $this->Result_model, null , 'listorder desc, id desc');

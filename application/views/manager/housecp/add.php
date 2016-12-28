@@ -229,7 +229,6 @@
                           <?php endforeach ?>
                         <?php endif; ?>
                       </select>
-                    线，
                     地铁站
                       <select name="data[subway_station]" required id="subway_station">
                         <option value="">请选择</option>

@@ -71,7 +71,7 @@
                         <a href="javascript:;"> <?php echo !empty($area_info['0']['name']) ? $area_info['0']['name'] : ''?></a>
                         <a href="javascript:;"> <?php echo !empty($area_info['1']['name']) ? $area_info['1']['name'] : ''?></a>
 
-                        <?php echo $row['huan'] ?>
+                        <?php echo $row['huan'] ?>环
                         <a href="javascript:;">近<?php echo !empty($subway_info['0']['name']) ? $subway_info['0']['name'] : ''?>
 <?php echo !empty($subway_info['1']['name']) ? $subway_info['1']['name'] : ''?>                        
                         站</a>

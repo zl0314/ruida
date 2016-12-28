@@ -30,8 +30,8 @@
 
 总价：<select name="total_price" id="">
   <option value="">全部</option>
-  <option value="1" <?php if(1 == request_get('acreage')){ echo 'selected';} ?>>小于等于</option>
-  <option value="2" <?php if(2 == request_get('acreage')){ echo 'selected';} ?>>大于等于</option>
+  <option value="1" <?php if(1 == request_get('total_price')){ echo 'selected';} ?>>小于等于</option>
+  <option value="2" <?php if(2 == request_get('total_price')){ echo 'selected';} ?>>大于等于</option>
 </select>
   <input type="text"  value="<?=request_get('total_price_str')?>" name="total_price_str" class="input-txt w100" style="">
 

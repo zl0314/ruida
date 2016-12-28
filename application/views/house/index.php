@@ -103,15 +103,15 @@
                     <dt>
                         房型：
                     </dt>
-                       <dd <?php if(!request_get('htype')):?> class="active"<?php endif;?>>
-                        <a href="javascript:;" onclick="fill_input('house_htype', '0')">
+                       <dd <?php if(!request_get('house_type')):?> class="active"<?php endif;?>>
+                        <a href="javascript:;" onclick="fill_input('house_type', '0')">
                             不限
                         </a>
                     </dd>
-                    <input type="hidden" name="htype"  id="house_htype" value="<?php echo request_get('htype') ?>">
+                    <input type="hidden" name="house_type"  id="house_type" value="<?php echo request_get('house_type') ?>">
                     <?php foreach ($htype as $k => $r): ?>
-                        <dd  <?php if(request_get('htype') == $k):?> class="active"<?php endif;?>>
-                        <a href="javascript:;" onclick="fill_input('house_htype','<?php echo $k ?>')">
+                        <dd  <?php if(request_get('house_type') == $k):?> class="active"<?php endif;?>>
+                        <a href="javascript:;" onclick="fill_input('house_type','<?php echo $k ?>')">
                            <?php echo $r; ?>
                         </a>
                     </dd>

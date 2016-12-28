@@ -18,7 +18,7 @@ $(function(){
          <div class="form-row">
           <label for="title" class="form-field">标题</label>
           <div class="form-cont">
-            <input class="input-txt" id="title" type="text" name="data[title]"value="<?php echo !empty($vo['url']) ? $vo['title'] : '';?>">
+            <input class="input-txt" id="title" type="text" name="data[title]"value="<?php echo !empty($vo['title']) ? $vo['title'] : '';?>">
             可以留空
           </div>
         </div>

@@ -11,7 +11,6 @@
     <?php if(!empty($list)): ?>
     	<?php foreach ($list as $key => $r): ?>
     		
-    	<?php endforeach ?>
     <div class="jr_list">
         <span class="ck_more">
             <a href="<?php echo site_url('job/show/'.$r['id']); ?>">查看详情</a>
@@ -31,6 +30,8 @@
         </span>
     <?php endif; ?>
     </div>
+        <?php endforeach ?>
+    
 <?php else: ?>
 	<div style="width:100%;height:50px;line-height: 50px;text-align: center; font-size:19px">暂时没有任何招聘信息...</div>
     <?php endif; ?>

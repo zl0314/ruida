@@ -11,7 +11,7 @@
             <div class="xf_ss_2 clearfix">
                 <h2>条件找房：</h2>
                 <div class="xf_ss_2_list clearfix">
-                    <select class="ss_xl_wbk" name="area_id" >
+                    <select class="ss_xl_wbk" name="city_id" >
                         <option value="">区域</option>
                         <?php foreach ($area as $k => $r): ?>
                         	<option value="<?php echo $r['id'] ?>"><?php echo $r['name'] ?></option>
