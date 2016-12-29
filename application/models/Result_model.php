@@ -172,7 +172,7 @@ class Result_model extends CI_Model{
      */
     public function update($tb,$where, $data ){
         if(empty($this->rwdb)){
-            $this->get_rwdb(true);
+            $this->get_db(true);
         }
         return $this->rwdb->update( $tb, $data , $where );
     }

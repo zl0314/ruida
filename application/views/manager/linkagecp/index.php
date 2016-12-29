@@ -14,7 +14,7 @@
       
         <thead class="tb-tit-bg">
           <tr>
-            <th><div class="th-gap"><input type="checkbox" onclick="selallck(this)"> </div></th> 
+            <!-- <th><div class="th-gap"><input type="checkbox" onclick="selallck(this)"> </div></th>  -->
             <th><div class="th-gap">ID</div></th>
             <th><div class="th-gap">城市名</div></th>
             <th><div class="th-gap">操作</div></th>
@@ -23,7 +23,7 @@
         <tfoot class="td-foot-bg">
           <tr>
             <td colspan="6">
-           <input type="button" value="删 除" onclick="delitem('a', this)">
+           <!-- <input type="button" value="删 除" onclick="delitem('a', this)"> -->
            <div class="pre-next"> 
             <?php if(!empty($page_html)){ echo $page_html;}?></div></td>
           </tr>
@@ -32,14 +32,14 @@
           <?php if( !empty( $list ) ):?>
           <?php foreach( $list as $k => $v ): $k++?>
           <tr id="item_<?=$v['id']?>">
-          <td><input type="checkbox" value="<?php echo $v['id'];?>" >  </td>
+          <!-- <td><input type="checkbox" value="<?php echo $v['id'];?>" >  </td> -->
             <td><?php echo $v['id'];?></td>
             <td><?php echo $v['name'];?></td>
             <td>
             <a  title="编辑" href="<?php echo site_url(sprintf('manager/'.$siteclass."/add/%s" , $v['id']));?>">编辑</a> | 
             <a  href="<?php echo site_url(sprintf('manager/'.$siteclass."/index/%s" , $v['id']));?>">子列表</a> | 
             <a  href="<?php echo site_url(sprintf('manager/'.$siteclass."/add?parentid=%s" , $v['id']));?>">添加子项目</a> | 
-            <a  onclick="delitem('<?php echo $v['id']?>',this)" href="javascript:;">删除</a>
+            <a   onclick="if( !confirm('您确定要删除？')){ return false;}"   href="<?php echo site_url(sprintf('manager/'.$siteclass."/del/%s" , $v['id']));?>"">删除</a>
             </td>
           </tr>
           <?php endforeach;?>

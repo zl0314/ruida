@@ -93,4 +93,30 @@ class Linkagecp extends Base_Controller {
 		$this->tpl->assign($vars);
 		$this->tpl->display();
 	}
+
+	//**
+	//m删除操作
+	public function del($id){
+		//先查询城市下面有没有子城市，
+		//有子城市， 内容的都不能删除
+		$row = $this->Result_model->getRow('linkage', '*', array('parentid' => $id));
+		if(!empty($row)){
+			$this->message('请将此城市下子项目删除后再删除城市');
+		}else{
+			$where = array(
+				'or' => array(
+					'province_id' => $id,
+					'city_id' => $id,
+					'area_id' => $id,
+					'address_id' => $id
+				)
+			);
+			$house_row = $this->Result_model->getRow('house', 'id', $where);
+			if(!empty($house_row)){
+				$this->message('请将此城市下子项内容删除后再进行删除');
+			}else{
+				$this->Result_model->delete('linkage', '*', array('id' => $id));
+			}
+		}
+	}
 }
