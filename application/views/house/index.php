@@ -303,6 +303,7 @@
              <div class="lb_bottom_list_jg_1">
                    <span><?php echo intval($r['month_price']); ?></span>元/月
                 </div>
+                <?php echo date('Y.m.d',$r['fb_time']); ?>更新
                 </div>
 			<?php elseif(!empty($r['total_price']) && $r['type'] != 4 ): ?>
             <div class="lb_bottom_list_jg">
@@ -318,7 +319,6 @@
                 </div>
                 建面<?php echo intval($r['build_acreage']); ?>m²
         </div>
- <?php echo date('Y.m.d',$r['fb_time']); ?>更新
              </div>
     <?php endif; ?>
     </div>
