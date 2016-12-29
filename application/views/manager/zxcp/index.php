@@ -31,6 +31,7 @@
             <th><div class="th-gap">手机</div></th>
           
             <th><div class="th-gap">邮箱</div></th>
+            <th><div class="th-gap">咨询类型</div></th>
           
             <th><div class="th-gap">添加时间</div></th>
             <th><div class="th-gap">操作</div></th>
@@ -50,6 +51,7 @@
             <td><input type="checkbox" value="<?php echo $v['id'];?>" ></td>
             <td><?php echo $v['id'];?></td>
             <td><?php echo  $v['mobile'] ?></td>
+            <td><?php echo  $v['type'] == 1 ? '委托找房' : '投放房源' ?></td>
             <td><?php echo  $v['email'] ?></td>
             <td><?php echo date('Y-m-d H:i:s' , $v['addtime']);?></td>
             <td>

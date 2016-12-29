@@ -286,6 +286,7 @@ body{
 		ping = 1;
 		$(obj).val('数据提交中..')
 		$.post('<?php echo site_url('/index/zx')?>', str, function(res) {
+			$(obj).val('提交')
 			ping = 0;
 			if(res.success == 1){
 				$('#tc').hide();
