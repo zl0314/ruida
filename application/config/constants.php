@@ -129,6 +129,9 @@ define('REDIRECT_URL', isset($_GET['redirect_url']) ? urldecode($_GET['redirect_
 //管理后台标题
 define('ADMIN_TITLE', '管理后台');
 
+/*http referer*/
+define('HTTP_REFERER', !empty( $_SERVER['HTTP_REFERER'] ) ? $_SERVER['HTTP_REFERER'] : '');
+
 /*
 |--------------------------------------------------------------------------
 | 时间处理

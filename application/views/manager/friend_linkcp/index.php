@@ -25,7 +25,7 @@
         </thead>
         <tfoot class="td-foot-bg">
           <tr>
-            <td colspan="8"> <input type="button" value="排 序"onclick="listorder('listorder')"> 
+            <td colspan="8"> <input type="button" value="排 序"onclick="listorder()"> 
            <input type="button" value="删 除" onclick="delitem('a', this)"> 
            <div class="pre-next"> 
             <?php if(!empty($page_html)){ echo $page_html;}?></div></td>

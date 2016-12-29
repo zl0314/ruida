@@ -35,6 +35,9 @@ class Settingcp extends Base_Controller {
 		
 		$this->tpl->display();
 	}
-	
+	public function clearcache(){
+		$this->cache->file->clean();
+        echo '清空缓存成功';
+	}
 	
 }

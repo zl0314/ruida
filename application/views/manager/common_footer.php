@@ -9,7 +9,7 @@ function listorder(order_field){
 	var str = '';
 	var con = '';
 	var input_field = 'short_txt';
-	if(typeof(order_field) == 'undefined'){
+	if(typeof(order_field) != 'undefined'){
 		order_field = 'listorder';
 		input_field = order_field;
 	}

@@ -25,17 +25,16 @@ class Common_Controller extends CI_Controller {
 	 */
 	public function get_cache($cache_name, $where = array(), $field = '*', $orderby = 'id desc' ){
 		$tb = $cache_name;
-		$cache_data = $this->cache->file->get($cache_name);
-		if(empty($cache_data)){
+		// $cache_data = $this->cache->file->get($cache_name);
+		// if(empty($cache_data)){
 			$cache_data = $this->Result_model->getList($tb, $field, $where, 0, null, $orderby);
-			$data = array();
-			foreach ($cache_data as $key => $r) {
-				$data[$r['id']] = $r;
-			}
-			$this->cache->file->save($cache_name, $data, CACHE_EXP);
-			$cache_data = $data;
-		}
-
+		// 	$data = array();
+		// 	foreach ($cache_data as $key => $r) {
+		// 		$data[$r['id']] = $r;
+		// 	}
+		// 	$this->cache->file->save($cache_name, $data, CACHE_EXP);
+		// 	$cache_data = $data;
+		// }
 		return $cache_data;
 	}
 }

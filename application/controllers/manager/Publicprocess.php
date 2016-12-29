@@ -73,6 +73,7 @@ class Publicprocess extends Base_Controller {
 		if(!is_array($ids)){
 			$ids = array($ids);
 		}
+		$res = $this->cache->file->delete($this->class_name);
 		if($ids){
 			foreach($ids as $k => $id){
 				$where = array('id' => $id);
@@ -84,9 +85,7 @@ class Publicprocess extends Base_Controller {
 						$this->_model->delData($where);
 					}
 				}
-				
 			}
-			$this->cache->file->delete($this->class_name);
 			exit('ok');
 		}
 	}

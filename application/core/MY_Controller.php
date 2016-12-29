@@ -3,9 +3,10 @@
 class MY_Controller extends Common_Controller {
 	function __construct(){
 		parent::__construct();
+		$system_setting = $this->Result_model->getRow('system_setting', array());
+		$this->data['webset'] = json_decode($system_setting['setting'], 1);
 
-		$this->data['webset'] = $this->cache->file->get('system_setting');
-		$this->data['friend_link'] = $this->get_cache('friend_link', array('isshow' => 1), 'name,link_url,id,listorder', 'listorder desc');
+		$this->data['friend_link'] = $this->Result_model->getList('friend_link', 'id,link_url,name',array(), 0, null, 'listorder desc, id desc');
 
         $this->data['header'] = 'header';
         $this->data['footer'] = 'footer';

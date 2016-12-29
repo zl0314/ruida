@@ -42,9 +42,11 @@ $this->load->view('search_end');
                         <td><input type="checkbox" value="<?php echo $v['id'];?>" ></td>
                         <td><?php echo $v['id'];?></td>
                         <td><?php echo $v['title'];?></td>
-<!--                        <td>--><?php //echo $newsType[$v['type']];?><!--</td>-->
                         <td><?php echo date('Y-m-d H:i:s' , $v['addtime']);?></td>
-                        <td><input type="text" class="short_txt" itemid="<?php echo $v['id']?>" name="listorder[<?php echo $v['id']?>]" value="<?=$v['listorder']?>" <?php echo $v['listorder'];?></td>
+                        <td>
+                        <input type="text" class="short_txt" itemid="<?php echo $v['id']?>" name="listorder[<?php echo $v['id']?>]" value="<?=$v['listorder']?>">
+                       </td>
+                       
                         <td>
                             <a  title="编辑" href="<?php echo site_url(sprintf('manager/'.$siteclass."/add/%s" , $v['id']));?>">编辑</a> |
                             <a  onclick="delitem('<?php echo $v['id']?>',this)"  title="删除" href="javascript:;">删除</a>

@@ -45,6 +45,10 @@ $ADMIN_MENU = array(
 								'system' => array(
 										'name' => '系统设置',
 										'status' => 1
+								),
+								'clearcache' => array(
+										'name' => '清空缓存',
+										'status' => 1
 								)
 							),
 					),
