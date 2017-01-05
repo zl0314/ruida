@@ -144,12 +144,18 @@
             <h2>
                 房源照片
             </h2>
-            <div class="xx_bottom_list_img">
+            <div class="xx_bottom_list_img" id="xx_bottom_list_img">
                     <?php echo $row['house_pics'] ?>
             </div>
         </div>
     </div>
 </div>
+<style>
+    #xx_bottom_list_img img {
+        width:700px;
+        margin-bottom: 5px;
+    }
+</style>
 <!-- 推荐房源 -->
 <?php if(!empty($row['recomment_house']) && !empty($recomment_house)): ?>
 <div class="tjfy clearfix">
