@@ -30,8 +30,8 @@
             <th><div class="th-gap">ID</div></th>
             <th><div class="th-gap">手机</div></th>
           
-            <th><div class="th-gap">邮箱</div></th>
             <th><div class="th-gap">咨询类型</div></th>
+            <th><div class="th-gap">邮箱</div></th>
           
             <th><div class="th-gap">添加时间</div></th>
             <th><div class="th-gap">操作</div></th>

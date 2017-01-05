@@ -6,6 +6,8 @@
 <link type="text/css" rel="stylesheet" href="/static/web/css/style.css" />
 <script type="text/javascript" src="/static/web/js/jquery.js"></script>
 <script type="text/javascript" src="/static/js/common.js"></script>
+<meta name="keywords" content="<?php echo !empty($webset['keywords']) ? $webset['keywords'] : ''; ?>" />
+<meta name="description" content="<?php echo !empty($webset['description']) ? $webset['description'] : ''; ?>" />
 </head>
 <body>
 <!-- ====header=== -->
