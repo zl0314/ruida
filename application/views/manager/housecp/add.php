@@ -215,7 +215,7 @@
                     <select name="data[area_id]" id="area_id" required  onchange="get_sub_area(this,'', 'address_id')">
                         <option value="0">请选择</option>
                     </select>
-                    <select name="data[address_id]" id="address_id" required  onchange="get_sub_area(this,'', '')">
+                    <select name="data[address_id]" id="address_id"   onchange="get_sub_area(this,'', '')">
                         <option value="0">请选择</option>
                     </select>
 
