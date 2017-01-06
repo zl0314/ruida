@@ -257,8 +257,8 @@
              <div class="form-row">
                 <label for="ting_shi" class="form-field">厅室</label>
                 <div class="form-cont">
-                       <input type="text" required name="data[ting]" id="" value="<?=!empty($vo['ting']) ? $vo['ting'] : '';?>"class="short_txt"> 厅
-                       <input type="text" required name="data[shi]" id="" value="<?=!empty($vo['shi']) ? $vo['shi'] : '';?>"class="short_txt"> 室
+                       <input type="text"  name="data[ting]" id="" value="<?=!empty($vo['ting']) ? $vo['ting'] : '';?>"class="short_txt"> 厅
+                       <input type="text"  name="data[shi]" id="" value="<?=!empty($vo['shi']) ? $vo['shi'] : '';?>"class="short_txt"> 室
                    &nbsp;&nbsp;&nbsp;详情页下方文字 <input type="text" name="data[ting_shi_txt]" value="<?=!empty($vo['ting_shi_txt']) ? $vo['ting_shi_txt'] : '';?>"class="input-txt">
                 </div>
             </div>

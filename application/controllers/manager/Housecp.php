@@ -141,7 +141,7 @@ class Housecp extends Base_Controller {
         }else if(empty($data['second_title'])){
             $msg = '副标题不能为空';
         }else if(empty($data['house_cert_year'])){
-            $msg = '请填写房本满多少年';
+            // $msg = '请填写房本满多少年';
         }else if(empty($data['village'])){
             $msg = '小区名不能为空';
         }else if(empty($data['label'])){
@@ -179,9 +179,9 @@ class Housecp extends Base_Controller {
         }else if(empty($data['chaoxiang'])){
             $msg = '朝向不能为空';
         }else if(empty($data['ting'])){
-            $msg = '请填写房屋有几厅';
+            // $msg = '请填写房屋有几厅';
         }else if(empty($data['shi'])){
-            $msg = '请填写房屋有几室';
+            // $msg = '请填写房屋有几室';
         }else if(empty($data['acreage'])){
             $msg = '面积不能为空';
         }else if(empty($data['zhuangxiu'])){
@@ -197,13 +197,13 @@ class Housecp extends Base_Controller {
         }else if(empty($data['base_intro'])){
             $msg = '基本信息不能为空';
         }else if(empty($data['trade_intro'])){
-            $msg = '交易属性不能为空';
+            // $msg = '交易属性不能为空';
         }else if(empty($data['hx_intro'])){
             $msg = '户型介绍不能为空';
         }else if(empty($data['zb_intro'])){
             $msg = '周边介绍不能为空';
         }else if(empty($data['xiaoqu_intro'])){
-            $msg = '小区介绍不能为空';
+            // $msg = '小区介绍不能为空';
         }else if(empty($data['house_pics'])){
             $msg = '房屋图片不能为空';
         }
