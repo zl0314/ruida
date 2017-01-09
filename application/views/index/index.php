@@ -133,7 +133,7 @@ body{
 		</div>
 		<div class="sydc_bottom clearfix">
 			<?php foreach ($house_list_bussness as $key => $r): ?>
-			<div class="sydc_bottom_list  <?php if($key == 0): ?>ml<?php endif;?>"">
+			<div class="sydc_bottom_list  <?php if($key == 0): ?>ml<?php endif;?>" >
 				<a href="<?php echo site_url('house/show/'.$r['id']) ?>">
 					<img src="<?php echo $r['thumb'] ?>" alt="">
 				</a>

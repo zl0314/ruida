@@ -36,18 +36,18 @@ class Index extends MY_Controller {
         $where = array(
             'type' => 1
         );
-        $house_list_bussness = $this->Result_model->getList('house', 'id,title,unit_price,total_price,thumb', $where, 5, null, 'fb_time desc');
-        //投资地产， 最新发布， 限5条
+        $house_list_bussness = $this->Result_model->getList('house', 'id,title,unit_price,total_price,thumb', $where, 4, null, 'fb_time desc');
+        //投资地产， 最新发布， 限4条
         $where = array(
             'type' => 2
         );
-        $house_list_tz = $this->Result_model->getList('house', 'id,title,unit_price,total_price,thumb', $where, 5, null, 'fb_time desc');
+        $house_list_tz = $this->Result_model->getList('house', 'id,title,unit_price,total_price,thumb', $where, 4, null, 'fb_time desc');
 
-        //学区房/豪宅， 最新发布， 限5条
+        //学区房/豪宅， 最新发布， 限4条
         $where = array(
             'type' => 3
         );
-        $house_list_xqhz = $this->Result_model->getList('house', 'id,title,unit_price,total_price,thumb', $where, 5, null, 'fb_time desc');
+        $house_list_xqhz = $this->Result_model->getList('house', 'id,title,unit_price,total_price,thumb', $where, 4, null, 'fb_time desc');
 
 		$vars = array(
             'ad_row' => $ad_row,

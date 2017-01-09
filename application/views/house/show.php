@@ -94,6 +94,7 @@
             <h2>
                 基本信息
             </h2>
+             <?php if(!empty($row['base_intro'])): ?>
             <div class="xx_bottom_nr clearfix">
                 <div class="xx_bottom_nr_1 clearfix">
                     基本属性
@@ -102,6 +103,9 @@
                     <?php echo $row['base_intro'] ?>
                 </div>
             </div>
+        <?php endif; ?>
+            
+            <?php if(!empty($row['trade_intro'])): ?>
             <div class="xx_bottom_nr clearfix">
                 <div class="xx_bottom_nr_1 clearfix">
                     交易属性
@@ -110,11 +114,14 @@
                     <?php echo $row['trade_intro'] ?>
                 </div>
             </div>
+        <?php endif; ?>
+
         </div>
         <div class="xx_bottom_list clearfix">
             <h2>
                 房源介绍
             </h2>
+            <?php if(!empty($row['hx_intro'])): ?>
             <div class="xx_bottom_nr clearfix">
                 <div class="xx_bottom_nr_1 clearfix">
                     户型介绍
@@ -123,6 +130,8 @@
                     <?php echo $row['hx_intro'] ?>
                 </div>
             </div>
+        <?php endif; ?>
+        <?php if(!empty($row['zb_intro'])): ?>
             <div class="xx_bottom_nr clearfix">
                 <div class="xx_bottom_nr_1 clearfix">
                     周边配套
@@ -131,6 +140,8 @@
                     <?php echo $row['zb_intro'] ?>
                 </div>
             </div>
+        <?php endif; ?>
+        <?php if(!empty($row['xiaoqu_intro'])): ?>
             <div class="xx_bottom_nr clearfix">
                 <div class="xx_bottom_nr_1 clearfix">
                     小区介绍
@@ -139,6 +150,8 @@
                     <?php echo $row['xiaoqu_intro'] ?>
                 </div>
             </div>
+        <?php endif; ?>
+
         </div>
         <div class="xx_bottom_list_1">
             <h2>
