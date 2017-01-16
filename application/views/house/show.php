@@ -149,7 +149,7 @@
         <?php if(!empty($row['xiaoqu_intro'])): ?>
             <div class="xx_bottom_nr clearfix">
                 <div class="xx_bottom_nr_1 clearfix">
-                    小区介绍
+                    大厦介绍
                 </div>
                 <div class="xx_bottom_nr_text clearfix">
                     <?php echo $row['xiaoqu_intro'] ?>
@@ -199,3 +199,8 @@
     </div>
 </div>
 <?php endif; ?>
+<script>
+    $(function(){
+        $('p span').css('white-space', 'normal');
+    })
+</script>

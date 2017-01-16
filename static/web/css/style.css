@@ -1137,6 +1137,11 @@ label {
 	line-height: 1.7;
 	color: #333333;
 }
+/**新加，内容强制换行**/
+.xx_bottom_nr_text p {
+	word-wrap:break-word;
+	line-height:30px;
+}
 .xx_bottom_list_1{
 	margin-top: 50px;
 }
