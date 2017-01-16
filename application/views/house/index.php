@@ -260,8 +260,14 @@
                 <ul>
                     <li>
                         <i class="yi"></i><?php echo $r['village'] ?>
-                        <?php if($r['type'] != 4): ?>
-                        &nbsp;&nbsp;|&nbsp;&nbsp;<?php echo $r['shi'] ?>室<?php echo $r['ting']?>厅&nbsp;&nbsp;|&nbsp;&nbsp;102.8平米&nbsp;&nbsp;|&nbsp;&nbsp;<?php echo $chaoxiang[$r['chaoxiang']] ?>&nbsp;&nbsp;|&nbsp;&nbsp;<?php echo $zhuangxiu[$r['zhuangxiu']] ?>&nbsp;&nbsp;|&nbsp;&nbsp; <?php echo $dianti[$r['dianti']] ?>
+                        <?php if($r['type'] != 4): ?>&nbsp;&nbsp;|
+                            <?php if(!empty($r['shi']) && !empty($r['ting'])): ?>
+                        &nbsp;&nbsp;<?php echo $r['shi'] ?>室<?php echo $r['ting']?>厅&nbsp;&nbsp;|
+                            <?php endif; ?>
+                        &nbsp;&nbsp;<?php echo $r['acreage'] ?>平米
+                        <?php echo !empty($chaoxiang[$r['chaoxiang']]) ? $chaoxiang[$r['chaoxiang']].'&nbsp;&nbsp;|&nbsp;&nbsp;' : '' ?>
+                        <?php echo !empty( $zhuangxiu[$r['zhuangxiu']] ) ?  $zhuangxiu[$r['zhuangxiu']].'&nbsp;&nbsp;|&nbsp;&nbsp;'  : ''?>
+                         <?php echo !empty($dianti[$r['dianti']]) ? $dianti[$r['dianti']].'&nbsp;&nbsp;' : '' ?>
                     <?php endif; ?>
                     </li>
                     <?php if($r['type'] != 4): ?>

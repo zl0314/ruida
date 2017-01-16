@@ -44,17 +44,22 @@
             <div class="xx_center_right_2 clearfix">
                 <ul>
                     <li>
+                 <?php if(!empty($r['shi']) && !empty($r['ting'])): ?>
+
                         <span><?php echo $row['shi'] ?>室<?php echo $row['ting'] ?>厅</span>
-                        <?php echo $row['ting_shi_txt'] ?>
+                        <?php echo !empty($row['ting_shi_txt']) ? $row['ting_shi_txt'] : ''; ?>
+                <?php endif; ?>
+
                     </li>
+
                     <li>
-                        <span><?php echo $chaoxiang[$row['chaoxiang']] ?></span>
-                        <?php echo $row['chaoxiang_txt'] ?>
+                        <span><?php echo !empty($chaoxiang[$row['chaoxiang']] ) ? $chaoxiang[$row['chaoxiang']] : ''?></span>
+                        <?php echo !empty($row['chaoxiang_txt'] ) ? $row['chaoxiang_txt']  : ''?>
                         
                     </li>
                     <li>
                         <span><?php echo $row['acreage'] ?>平米</span>
-                        <?php echo $row['acreage_txt'] ?>
+                        <?php echo !empty($row['acreage_txt']) ? $row['acreage_txt'] : '' ?>
                     </li>
                 </ul>
             </div>
