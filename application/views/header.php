@@ -10,6 +10,9 @@
 <meta name="description" content="<?php echo !empty($webset['description']) ? $webset['description'] : ''; ?>" />
 </head>
 <body>
+<script>
+    var SITEURL = '<?php echo site_url()?>';
+</script>
 <!-- ====header=== -->
 <div class="header">
     <div class="warp clearfix">

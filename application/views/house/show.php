@@ -1,5 +1,8 @@
 <script type="text/javascript" src="/static/web/js/jquery.jqzoom.js"></script>
 <script type="text/javascript" src="/static/web/js/base.js"></script>
+<link rel="stylesheet" href="/static/web/css/echo.css">
+<script src="/static/web/js/echo.js"></script>
+
 <!-- ========main======= -->
 <div class="warp clearfix">
     <?php $this->load->view('location') ?>
@@ -8,17 +11,16 @@
         <?php echo $row['second_title'] ?>
     </div>
     <div class="xx_center clearfix">
-    <?php if(!empty($row['scrollpic'])): ?>
-    	<?php $scrollpic = json_decode($row['scrollpic']) ?>
+    <?php if(!empty($thumb_pic_array)): ?>
         <!--图开始-->
         <div class="xx_center_img">
-            <div id="preview" class="spec-preview"> <span class="jqzoom"><img jqimg="<?php echo $scrollpic[0] ?>" src="<?php echo $scrollpic[0] ?>" /></span> </div>
+            <div id="preview" class="spec-preview"> <span class="jqzoom"><img jqimg="<?php echo $thumb_pic_array[0]['source'] ?>" src="<?php echo $thumb_pic_array[0]['source'] ?>" /></span> </div>
             <!--缩图开始-->
             <div class="spec-scroll"> <a class="prev">&lt;</a> <a class="next">&gt;</a>
                 <div class="items">
                     <ul>
-                    <?php foreach ($scrollpic as $k => $r): ?>
-                    	 <li><img  jqimg="<?php echo $r; ?>" src="<?php echo $r ?>" onmousemove="preview(this);"></li>
+                    <?php foreach ($thumb_pic_array as $k => $r): ?>
+                    	 <li><img  jqimg="<?php echo $r['source']; ?>" src="<?php echo $r['thumb'] ?>" onmouseover="preview(this);"></li>
                     <?php endforeach ?>
                        
                     </ul>
@@ -27,6 +29,12 @@
             <!--缩图结束-->
         </div>
     <?php endif; ?>
+<style>
+    #preview img {
+        background: #fff no-repeat center ;
+        background-image:url('/static/web/images/ajax.gif');
+    }
+</style>
         <div class="xx_center_right">
             <div class="xx_center_right_1">
                  <?php if($row['sales_type'] == 1 && $row['type'] == 1): ?>
@@ -158,16 +166,39 @@
         <?php endif; ?>
 
         </div>
-        <div class="xx_bottom_list_1">
-            <h2>
-                房源照片
-            </h2>
-            <div class="xx_bottom_list_img" id="xx_bottom_list_img">
-                    <?php echo $row['house_pics'] ?>
+        <?php if(!empty($row['house_pics'])): ?>
+            <div class="xx_bottom_list_1">
+                <h2>
+                    房源照片
+                </h2>
+                <div class="xx_bottom_list_img" id="xx_bottom_list_img">
+                        <?php echo $row['house_pics'] ?>
+                </div>
             </div>
-        </div>
+        <?php endif; ?>
     </div>
 </div>
+<!-- Echo.js -->
+<script>
+$(function(){
+    $('#xx_bottom_list_img').find('img').each(function(){
+        var src = $(this).attr('_src');
+        $(this).attr('src', '/static/web/images/blank.gif')
+        $(this).removeAttr('_src');
+        $(this).attr('data-echo', src);
+    });
+})
+
+document.onreadystatechange = dosomething;
+function dosomething(){
+    Echo.init({
+      offset: 0,
+      throttle: 250,
+      datasrc : 'data-echo'
+    });
+}
+</script>
+
 <style>
     #xx_bottom_list_img img {
         width:700px;

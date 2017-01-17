@@ -30,11 +30,10 @@ class House extends MY_Controller {
     }
 
     /**
-     * 
+     * 房源列表
      */
     public function index($is_new_house = false){
         $type = request_get('t');
-
 
         //start 搜索条件==========================
         $where = array(
@@ -191,6 +190,10 @@ class House extends MY_Controller {
         $this->tpl->display($template);
     }
 
+    /**
+     * 房源详情岩浆
+     * @param  int $id [房源DI]
+     */
     public function show($id = 0){
         $row = array();
         if(!$id){
@@ -203,6 +206,9 @@ class House extends MY_Controller {
         if(empty($row)){
             $this->message('您访问的内容不存在');
         }
+        //加载图片处理类
+        $this->load->library('picthumb');
+
         //地铁线路，地铁站
         $subway_where = array(
             'in' => array(
@@ -232,14 +238,39 @@ class House extends MY_Controller {
             );
             $recomment_house = $this->Result_model->getList('house','id,title,shi,ting,acreage,thumb,village', $recomment_house_where);
         }
-        //区域 地点
+
+
+        //轮播图缩略图片处理
+        $scrollpic = array();
+        $thumb_pic_array = array();
+        if(!empty($row['scrollpic'])){
+            $scrollpic = json_decode($row['scrollpic']);
+            foreach ($scrollpic as $k => $pic) {
+                $thumb_pic = getNewImg($pic, 'thumb/');
+                $source_thumb_pic = getNewImg($pic, 'thumb/', false);
+                if(!file_exists($thumb_pic)){
+                    creat_dir_with_filepath($thumb_pic);
+                    $source_pic = '.'.$pic;
+                    if(file_exists($source_pic)){
+                        $thumb = PhpThumbFactory::create($source_pic);
+                        $thumb->resize(116, 82);
+                        $thumb->save($thumb_pic);
+                    }
+                }
+                $thumb_pic_array[] = array(
+                    'thumb' => $source_thumb_pic,
+                    'source' => $pic
+                );
+            }
+        }
         $vars = array(
             'posname' => '房屋详情',
             'row' => $row,
             'subway_info' => $subway_info,
             'area_info' => $area_info,
             'recomment_house' => $recomment_house,
-            'type' => $row['type']
+            'type' => $row['type'], 
+            'thumb_pic_array' => $thumb_pic_array
         );
         $this->tpl->assign($vars);
         $this->tpl->display();
