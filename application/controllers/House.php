@@ -23,7 +23,7 @@ class House extends MY_Controller {
             'biaoqian' => Hresource::get_label(),
             'new_house_type' => Hresource::get_new_house_type(),
             'yongtu' => Hresource::get_functionality($type),
-            'area' => $this->Result_model->getList('linkage', 'id,name', array('parentid' => 2)),
+            'area' => $this->Result_model->getList('linkage', 'id,name', array('parentid' => 2), 0, 0, 'listorder desc, id desc'),
             'subway' => $this->get_cache('subway', array('parentid' => 0), '*', 'listorder desc, id asc'),
         );
         $this->tpl->assign($vars);

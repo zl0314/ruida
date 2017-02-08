@@ -17,12 +17,15 @@
             <!-- <th><div class="th-gap"><input type="checkbox" onclick="selallck(this)"> </div></th>  -->
             <th><div class="th-gap">ID</div></th>
             <th><div class="th-gap">城市名</div></th>
+            <th><div class="th-gap">排序</div></th>
+
             <th><div class="th-gap">操作</div></th>
           </tr>
         </thead>
         <tfoot class="td-foot-bg">
           <tr>
             <td colspan="6">
+             <input type="button" value="排 序"onclick="listorder()"> 
            <!-- <input type="button" value="删 除" onclick="delitem('a', this)"> -->
            <div class="pre-next"> 
             <?php if(!empty($page_html)){ echo $page_html;}?></div></td>
@@ -35,6 +38,8 @@
           <!-- <td><input type="checkbox" value="<?php echo $v['id'];?>" >  </td> -->
             <td><?php echo $v['id'];?></td>
             <td><?php echo $v['name'];?></td>
+            <td><input type="text" class="short_txt" itemid="<?php echo $v['id']?>" name="listorder[<?php echo $v['id']?>]" value="<?php echo !empty($v['listorder']) ? $v['listorder'] : '0';?>"></td>
+
             <td>
             <a  title="编辑" href="<?php echo site_url(sprintf('manager/'.$siteclass."/add/%s" , $v['id']));?>">编辑</a> | 
             <a  href="<?php echo site_url(sprintf('manager/'.$siteclass."/index/%s" , $v['id']));?>">子列表</a> | 

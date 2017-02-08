@@ -98,7 +98,10 @@
                 </dl>
             </div>
             <div class="xx_center_right_4">
-                <img src="/static/web/images/400.png" alt="">
+                <img src="/static/web/images/400.png" alt=""><br>
+                <a target="_blank" href="http://p.qiao.baidu.com/cps/chat?siteId=10341286&userId=23090150">
+                    <img src="/static/web/images/zxzx.png" alt="">
+                </a>
             </div>
         </div>
     </div>
