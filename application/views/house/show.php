@@ -75,7 +75,7 @@
                 <dl>
                     <dt>小区名称</dt>
                     <dd>
-                        <?php echo $row['title'] ?>
+                        <?php echo $row['village'] ?>
                     </dd>
                 </dl>
                 <dl>
@@ -110,27 +110,13 @@
             <h2>
                 基本信息
             </h2>
-             <?php if(!empty($row['base_intro'])): ?>
-            <div class="xx_bottom_nr clearfix">
-                <div class="xx_bottom_nr_1 clearfix">
-                    基本属性
-                </div>
-                <div class="xx_bottom_nr_2 clearfix">
-                    <?php echo $row['base_intro'] ?>
-                </div>
-            </div>
-        <?php endif; ?>
             
-            <?php if(!empty($row['trade_intro'])): ?>
             <div class="xx_bottom_nr clearfix">
-                <div class="xx_bottom_nr_1 clearfix">
-                    交易属性
-                </div>
+               
                 <div class="xx_bottom_nr_2 clearfix">
                     <?php echo $row['trade_intro'] ?>
                 </div>
             </div>
-        <?php endif; ?>
 
         </div>
         <div class="xx_bottom_list clearfix">

@@ -8,7 +8,7 @@ class Linkage extends MY_Controller {
 	public function __construct(){
 	    parent::__construct();
 	    $this->load->model('Result_model');
-	    if(request_post('parent')){
+	    if(request_post('parent') != 'all'){
 	    	$where = array('parentid' => request_post('parent'));
 	    	$this->linkage = $this->Result_model->getList('linkage', 'id,name,parentid', $where);
 	    }
@@ -39,8 +39,9 @@ class Linkage extends MY_Controller {
 				if($r['id'] == request_post('id')){
 					$sel = 'class="active"';
 				}
+				$tar = request_post('tar');
 				$html .= '<dd '.$sel.'>
-                        <a href="javascript:;" onclick="fill_input(\'house_area_id\',\''.$r['id'].'\')">
+                        <a href="javascript:;" onclick="fill_input(\''.$tar.'_id\',\''.$r['id'].'\')">
                             '.$r['name'].'
                         </a>
                     </dd>';

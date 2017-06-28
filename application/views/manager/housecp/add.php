@@ -343,14 +343,14 @@
             $this->load->view('public_uploadify');
             ?>
 
-              <div class="form-row">
-          <label for="base_intro" class="form-field">基本属性</label>
+              <<!-- div class="form-row">
+          <label for="base_intro" class="form-field">基本属性&交易属性</label>
           <div class="form-cont">
           <script id="base_intro" name="data[base_intro]" type="text/plain" style="width:650px;height:250px;"><?=!empty($vo['base_intro']) ? $vo['base_intro'] : '';?></script>
             </div>
-        </div>
+        </div> -->
           <div class="form-row">
-          <label for="trade_intro" class="form-field">交易属性</label>
+          <label for="trade_intro" class="form-field">基本信息</label>
           <div class="form-cont">
           <script id="trade_intro" name="data[trade_intro]" type="text/plain" style="width:650px;height:250px;"><?=!empty($vo['trade_intro']) ? $vo['trade_intro'] : '';?></script>
             </div>

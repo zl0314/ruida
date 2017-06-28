@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>瑞达联行</title>
+<link type="text/css" rel="stylesheet" href="css/style.css" />
+<script type="text/javascript" src="js/jquery.js"></script>
+</head>
+<body style="background-image: url(images/top_bg.jpg); background-repeat:no-repeat;
+background-attachment:fixed; background-position:center top;">
+<!-- ====header=== -->
+<div class="warp clearfix">
+	<div class="hd_top">
+        <span>
+            <a href="#">
+                <i class="dl_ico"></i>登录
+            </a>
+            <a href="#">
+                <i class="zc_ico"></i>立即注册
+            </a>
+        </span>
+    </div>
+    <div class="hd_bottom">
+        <div class="logo left">
+            <img src="images/logo.png" alt="">
+        </div>
+        <div class="i_nav right">
+            <ul>
+                <li>
+                    <a href="index.html">
+                        首页
+                    </a>
+                </li>
+                <li class="cur">
+                    <a href="商业地产.html">
+                        商业地产
+                    </a>
+                </li>
+                <li>
+                    <a href="投资地产.html">
+                        投资地产
+                    </a>
+                </li>
+                <li>
+                    <a href="学区房豪宅.html">
+                        学区房/豪宅
+                    </a>
+                </li>
+                <li>
+                    <a href="新房.html">
+                        新房
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        全国地产服务
+                    </a>
+                </li>
+                <li>
+                    <a href="加入我们.html">
+                        加入我们
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- ====main=== -->
+<div class="warp clearfix">
+	<div class="i_banner">
+		<img src="images/i_banner.png" alt="">
+	</div>
+	<div class="search">
+		<div class="search_top">
+			<a href="#" class="active">
+				商业地产
+			</a>
+			<a href="#">
+				  投资地产
+			</a>
+			<a href="#">
+				 学区房/豪宅
+			</a>
+			<a href="#">
+				 新房
+			</a>
+		</div>
+		<div class="search_bottom">
+			<select name="" class="i_ss_xl left">
+				<option value="">出售</option>
+				<option value="">出租</option>
+			</select >
+			<input type="text" value="请输入区域、商圈或小区名开始找房" class="i_ss_wbk left">
+			<input type="button" value="" class="i_ss_but left">
+		</div>
+		<div class="i_ad">
+			<img src="images/ad.png" alt="">
+		</div>
+		<script type="text/javascript">
+			$(".search_top a").click(function() {
+				$(this).addClass('active').siblings().removeClass('active');
+			});
+		</script>
+	</div>
+</div>
+<!-- 联系我们 -->
+<div class="lxwm">
+	<div class="warp clearfix">
+		<div class="lxwm_box clearfix">
+			<img src="images/lxwm.png" alt="">
+			<div class="lxwm_anniu">
+				<a href="javascript:;">
+					委托找房
+				</a>
+				<a href="javascript:;">
+					投放房源
+				</a>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- 热门商圈 -->
+<div class="rmsp clearfix">
+	<div class="warp clearfix">
+		<div class="rmsq_title">
+			<h2>
+				热门商圈
+			</h2>
+			<p>核心地段，成熟配套</p>
+		</div>
+		<div class="rmsq_bottom clearfix">
+			<div class="rmsq_bottom_list left ml">
+				<a href="#">
+					<img src="images/i1.jpg" alt="">
+					<span>国贸</span>
+				</a>
+			</div>
+			<div class="rmsq_bottom_list left">
+				<a href="#">
+					<img src="images/i2.jpg" alt="">
+					<span>中关村</span>
+				</a>
+			</div>
+			<div class="rmsq_bottom_list left">
+				<a href="#">
+					<img src="images/i3.jpg" alt="">
+					<span>知春路</span>
+				</a>
+			</div>
+			<div class="rmsq_bottom_list_2 left ml">
+				<a href="#">
+					<img src="images/i4.jpg" alt="">
+					<span>朝外</span>
+				</a>
+			</div>
+			<div class="rmsq_bottom_list left">
+				<a href="#">
+					<img src="images/i5.jpg" alt="">
+					<span>上地</span>
+				</a>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- 地产咨询 -->
+<div class="dczx clearfix">
+	<div class="warp clearfix">
+		<div class="rmsq_title">
+			<h2>
+				地产资讯
+			</h2>
+		</div>
+		<div class="dczx_top">
+			<div class="dczx_top_list ml0">
+				<a href="#">
+					<img src="images/dc_img.jpg" alt="">
+					<span>
+						楼市销售创新高 隐藏商办去库存难题
+					</span>
+				</a>
+			</div>
+			<div class="dczx_top_list">
+				<a href="#">
+					<img src="images/dc_img.jpg" alt="">
+					<span>
+						楼市销售创新高 隐藏商办去库存难题
+					</span>
+				</a>
+			</div>
+			<div class="dczx_top_list">
+				<a href="#">
+					<img src="images/dc_img.jpg" alt="">
+					<span>
+						楼市销售创新高 隐藏商办去库存难题
+					</span>
+				</a>
+			</div>
+		</div>
+		<div class="dczx_bottom">
+			<ul>
+				<li>
+					<a href="#">
+						<span>02-25</span>
+						· 不同类型的企业应有不同的写字楼选址要求
+					</a>
+				</li>
+				<li>
+					<a href="#">
+						<span>02-25</span>
+						· 不同类型的企业应有不同的写字楼选址要求
+					</a>
+				</li>
+				<li>
+					<a href="#">
+						<span>02-25</span>
+						· 不同类型的企业应有不同的写字楼选址要求
+					</a>
+				</li>
+				<li>
+					<a href="#">
+						<span>02-25</span>
+						· 不同类型的企业应有不同的写字楼选址要求
+					</a>
+				</li>
+				<li>
+					<a href="#">
+						<span>02-25</span>
+						· 不同类型的企业应有不同的写字楼选址要求
+					</a>
+				</li>
+				<li>
+					<a href="#">
+						<span>02-25</span>
+						· 不同类型的企业应有不同的写字楼选址要求
+					</a>
+				</li>
+				<li>
+					<a href="#">
+						<span>02-25</span>
+						· 不同类型的企业应有不同的写字楼选址要求
+					</a>
+				</li>
+				<li>
+					<a href="#">
+						<span>02-25</span>
+						· 不同类型的企业应有不同的写字楼选址要求
+					</a>
+				</li>
+				<li>
+					<a href="#">
+						<span>02-25</span>
+						· 不同类型的企业应有不同的写字楼选址要求
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<!-- ====商业地产==== -->
+<div class="sydc clearfix">
+	<div class="warp clearfix">
+		<div class="sydc_title">
+			<span>
+				<a href="#">
+					更多商业地产
+				</a>
+			</span>
+			商业地产
+		</div>
+		<div class="sydc_bottom clearfix">
+			<div class="sydc_bottom_list ml">
+				<a href="#">
+					<img src="images/i_img.jpg" alt="">
+				</a>
+				<div class="sydc_bottom_nr">
+					<a href="#">
+						天畅园精装户型方正两居室视野好可观万达大湖
+					</a>
+					<p>单价102141元/平米 1050万</p>
+				</div>
+			</div>
+			<div class="sydc_bottom_list">
+				<a href="#">
+					<img src="images/i_img.jpg" alt="">
+				</a>
+				<div class="sydc_bottom_nr">
+					<a href="#">
+						天畅园精装户型方正两居室视野好可观万达大湖
+					</a>
+					<p>单价102141元/平米 1050万</p>
+				</div>
+			</div>
+			<div class="sydc_bottom_list">
+				<a href="#">
+					<img src="images/i_img.jpg" alt="">
+				</a>
+				<div class="sydc_bottom_nr">
+					<a href="#">
+						天畅园精装户型方正两居室视野好可观万达大湖
+					</a>
+					<p>单价102141元/平米 1050万</p>
+				</div>
+			</div>
+			<div class="sydc_bottom_list">
+				<a href="#">
+					<img src="images/i_img.jpg" alt="">
+				</a>
+				<div class="sydc_bottom_nr">
+					<a href="#">
+						天畅园精装户型方正两居室视野好可观万达大湖
+					</a>
+					<p>单价102141元/平米 1050万</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- ====投资地产==== -->
+<div class="tzdc clearfix">
+	<div class="warp clearfix">
+		<div class="sydc_title">
+			<span>
+				<a href="#">
+					更多投资地产
+				</a>
+			</span>
+			投资地产
+		</div>
+		<div class="sydc_bottom clearfix">
+			<div class="sydc_bottom_list ml">
+				<a href="#">
+					<img src="images/i_img.jpg" alt="">
+				</a>
+				<div class="sydc_bottom_nr">
+					<a href="#">
+						天畅园精装户型方正两居室视野好可观万达大湖
+					</a>
+					<p>单价102141元/平米 1050万</p>
+				</div>
+			</div>
+			<div class="sydc_bottom_list">
+				<a href="#">
+					<img src="images/i_img.jpg" alt="">
+				</a>
+				<div class="sydc_bottom_nr">
+					<a href="#">
+						天畅园精装户型方正两居室视野好可观万达大湖
+					</a>
+					<p>单价102141元/平米 1050万</p>
+				</div>
+			</div>
+			<div class="sydc_bottom_list">
+				<a href="#">
+					<img src="images/i_img.jpg" alt="">
+				</a>
+				<div class="sydc_bottom_nr">
+					<a href="#">
+						天畅园精装户型方正两居室视野好可观万达大湖
+					</a>
+					<p>单价102141元/平米 1050万</p>
+				</div>
+			</div>
+			<div class="sydc_bottom_list">
+				<a href="#">
+					<img src="images/i_img.jpg" alt="">
+				</a>
+				<div class="sydc_bottom_nr">
+					<a href="#">
+						天畅园精装户型方正两居室视野好可观万达大湖
+					</a>
+					<p>单价102141元/平米 1050万</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- ====学区房/豪宅==== -->
+<div class="sydc clearfix">
+	<div class="warp clearfix">
+		<div class="sydc_title">
+			<span>
+				<a href="#">
+					更多学区房/豪宅
+				</a>
+			</span>
+			学区房/豪宅
+		</div>
+		<div class="sydc_bottom clearfix">
+			<div class="sydc_bottom_list ml">
+				<a href="#">
+					<img src="images/i_img.jpg" alt="">
+				</a>
+				<div class="sydc_bottom_nr">
+					<a href="#">
+						天畅园精装户型方正两居室视野好可观万达大湖
+					</a>
+					<p>单价102141元/平米 1050万</p>
+				</div>
+			</div>
+			<div class="sydc_bottom_list">
+				<a href="#">
+					<img src="images/i_img.jpg" alt="">
+				</a>
+				<div class="sydc_bottom_nr">
+					<a href="#">
+						天畅园精装户型方正两居室视野好可观万达大湖
+					</a>
+					<p>单价102141元/平米 1050万</p>
+				</div>
+			</div>
+			<div class="sydc_bottom_list">
+				<a href="#">
+					<img src="images/i_img.jpg" alt="">
+				</a>
+				<div class="sydc_bottom_nr">
+					<a href="#">
+						天畅园精装户型方正两居室视野好可观万达大湖
+					</a>
+					<p>单价102141元/平米 1050万</p>
+				</div>
+			</div>
+			<div class="sydc_bottom_list">
+				<a href="#">
+					<img src="images/i_img.jpg" alt="">
+				</a>
+				<div class="sydc_bottom_nr">
+					<a href="#">
+						天畅园精装户型方正两居室视野好可观万达大湖
+					</a>
+					<p>单价102141元/平米 1050万</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- footer -->
+<div class="footer clearfix">
+	<div class="f_top_box clearfix">
+		<div class="warp clearfix">
+			<ul>
+				<li>
+					<img src="images/f_ico1.png" alt="">
+					<span>信息真实</span>
+				</li>
+				<li>
+					<img src="images/f_ico2.png" alt="">
+					<span>专车接送</span>
+				</li>
+				<li>
+					<img src="images/f_ico3.png" alt="">
+					<span>一对一服务</span>
+				</li>
+			</ul>
+		</div>
+	</div>
+    <div class="warp clearfix">
+        <div class="footer_top">
+            <a href="#">关于我们</a>
+            <a href="#">联系我们</a>
+            <a href="#">隐私声明</a>
+            <div class="footer_dh">
+            	客服电话<span>4008-100-163</span>24小时
+            </div>
+        </div>
+        <div class="footer_center clearfix">
+            <h2>合作与友情链接</h2>
+            <a href="#">中国建材网</a>
+            <a href="#">中国建材网</a>
+            <a href="#">中国建材网</a>
+            <a href="#">中国建材网</a>
+            <a href="#">中国建材网</a>
+            <a href="#">中国建材网</a>
+            <a href="#">中国建材网</a>
+            <a href="#">中国建材网</a>
+            <a href="#">中国建材网</a>
+            <a href="#">中国建材网</a>
+            <a href="#">中国建材网</a>
+            <a href="#">中国建材网</a>
+            <a href="#">中国建材网</a>
+            <a href="#">中国建材网</a>
+            <a href="#">中国建材网</a>
+            <a href="#">中国建材网</a>
+            <a href="#">中国建材网</a>
+            <a href="#">中国建材网</a>
+        </div>
+        <div class="footer_bottom">
+            公司地址：北京市海淀区苏州街长远天地B1座1601室&nbsp;&nbsp;北京瑞达联行&nbsp;&nbsp;|&nbsp;&nbsp;
+            网络经营许可证 京ICP备11024601号-12 | © Copyright©2010-2016 瑞达联行lianhang.com版权所有
+        </div>
+    </div>
+</div>
+<!-- ======弹窗======== -->
+<div class="tc">
+	<div class="tc_title">
+		委托找房
+	</div>
+	<div class="tc_bottom">
+		<table>
+			<tr>
+				<td align="left">
+					<input type="text" class="i_wbk" value="手机号">
+				</td>
+			</tr>
+			<tr align="left">
+				<td>
+					<input type="text" class="i_wbk" value="邮   箱">
+				</td>
+			</tr>
+			<tr align="left">
+				<td>
+					<input type="text" class="i_wbk1" value="验证码"><img src="images/yzm.jpg" class="inputcheckbox" width="80" alt="">
+				</td>
+			</tr>
+			<tr align="center">
+				<td>
+					<input type="button" value="提交" class="i_but">
+				</td>
+			</tr>
+			<tr>
+				<td>
+					请留下您的联系方式，稍后客服人员会跟您联系。
+				</td>
+			</tr>
+		</table>
+	</div>
+</div>
+<div class="bgzzc"></div>
+<script type="text/javascript">
+	$(".lxwm_anniu a").click(function() {
+		if($(this).index()==0){
+			$(".tc_title").text("委托找房");
+		}
+		if($(this).index()==1){
+			$(".tc_title").text("投放房源");
+		}
+		$(".bgzzc").css({
+	        display:"block",
+	        height:$(document).height()
+	    })
+	    $(".tc").css({
+	    	display:"block",
+	    	top:($(window).height()-$(".tc").height())/2+"px"
+	    })
+	});
+	$(".bgzzc").click(function() {
+		$(".bgzzc").hide();
+		$(".tc").hide();
+	});
+</script>
+</body>
+</html>

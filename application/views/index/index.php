@@ -1,12 +1,11 @@
 <style>
-body{
-	background-image: url(<?php echo !empty(!empty($ad_row)) ? $ad_row['pic'] : '/static/web/images/top_bg.jpg' ; ?>); 
-	background-repeat:no-repeat;
-	background-attachment:fixed; background-position:center top;
-}
+	body{
+		 background-image: url(/static/web/images/top_bg.jpg); 
+		 background-repeat:no-repeat;
+         background-attachment:fixed; background-position:center top;"
+	}
 </style>
 <!-- ====main=== -->
-
 <div class="warp clearfix">
 	<div class="i_banner">
 		<img src="/static/web/images/i_banner.png" alt="">
@@ -14,13 +13,13 @@ body{
 	<form action="<?php echo site_url('house') ?>" method="get" id="searchForm">
 	<div class="search">
 		<div class="search_top">
-			<a href="javascript:;" class="active" onclick="$('#house_type').val(1)">
+			<a href="javascript:;" class="active" onclick="$('#house_type').val(1);$('#sales_type').show()">
 				商业地产
 			</a>
-			<a href="javascript:;"  onclick="$('#house_type').val(2)">
+			<a href="javascript:;"  onclick="$('#house_type').val(2);$('#sales_type').hide()">
 				  投资地产
 			</a>
-			<a href="javascript:;"  onclick="$('#house_type').val(3)">
+			<a href="javascript:;"  onclick="$('#house_type').val(3);$('#sales_type').hide()">
 				 学区房/豪宅
 			</a>
 			<a href="javascript:;"  onclick="$('#searchForm').attr('action','<?php echo site_url('house/lists') ?>'),$('#house_type').val(4)">
@@ -29,18 +28,26 @@ body{
 		</div>
 		<div class="search_bottom">
 			<input type="hidden" name="t" value="1" id="house_type">
-			<input type="hidden" name="" value="1" id="house_type">
-			<input type="text" placeholder ="请输入小区名开始找房" name="q" class="i_ss_wbk left">
+
+			<select name="sales_type" id="sales_type" class="i_ss_xl left">
+				<option value="2">出售</option>
+				<option value="1">出租</option>
+			</select >
+			<input type="text" name="q" placeholder="请输入区域、商圈或小区名开始找房" class="i_ss_wbk left">
 			<input type="submit" value="" class="i_ss_but left">
 		</div>
+		<div class="i_ad">
+			<img src="/static/web/images/ad.png" alt="">
+		</div>
+		<script type="text/javascript">
+			$(".search_top a").click(function() {
+				$(this).addClass('active').siblings().removeClass('active');
+			});
+		</script>
 	</div>
-	</form>
 </div>
-<script type="text/javascript">
-	$(".search_top a").click(function() {
-		$(this).addClass('active').siblings().removeClass('active');
-	});
-</script>
+</form>
+
 <!-- 联系我们 -->
 <div class="lxwm">
 	<div class="warp clearfix">
@@ -61,7 +68,6 @@ body{
 		</div>
 	</div>
 </div>
-
 <?php if(!empty($ad_row_rmsq)): ?>
 <!-- 热门商圈 -->
 <div class="rmsp clearfix">
@@ -119,36 +125,7 @@ body{
 </div>
 <?php endif; ?>
 
-<?php if(!empty($house_list_bussness)): ?>
-<!-- ====商业地产==== -->
-<div class="sydc clearfix">
-	<div class="warp clearfix">
-		<div class="sydc_title">
-			<span>
-				<a href="<?php echo site_url('house?t=1') ?>">
-					更多商业地产
-				</a>
-			</span>
-			商业地产
-		</div>
-		<div class="sydc_bottom clearfix">
-			<?php foreach ($house_list_bussness as $key => $r): ?>
-			<div class="sydc_bottom_list  <?php if($key == 0): ?>ml<?php endif;?>" >
-				<a href="<?php echo site_url('house/show/'.$r['id']) ?>">
-					<img src="<?php echo $r['thumb'] ?>" alt="">
-				</a>
-				<div class="sydc_bottom_nr">
-					<a href="<?php echo site_url('house/show/'.$r['id']) ?>">
-						<?php echo $r['title'] ?>
-					</a>
-					<p>单价<?php echo intval($r['unit_price'])?>元/平米 <?php echo intval($r['total_price']) ?>万</p>
-				</div>
-			</div>
-			<?php endforeach ?>
-		</div>
-	</div>
-</div>
-<?php endif; ?>
+
 <?php if(!empty($house_list_tz)): ?>
 
 <!-- ====投资地产==== -->
@@ -165,6 +142,79 @@ body{
 		<div class="sydc_bottom clearfix">
 			<?php foreach ($house_list_tz as $key => $r): ?>
 			<div class="sydc_bottom_list  <?php if($key == 0): ?>ml<?php endif;?>"">
+				<a href="<?php echo site_url('house/show/'.$r['id']) ?>">
+					<img src="<?php echo $r['thumb'] ?>" alt="">
+				</a>
+				<div class="sydc_bottom_nr">
+					<a href="<?php echo site_url('house/show/'.$r['id']) ?>">
+						<?php echo $r['title'] ?>
+					</a>
+					<p>单价<?php echo intval($r['unit_price'])?>元/平米 <?php echo intval($r['total_price']) ?>万</p>
+				</div>
+			</div>
+			<?php endforeach ?>
+		</div>
+	</div>
+</div>
+<?php endif; ?>
+
+<?php if(!empty($news_list_recomend)):?>
+
+<!-- 地产咨询 -->
+<div class="dczx clearfix">
+	<div class="warp clearfix">
+		<div class="rmsq_title">
+			<h2>
+				地产资讯
+			</h2>
+		</div>
+
+		<div class="dczx_top">
+			<?php foreach ($news_list_recomend as $k => $r): ?>
+				<div class="dczx_top_list <?php if($k == 0){ echo 'ml0';}?>">
+					<a href="<?=site_url('news/show/'.$r['id'])?>">
+						<img src="<?=$r['thumb']?>" alt="">
+						<span>
+							<?=$r['title']?>
+						</span>
+					</a>
+				</div>
+			<?php endforeach ?>
+			
+		</div>
+
+
+		<div class="dczx_bottom">
+			<ul>
+			<?php foreach ($news_list as $k => $r): ?>
+				<li>
+					<a href="<?=site_url('news/show/'.$r['id'])?>">
+						<span><?=date('m-d', $r['fb_time'])?></span>
+						· <?=mb_substr($r['title'],0,20)?>
+					</a>
+				</li>
+				<?php endforeach ?>
+			</ul>
+		</div>
+	</div>
+</div>
+<?php endif;?>
+
+<?php if(!empty($house_list_bussness)): ?>
+<!-- ====商业地产==== -->
+<div class="sydc clearfix">
+	<div class="warp clearfix">
+		<div class="sydc_title">
+			<span>
+				<a href="<?php echo site_url('house?t=1') ?>">
+					更多商业地产
+				</a>
+			</span>
+			商业地产
+		</div>
+		<div class="sydc_bottom clearfix">
+			<?php foreach ($house_list_bussness as $key => $r): ?>
+			<div class="sydc_bottom_list  <?php if($key == 0): ?>ml<?php endif;?>" >
 				<a href="<?php echo site_url('house/show/'.$r['id']) ?>">
 					<img src="<?php echo $r['thumb'] ?>" alt="">
 				</a>
@@ -212,13 +262,9 @@ body{
 	</div>
 </div>
 <?php endif; ?>
-<script>
-	
-</script>
+
 <!-- ======弹窗======== -->
-<form action="" method="post" id="zxForm">
-<input type="hidden" name="type" id="zx_type" value="1">
-<div class="tc" id="tc">
+<div class="tc">
 	<div class="tc_title">
 		委托找房
 	</div>
@@ -226,17 +272,17 @@ body{
 		<table>
 			<tr>
 				<td align="left">
-					<input type="text" name="mobile" class="i_wbk" value="<?php echo Userinfo::getUserInfo('mobile') ?>" placeholder="手机号">
+					<input type="text" class="i_wbk" value="手机号">
 				</td>
 			</tr>
 			<tr align="left">
 				<td>
-					<input type="text" class="i_wbk" name="email" value="<?php echo Userinfo::getUserInfo('email') ?>" placeholder="邮   箱">
+					<input type="text" class="i_wbk" value="邮   箱">
 				</td>
 			</tr>
 			<tr align="left">
 				<td>
-					<input type="text" class="i_wbk1" name="captcha" placeholder="验证码"><img src="<?php echo site_url('Api/captcha') ?>" title="点击切换验证码" style="cursor: pointer" onclick="this.src='<?php echo site_url('Api/captcha') ?>'" class="inputcheckbox" width="80" alt="">
+					<input type="text" class="i_wbk1" value="验证码"><img src="/static/web/images/yzm.jpg" class="inputcheckbox" width="80" alt="">
 				</td>
 			</tr>
 			<tr align="center">
@@ -252,10 +298,10 @@ body{
 		</table>
 	</div>
 </div>
-</form>
 <div class="bgzzc"></div>
 
 <script type="text/javascript">
+var ping = 0;
 	$(".lxwm_anniu a").click(function() {
 		if($(this).index()==0){
 			$(".tc_title").text("委托找房");

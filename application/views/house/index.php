@@ -3,6 +3,7 @@
     <?php $this->load->view('location') ?>
     <form action="" method="get" name="searchForm" id="searchForm">
     <input type="hidden" name="t" value="<?php echo request_get('t');?>">
+    <input type="hidden" name="parentid" id="parentid" value="<?php echo request_get('parentid');?>">
     <div class="lb_top">
         <div class="lb_top_1 clearfix">
             <input type="text" name="q" placeholder="请输入小区" value="<?php echo request_get('q') ?>" class="ss_wbk">
@@ -29,43 +30,58 @@
                     <dt>
                         位置：
                     </dt>
-                    <dd <?php if(request_get('city_id') == 'all'): ?>class="active"<?php endif; ?>>
-                        <a href="javascript:;" onclick="fill_input('house_city_id', 'all',0),fill_input('house_area_id', '',0),fill_input('house_subway_input', '', 1)">
+
+                    <dd <?php if(request_get('province_id') == 'all'): ?>class="active"<?php endif; ?>>
+                        <a href="javascript:;" onclick="fill_input('house_province_id', 'all',0),fill_input('house_city_id', '',0),fill_input('house_area_id', '',0),fill_input('house_address_id', '',0),fill_input('house_subway_input', '', 1)">
                             不限
                         </a>
                     </dd>
-                    <dd <?php if(request_get('city_id') || !request_get('city_id')): ?>class="active"<?php endif; ?> >
-                       <a href="javascript:;"  onclick="filter_pos(this, 'house_city')">
+
+                    <dd <?php if(request_get('province_id') || !request_get('province_id')): ?>class="active"<?php endif; ?> >
+                       <a href="javascript:;"  onclick="filter_pos(this, 'house_city'),fill_input('house_province_id', 'all',0),fill_input('house_city_id', '',0),fill_input('house_area_id', '',0),fill_input('house_address_id', '',1)">
                             行政区域
                         </a>
                     </dd>
+
                     <dd <?php if(request_get('subway')): ?>class="active"<?php endif; ?> >
                         <a href="javascript:;"  onclick="filter_pos(this, 'house_subway')">
                             地铁线
                         </a>
                     </dd>
+
                 </dl>
+
+               <input type="hidden" name="province_id" id="house_province_id" value="<?php echo request_get('province_id') ?>">
                <input type="hidden" name="city_id" id="house_city_id" value="<?php echo request_get('city_id') ?>">
                <input type="hidden" name="area_id" id="house_area_id" value="<?php echo request_get('area_id') ?>">
+               <input type="hidden" name="address_id" id="house_address_id" value="<?php echo request_get('address_id') ?>">
 
-
-                <dl class="erji"  id="house_city" style="display:<?php if(!request_get('city_id') || request_get('city_id') || request_get('area_id')){ echo 'block'; }else{ echo 'none'; } ?>">
-                <?php foreach ($area as $k => $r): ?>
-                	<dd <?php if(request_get('city_id') == $r['id']): ?> class="active" <?php endif; ?>>
-                        <a href="javascript:;" onclick="fill_input('house_city_id', '<?php echo $r['id'] ?>', 0),fill_input('house_area_id', '0', 1)">
+                <dl class="erji"  id="house_province" style="display:block">
+                <?php foreach ($province as $k => $r): ?>
+                	<dd <?php if(request_get('province_id') == $r['id']): ?> class="active" <?php endif; ?>>
+                        <a href="javascript:;" onclick="fill_input('house_province_id', '<?php echo $r['id'] ?>', 0),fill_input('house_area_id', '0', 0),fill_input('province_id', '<?php echo $r['id'] ?>', 1)">
                             <?php echo $r['name'] ?>
                         </a>
                     </dd>
                 <?php endforeach ?>
                 </dl>
-                <dl class="erji" id="house_area" style="display:<?php if(!request_get('city_id') || request_get('city_id')  || request_get('area_id') || !request_get('area_id')){ echo 'block'; }else{ echo 'none'; } ?>">
-                    
+
+            <dl class="erji"  id="house_city" style="display:<?php if(request_get('province_id')&& request_get('province_id')!='all' ){ echo 'block'; }else{ echo 'none'; } ?>">
+                <?php foreach ($city as $k => $r): ?>
+                    <dd <?php if(request_get('city_id') == $r['id']): ?> class="active" <?php endif; ?>>
+                        <a href="javascript:;" onclick="fill_input('house_city_id', '<?php echo $r['id'] ?>', 0),fill_input('house_area_id', '0', 0),fill_input('parentid', '<?php echo $r['id'] ?>', 1)">
+                            <?php echo $r['name'] ?>
+                        </a>
+                    </dd>
+                <?php endforeach ?>
                 </dl>
+
+                <dl class="erji" id="house_area" style="display:<?php if(request_get('area_id')){ echo 'block'; }else{ echo 'none'; } ?>"> </dl>
+                <dl class="erji" id="house_address" style="display:<?php if(request_get('address_id')){ echo 'block'; }else{ echo 'none'; } ?>">   </dl>
 
 
 				<input type="hidden" name="subway" id="house_subway_input" value="<?php echo request_get('subway') ?>">			
                 <dl class="erji" style="display:<?php if(request_get('subway')){ echo 'block'; }else{ echo 'none'; } ?>" id="house_subway">
-
                     <?php foreach ($subway as $k => $r): ?>
                 	<dd  <?php if(request_get('subway') == $r['id']): ?> class="active" <?php endif; ?>>
                         <a href="javascript:;" onclick="fill_input('house_subway_input', '<?php echo $r['id'] ?>')">
@@ -347,16 +363,32 @@
 		$('.erji').hide();
 		$('#'+tar).show();
 	}
-	<?php if(request_get('city_id') || request_get('area_id')): ?>
-	get_subarea('','<?php echo request_get('city_id') ?>', 'house_area');
-	<?php endif; ?>
+
+    <?php if(request_get('city_id') ): ?>
+    get_subarea('','<?php echo request_get('city_id') ?>', 'house_area');
+    <?php endif; ?>
+
+    <?php if(request_get('area_id') ): ?>
+    get_subarea('','<?php echo request_get('area_id') ?>', 'house_address');
+    <?php endif; ?>
+
 	function get_subarea(obj,parent, tar){
 		if(obj){
 			$(obj).parent().addClass('active').siblings().removeClass('active');
 		}
-	    $.post('<?php echo site_url('linkage/get_list_house')?>', {'parent': parent, 'id' : '<?php echo request_get('area_id') ?>'}, function(res) {
+       
+        data = {'parent': parent, 'id' : '<?php echo request_get('area_id') ?>', 'tar' : tar};
+        if(tar == 'house_address'){
+            data = {'parent': parent, 'id' : '<?php echo request_get('address_id') ?>', 'tar' : tar};
+        }
+
+	    $.post('<?php echo site_url('linkage/get_list_house')?>', data, function(res) {
 	      if(tar){
-	        $('#'+tar).html(res.data).show();
+            if(res.data){
+                $('#'+tar).html(res.data).show();
+            }else{
+                $('#'+tar).hide();
+            }
 	      }
 	    }, 'json');
 	}

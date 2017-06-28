@@ -1,43 +1,70 @@
 <!-- ========main======= -->
 <div class="warp clearfix">
-    <?php $this->load->view('location'); ?>
-    <div class="banner">
-        <?php if(!empty($ad_row)): ?>
+    <div class="user">
+         <?php $this->load->view('location'); ?>
+    </div>
+   <div class="banner">
+       <?php if(!empty($ad_row)): ?>
         <img src="<?php echo $ad_row['pic'] ?>" alt="">
-	<?php else: ?>
+    <?php else: ?>
         <img src="/static/web/images/jr_banner.jpg" alt="">
-	<?php endif; ?>
-    </div>
-    <?php if(!empty($list)): ?>
-    	<?php foreach ($list as $key => $r): ?>
-    		
-    <div class="jr_list">
-        <span class="ck_more">
-            <a href="<?php echo site_url('job/show/'.$r['id']); ?>">查看详情</a>
-        </span>
-        <h2>
-            <a href="<?php echo site_url('job/show/'.$r['id']); ?>"><?php echo $r['title'] ?></a>
-        </h2>
-        工作年限： <?php echo $r['worker_age'] ?>&nbsp;&nbsp;发布时间： <?php echo date('Y-m-d', $r['addtime']) ?><br>
-        <?php echo $r['intro'] ?>
-        <?php $r['fuli'] = str_replace('，', ',', $r['fuli']); ?>
-        <?php $label = explode(',', $r['fuli']) ?>
-        <?php if(!empty($label)): ?>
-        <span class="fl_bq">
-        <?php foreach ($label as $key => $value): ?>
-            <a href="javascript:;"><?php echo $value ?></a>
-        <?php endforeach ?>
-        </span>
     <?php endif; ?>
     </div>
-        <?php endforeach ?>
-    
-<?php else: ?>
-	<div style="width:100%;height:50px;line-height: 50px;text-align: center; font-size:19px">暂时没有任何招聘信息...</div>
-    <?php endif; ?>
-    <?php if(!empty($page_html)): ?>
-    <div class="page">
-       <?php echo $page_html; ?>
+    <div class="zp_box">
+        <div class="zp_box_left left">
+              <div class="zp_box_left_top">
+                <ul>
+                 <li  >
+                        <a <?php if('0' == $type) {echo 'class="cur"';}?> href="<?= site_url('job/index/?city='.request_get('city')) ?>">
+                           全部
+                        </a>
+
+                   <?php foreach($jobType as $k => $r):?>
+                    <li  >
+                        <a href="<?= site_url('job/index/'.$k.'?city='.request_get('city')) ?>" <?php if($k == $type) {echo 'class="cur"';}?>>
+                            <?=$r?>
+                        </a>
+                    </li>
+                   <?php endforeach;?>
+                </ul>
+            </div>
+            <div class="zp_box_left_bottom">
+               <?php if(!empty($list)): ?>
+                    <?php foreach ($list as $key => $r): ?>
+                <div class="jr_list">
+                    <span class="ck_more">
+                         <a href="<?php echo site_url('job/show/'.$r['id']); ?>">查看详情</a>
+                    </span>
+                    <h2>
+                       <a href="<?php echo site_url('job/show/'.$r['id']); ?>"><?php echo $r['title'] ?></a>
+                           <?php $r['fuli'] = str_replace('，', ',', $r['fuli']); ?>
+                            <?php $label = explode(',', $r['fuli']) ?>
+                            <?php if(!empty($label)): ?>
+                            <span class="fl_bq">
+                            <?php foreach ($label as $key => $value): ?>
+                                <a href="javascript:;"><?php echo $value ?></a>
+                            <?php endforeach ?>
+                            </span>
+                        <?php endif; ?>
+                    </h2>
+                    工作年限：<?=$r['worker_age']?>&nbsp;&nbsp;发布时间：<?=date('Y-m-d', $r['addtime'])?><br>
+                    部门： <?=!empty($r['apartment']) ? $r['apartment'] : ''?><br>
+                    工作地点：<?=$r['city_name']?><br>
+                </div>
+                            <?php endforeach ?>
+
+                <?php else: ?>
+                <div style="width:100%;height:50px;line-height: 50px;text-align: center; font-size:19px">暂时没有任何招聘信息...</div>
+                <?php endif; ?>
+
+                <?php if(!empty($page_html)): ?>
+                    <div class="page">
+                       <?php echo $page_html; ?>
+                    </div>
+                <?php endif; ?>
+
+            </div>
+        </div>
+         <?php $this->load->view('job/right')?>
     </div>
-<?php endif; ?>
 </div>

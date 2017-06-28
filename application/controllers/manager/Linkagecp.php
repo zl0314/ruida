@@ -11,6 +11,7 @@ class Linkagecp extends Base_Controller {
 	    $this->checkAdminLogin();
 	    $this->load->model('linkage_model' , 'model');
 	    $this->load->model('Result_model');
+	    $this->data['recommend'] = array('0' => '不推荐', '1' => '推荐');
 	}
 	
 	public function index($parentid = 0){
@@ -23,7 +24,7 @@ class Linkagecp extends Base_Controller {
 				'name' =>  request_get('name')
 			);
 		}
-		$data = get_page('linkage',$where, $this->Result_model,10,'listorder desc, id desc');
+		$data = get_page('linkage',$where, $this->Result_model,10,'listorder desc, id asc');
 		$parent_linkage = array();
 		if($parentid){
 			$parent_linkage = $this->model->getRow('name', array('id' => $parentid));
@@ -62,7 +63,8 @@ class Linkagecp extends Base_Controller {
 						foreach($names as $k => $r){
 							$save_data = array(
 								'parentid' => $data['parentid'],
-								'name' => trim($r)
+								'name' => trim($r),
+								'recommend_to_job_index' => $data['recommend_to_job_index'],
 							);
 							$row = $this->model->getRow('id', array('name' => $r));
 							if(empty($row)){
@@ -115,7 +117,8 @@ class Linkagecp extends Base_Controller {
 			if(!empty($house_row)){
 				$this->message('请将此城市下子项内容删除后再进行删除');
 			}else{
-				$this->Result_model->delete('linkage', '*', array('id' => $id));
+				$this->Result_model->delete('linkage', array('id' => $id));
+				$this->message('删除成功',site_url('manager/linkagecp'));
 			}
 		}
 	}

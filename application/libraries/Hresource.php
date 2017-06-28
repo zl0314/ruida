@@ -73,7 +73,7 @@ class Hresource{
 				'7' => '500万以上',
 			)
 		);
-		return !empty( $arr[$type] ) ? $arr[$type] : $arr;
+		return !empty( $arr[$type] ) ? $arr[$type] : $arr[1];
 	}
 
 	//用途
@@ -104,7 +104,7 @@ class Hresource{
 				'2' => '商业类',
 			)
 		);
-		return !empty( $arr[$type] ) ? $arr[$type] : $arr;
+		return !empty( $arr[$type] ) ? $arr[$type] : $arr[1];
 	}
 
 	//得到房型 
@@ -164,6 +164,7 @@ class Hresource{
 			'2' => '投资地产',
 			'3' => '学区房/豪宅',
 			'4' => '新房',
+			'5' => '全国地产服务',
 		);
 	}
 

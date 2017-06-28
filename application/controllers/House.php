@@ -10,6 +10,16 @@ class House extends MY_Controller {
         $this->load->model('ad_model');
         $this->load->model('Result_model');
         $type = request_get('t');
+        $province_id = request_get('province_id') ? request_get('province_id') : '';
+
+        $province_where = array('recommend_to_job_index'=> 1) ;
+        $city_where = array();
+        $city = array();
+        if($province_id != 'all'){
+            $city_where['parentid'] = request_get('province_id');
+            $city = $this->Result_model->getList('linkage', 'id,name', $city_where, 0, 0, 'listorder desc, id desc');
+
+        }
         $vars = array(
             'zhuangxiu' => Hresource::get_zhuangxiu(),
             'type' => Hresource::get_house_type(),
@@ -23,9 +33,11 @@ class House extends MY_Controller {
             'biaoqian' => Hresource::get_label(),
             'new_house_type' => Hresource::get_new_house_type(),
             'yongtu' => Hresource::get_functionality($type),
-            'area' => $this->Result_model->getList('linkage', 'id,name', array('parentid' => 2), 0, 0, 'listorder desc, id desc'),
+            'province' => $this->Result_model->getList('linkage', 'id,name', $province_where, 0, 0, 'listorder desc, id desc'),
+            'city' => $city,
             'subway' => $this->get_cache('subway', array('parentid' => 0), '*', 'listorder desc, id asc'),
         );
+        
         $this->tpl->assign($vars);
     }
 
@@ -37,24 +49,33 @@ class House extends MY_Controller {
 
         //start 搜索条件==========================
         $where = array(
-            'type' => $type
+           
         );
+        //分类
+        if($type != 5){
+            $where['type'] = $type;
+        }
+        //省
+        if(request_get('province_id')){
+            $where['province_id'] = request_get('province_id');
+        }
+        //商业地产 销售类型
         if($type == 1 && !request_get('sales_type')){
             $where['sales_type'] = 2;
             $_GET['sales_type'] = 2;
         }
-
+        //商业地产 销售类型
         if(request_get('sales_type')){
             $where['sales_type'] = request_get('sales_type');
         }
-
+        //房产类型
         if(!$type){
             $this->message('参数错误');
         }
-        if(!in_array($type, array(1, 2, 3, 4))){
+        if(!in_array($type, array(1, 2, 3, 4, 5))){
             $this->message('参数错误');
         }
-
+        //搜索关键字
         if(request_get('q')){
             $q = request_get('q');
 
@@ -69,7 +90,9 @@ class House extends MY_Controller {
                 );
             }else{
                 unset($where['type']);
-                $where['group_select']['group_start'] = array('type' => request_get('t'));
+                if($type != 5){
+                    $where['group_select']['group_start'] = array('type' => request_get('t'));
+                }
                 $where['group_select']['and_group_start'] = array(
                     'like' => array('title' => $q),
                     'or_like' => array('second_title' => $q, 'village' => $q)
@@ -77,24 +100,30 @@ class House extends MY_Controller {
             }
 
         }
-
+        //省市ID
         if(request_get('city_id') != 'all' && request_get('city_id')){
             $where['city_id'] = request_get('city_id');
         }
+        //区域ID 
         if(request_get('area_id')){
             $where['area_id'] = request_get('area_id');
         }
-
-
+        if(request_get('address_id')){
+            $where['address_id'] = request_get('address_id');
+        }
+        //地铁站
         if(request_get('subway')){
             $where['subway'] = request_get('subway');
         }
+        //房产标签
         if(request_get('biaoqian')){
             $where['biaoqian'] = request_get('biaoqian');
         }
+        //新房推荐类型
         if(request_get('new_house_type')){
             $where['new_house_type'] = request_get('new_house_type');
         }
+        //房屋类型
         if(request_get('house_type')){
             $htype = request_get('house_type') >=6 ? 5 : request_get('house_type');
             $where['shi'] = $htype;
@@ -150,10 +179,11 @@ class House extends MY_Controller {
             $where['total_price <='] = request_get('price_max');
         }
 
-
+        //用途
         if(request_get('yongtu')){
             $where['yongtu'] = request_get('yongtu');
         }
+        //装修
         if(request_get('zhuangxiu')){
             $where['zhuangxiu'] = request_get('zhuangxiu');
         }

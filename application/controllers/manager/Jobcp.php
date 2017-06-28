@@ -12,7 +12,8 @@ class Jobcp extends Base_Controller {
         $this->checkAdminLogin();
         $this->load->model('Result_model');
         $this->load->model('job_model', 'model');
-
+        $city_list = $this->Result_model->getList('linkage', 'id,name', array('parentid' => 0));
+        $this->data['city_list'] = $city_list;
     }
 
     public function index(){
@@ -22,7 +23,10 @@ class Jobcp extends Base_Controller {
             $where['like']['title'] = request_get('title');
         }
         // 列表数据  分页数据
-        $data =  get_page('job',$where, $this->Result_model, null , 'listorder desc, id desc');
+        $data =  get_page('job',$where, $this->Result_model, null , 'job.listorder desc, job.id desc');
+        foreach($data['list'] as $k => $r){
+            $data['list'][$k]['city_name'] = $this->Result_model->getOne('linkage', 'name', array('id' => $r['city_id']));
+        }        
 		$this->tpl->assign($data);
         $this->tpl->assign('search', $search);
 
@@ -41,6 +45,8 @@ class Jobcp extends Base_Controller {
                 $msg = '标题不能为空';
             }else if(empty($data['worker_age'])){
                 $msg = '招工作年限不能为空';
+            }else if(empty($data['type'])){
+                $msg = '分类不能为空';
             }else if(empty($data['toppic'])){
 //                $msg = '详情页顶部图片不能为空';
             }else if(empty($data['fuli'])){
@@ -51,7 +57,11 @@ class Jobcp extends Base_Controller {
                 $msg = '岗位职责不能为空';
             }else if(empty($data['ability'])){
 				$msg = '任职资格不能为空';
-			}
+			}else if(empty($data['city_id'])){
+                $msg = '请选择所在城市';
+            }else if(empty($data['apartment'])){
+                $msg = '所在部门不能为空';
+            }
 
 
 

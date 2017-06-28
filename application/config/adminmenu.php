@@ -86,23 +86,23 @@ $ADMIN_MENU = array(
 					)
 			),
 				'newscp' => array(
-					'name' => '新闻管理',
-					'status' => 0,
+					'name' => '地产资讯',
+					'status' => 1,
 					'method' => array(
 						'index' => array(
-							'name' => '新闻列表',
+							'name' => '资讯列表',
 							'status' => 1
 						),
 						'add' => array(
-							'name' => '新闻添加',
+							'name' => '资讯添加',
 							'status' => 1
 						),
 						'edit' => array(
-							'name' => '新闻编辑',
+							'name' => '资讯编辑',
 							'status' => 0
 						),
 						'del' => array(
-							'name' => '新闻删除',
+							'name' => '资讯删除',
 							'status' => 0
 						)
 					)

@@ -15,18 +15,56 @@
         
         <div class="form">
 
+
+            
+
             <div class="form-row">
                 <label for="name" class="form-field">标题</label>
                 <div class="form-cont">
                     <input id="name" type="text" required name="data[title]" class="input-txt" value="<?=!empty($vo['title']) ? $vo['title'] : '';?>" />
                 </div>
                 </div>
+
+                <div class="form-row">
+              <label for="name" class="form-field">分类</label>
+              <div class="form-cont">
+                  
+                   <select name="data[type]" id="type">
+                        <option value="0">请选择</option>
+                        <?php foreach ($jobType as $k => $v)  :?>
+                        <option value="<?= $k ?>" <?php if(!empty($vo['type']) && $vo['type'] == $k){ echo 'selected';} ?> ><?= $v ?></option>
+                        <?php endforeach?>
+                    </select>
+              </div>
+              </div>
+              
+              <div class="form-row">
+              <label for="city_id" class="form-field">所在城市</label>
+              <div class="form-cont">
+                  
+                   <select name="data[city_id]" id="city_id">
+                        <option value="0">请选择</option>
+                        <?php foreach ($city_list as $k => $v)  :?>
+                        <option value="<?= $v['id'] ?>" <?php if(!empty($vo['city_id']) && $vo['city_id'] == $v['id']){ echo 'selected';} ?> ><?= $v['name'] ?></option>
+                        <?php endforeach?>
+                    </select>
+              </div>
+              </div>
+
             
                 
                   <div class="form-row">
                 <label for="worker_age" class="form-field">工作年限</label>
                 <div class="form-cont">
                     <input id="worker_age" type="text" required name="data[worker_age]" class="input-txt" value="<?=!empty($vo['worker_age']) ? $vo['worker_age'] : '';?>" />
+                </div>
+                </div>
+
+
+                  <div class="form-row">
+                <label for="apartment" class="form-field">所在部门</label>
+                <div class="form-cont">
+                    <input id="apartment" type="text" required name="data[apartment]" class="input-txt" value="<?=!empty($vo['apartment']) ? $vo['apartment'] : '';?>" />
                 </div>
                 </div>
                 

@@ -9,15 +9,15 @@
 <meta name="keywords" content="<?php echo !empty($webset['keywords']) ? $webset['keywords'] : ''; ?>" />
 <meta name="description" content="<?php echo !empty($webset['description']) ? $webset['description'] : ''; ?>" />
 </head>
-<body>
+<!-- <base target="_blank"> -->
+<body >
 <script>
     var SITEURL = '<?php echo site_url()?>';
 </script>
 <!-- ====header=== -->
-<div class="header">
-    <div class="warp clearfix">
-        <div class="hd_top">
-            <?php if(!Userinfo::uid()): ?>
+<div class="warp clearfix">
+    <div class="hd_top">
+       <?php if(!Userinfo::uid()): ?>
             <span>
                 <a href="<?php echo site_url('user/signin') ?>">
                     <i class="dl_ico"></i>登录
@@ -36,25 +36,24 @@
                 </a>
             </span>
         <?php endif; ?>
-            服务热线：<?php echo $webset['service_line'] ?>
+    </div>
+    <div class="hd_bottom">
+        <div class="logo left">
+            <img src="/static/web/images/logo.png" alt="">
         </div>
-        <div class="hd_bottom">
-            <div class="logo left">
-                <img src="/static/web/images/logo.png" alt="">
-            </div>
-            <div class="nav right">
-                <ul>
-                    <li <?php if(in_array($siteclass, array('index'))): ?>class="cur"<?php endif; ?>>
+        <div class="i_nav right">
+            <ul>
+                <li <?php if(in_array($siteclass, array('index'))): ?>class="cur"<?php endif; ?>>
                         <a href="<?php echo site_url() ?>">
                             首页
                         </a>
                     </li>
-                    <li <?php if(!empty($type) && in_array($type, array('1'))): ?>class="cur"<?php endif; ?>>
+                 <li <?php if(!empty($type) && in_array($type, array('1'))): ?>class="cur"<?php endif; ?>>
                         <a href="<?php echo site_url('house?t=1')?>">
                             商业地产
                         </a>
                     </li>
-                    <li <?php if(!empty($type) && in_array($type, array('2'))): ?>class="cur"<?php endif; ?>>
+                 <li <?php if(!empty($type) && in_array($type, array('2'))): ?>class="cur"<?php endif; ?>>
                         <a href="<?php echo site_url('house?t=2')?>">
                             投资地产
                         </a>
@@ -69,26 +68,22 @@
                             新房
                         </a>
                     </li>
-                   <!--  <li>
-                        <a href="javascript:;">
+                 <li  <?php if($siteclass == 'china'): ?>class="cur"<?php endif; ?>>
+                        <a href="<?php echo site_url('china')?>">
                             全国地产服务
                         </a>
-                    </li> -->
-                    <li  <?php if(in_array($siteclass, array('job'))): ?>class="cur"<?php endif; ?>>
-                        <a href="<?php echo site_url('job') ?>">
+                    </li> 
+                     <li  <?php if(in_array($siteclass, array('news'))): ?>class="cur"<?php endif; ?>>
+                        <a href="<?php echo site_url('news') ?>">
+                            地产资讯
+                        </a>
+                    </li>
+                <li  <?php if(in_array($siteclass, array('job'))): ?>class="cur"<?php endif; ?>>
+                        <a href="<?php echo site_url('job/city') ?>">
                             加入我们
                         </a>
                     </li>
-                    <li  <?php if(!empty($hook) && in_array($hook, array('statement'))): ?>class="cur"<?php endif; ?>>
-                        <a href="<?php echo site_url('pages/statement') ?>">
-                            隐私声明
-                        </a>
-                    </li>
-                </ul>
-            </div>
+            </ul>
         </div>
     </div>
 </div>
-<script>
-    var ping = 0;
-</script>

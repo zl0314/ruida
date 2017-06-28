@@ -10,6 +10,9 @@
         <img src="/static/web/images/jr_banner.jpg" alt="">
 	<?php endif; ?>
     </div>
+     <div class="zp_box">
+        <div class="zp_box_left left">
+
     <div class="jrwm_xx clearfix">
         <div class="jrwm_xx_title">
             <?php echo $row['title'] ?><span>工作年限： <?php echo $row['worker_age'] ?></span>
@@ -28,5 +31,13 @@
             申请职位时邮件主题标明营配岗位及工作地点<br>
             简历投至： <?php echo !empty($webset['job_email']) ? $webset['job_email'] : 'join@lianjia.com' ?>
         </div>
+
     </div>
+
+</div> 
+       <?php $this->load->view('job/right')?>
+
 </div>
+
+</div>
+
