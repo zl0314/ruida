@@ -33,19 +33,19 @@
                     </dt>
 
                     <dd <?php if(request_get('show_all_province') == 'all'): ?>class="active"<?php endif; ?>>
-                        <a href="javascript:;" onclick="fill_input('house_province_id', 'all',0),fill_input('house_city_id', '',0),fill_input('house_area_id', '',0),fill_input('house_address_id', '',0),fill_input('show_all_province', 'all',0),fill_input('house_subway_input', '', 1)">
+                        <a href="javascript:;" onclick="fill_input('house_subway_input', '',0),fill_input('house_province_id', 'all',0),fill_input('house_city_id', '',0),fill_input('house_area_id', '',0),fill_input('house_address_id', '',0),fill_input('show_all_province', 'all',0),fill_input('house_subway_input', '', 1)">
                             不限
                         </a>
                     </dd>
 
-                    <dd <?php if(request_get('show_all_province') != 'all' ): ?>class="active"<?php endif; ?> >
-                       <a href="javascript:;"  onclick="fill_input('show_all_province', '',0),filter_pos(this, 'house_city'),fill_input('house_province_id', 'all',0),fill_input('house_city_id', '',0),fill_input('house_area_id', '',0),fill_input('house_address_id', '',1)">
+                    <dd <?php if( request_get('show_all_province') != 'all' && !request_get('subway') ): ?>class="active"<?php endif; ?> >
+                       <a href="javascript:;"  onclick="fill_input('house_subway_input', '',0),fill_input('show_all_province', '',0),filter_pos(this, 'house_city'),fill_input('house_province_id', 'all',0),fill_input('house_city_id', '',0),fill_input('house_area_id', '',0),fill_input('house_address_id', '',1)">
                             行政区域
                         </a>
                     </dd>
 
                     <dd <?php if(request_get('subway')): ?>class="active"<?php endif; ?> >
-                        <a href="javascript:;"  onclick="filter_pos(this, 'house_subway')">
+                        <a href="javascript:;"  onclick="fill_input('house_subway_input', '',0),filter_pos(this, 'house_subway'),fill_input('show_all_province', '',0)">
                             地铁线
                         </a>
                     </dd>
@@ -57,7 +57,7 @@
                <input type="hidden" name="area_id" id="house_area_id" value="<?php echo request_get('area_id') ?>">
                <input type="hidden" name="address_id" id="house_address_id" value="<?php echo request_get('address_id') ?>">
 
-                <dl class="erji"  id="house_province" style="display:block">
+                <dl class="erji"  id="house_province" style="<?php if(request_get('subway')):?> display:none;<?php else:?>display:block<?php endif;?>">
                 <?php foreach ($province as $k => $r): ?>
                 	<dd <?php if(request_get('province_id') == $r['id']): ?> class="active" <?php endif; ?>>
                         <a href="javascript:;" onclick="fill_input('house_province_id', '<?php echo $r['id'] ?>', 0),fill_input('house_area_id', '0', 0),fill_input('province_id', '<?php echo $r['id'] ?>', 0),fill_input('house_city_id', '', 0),fill_input('house_address_id', '', 1)">
