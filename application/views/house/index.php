@@ -4,6 +4,7 @@
     <form action="" method="get" name="searchForm" id="searchForm">
     <input type="hidden" name="t" value="<?php echo request_get('t');?>">
     <input type="hidden" name="parentid" id="parentid" value="<?php echo request_get('parentid');?>">
+    <input type="hidden" name="show_all_province" id="show_all_province" value="<?php echo request_get('show_all_province');?>">
     <div class="lb_top">
         <div class="lb_top_1 clearfix">
             <input type="text" name="q" placeholder="请输入小区" value="<?php echo request_get('q') ?>" class="ss_wbk">
@@ -31,14 +32,14 @@
                         位置：
                     </dt>
 
-                    <dd <?php if(request_get('province_id') == 'all'): ?>class="active"<?php endif; ?>>
-                        <a href="javascript:;" onclick="fill_input('house_province_id', 'all',0),fill_input('house_city_id', '',0),fill_input('house_area_id', '',0),fill_input('house_address_id', '',0),fill_input('house_subway_input', '', 1)">
+                    <dd <?php if(request_get('show_all_province') == 'all'): ?>class="active"<?php endif; ?>>
+                        <a href="javascript:;" onclick="fill_input('house_province_id', 'all',0),fill_input('house_city_id', '',0),fill_input('house_area_id', '',0),fill_input('house_address_id', '',0),fill_input('show_all_province', 'all',0),fill_input('house_subway_input', '', 1)">
                             不限
                         </a>
                     </dd>
 
-                    <dd <?php if(request_get('province_id') || !request_get('province_id')): ?>class="active"<?php endif; ?> >
-                       <a href="javascript:;"  onclick="filter_pos(this, 'house_city'),fill_input('house_province_id', 'all',0),fill_input('house_city_id', '',0),fill_input('house_area_id', '',0),fill_input('house_address_id', '',1)">
+                    <dd <?php if(request_get('show_all_province') != 'all' ): ?>class="active"<?php endif; ?> >
+                       <a href="javascript:;"  onclick="fill_input('show_all_province', '',0),filter_pos(this, 'house_city'),fill_input('house_province_id', 'all',0),fill_input('house_city_id', '',0),fill_input('house_area_id', '',0),fill_input('house_address_id', '',1)">
                             行政区域
                         </a>
                     </dd>
@@ -59,7 +60,7 @@
                 <dl class="erji"  id="house_province" style="display:block">
                 <?php foreach ($province as $k => $r): ?>
                 	<dd <?php if(request_get('province_id') == $r['id']): ?> class="active" <?php endif; ?>>
-                        <a href="javascript:;" onclick="fill_input('house_province_id', '<?php echo $r['id'] ?>', 0),fill_input('house_area_id', '0', 0),fill_input('province_id', '<?php echo $r['id'] ?>', 1)">
+                        <a href="javascript:;" onclick="fill_input('house_province_id', '<?php echo $r['id'] ?>', 0),fill_input('house_area_id', '0', 0),fill_input('province_id', '<?php echo $r['id'] ?>', 0),fill_input('house_city_id', '', 0),fill_input('house_address_id', '', 1)">
                             <?php echo $r['name'] ?>
                         </a>
                     </dd>
@@ -69,7 +70,7 @@
             <dl class="erji"  id="house_city" style="display:<?php if(request_get('province_id')&& request_get('province_id')!='all' ){ echo 'block'; }else{ echo 'none'; } ?>">
                 <?php foreach ($city as $k => $r): ?>
                     <dd <?php if(request_get('city_id') == $r['id']): ?> class="active" <?php endif; ?>>
-                        <a href="javascript:;" onclick="fill_input('house_city_id', '<?php echo $r['id'] ?>', 0),fill_input('house_area_id', '0', 0),fill_input('parentid', '<?php echo $r['id'] ?>', 1)">
+                        <a href="javascript:;" onclick="fill_input('house_city_id', '<?php echo $r['id'] ?>', 0),fill_input('house_area_id', '0', 0),fill_input('parentid', '<?php echo $r['id'] ?>', 0),fill_input('house_address_id', '', 1)">
                             <?php echo $r['name'] ?>
                         </a>
                     </dd>
@@ -370,6 +371,11 @@
 
     <?php if(request_get('area_id') ): ?>
     get_subarea('','<?php echo request_get('area_id') ?>', 'house_address');
+    <?php endif; ?>
+
+    <?php if($direct_province): ?>
+    get_subarea('','<?php echo $direct_province ?>', 'house_area');
+    $('#house_city').hide();
     <?php endif; ?>
 
 	function get_subarea(obj,parent, tar){

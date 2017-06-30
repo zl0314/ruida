@@ -12,7 +12,18 @@ class House extends MY_Controller {
         $type = request_get('t');
         $province_id = request_get('province_id') ? request_get('province_id') : '';
 
+        //所有省
         $province_where = array('recommend_to_job_index'=> 1) ;
+        if(request_get('show_all_province') == 'all'){
+            $province_where = array('parentid' => 0);
+        }
+        $province = $this->Result_model->getList('linkage', 'id,name', $province_where, 0, 0, 'listorder desc, id desc');
+        //直辖市处理
+        $direct_province = '';
+        if(in_array(request_get('province_id'), array(2,3,4,5))){
+            $direct_province =  $this->Result_model->getOne('linkage', 'id', array('parentid' => request_get('province_id')));
+        }
+        //所有城市
         $city_where = array();
         $city = array();
         if($province_id != 'all'){
@@ -33,8 +44,9 @@ class House extends MY_Controller {
             'biaoqian' => Hresource::get_label(),
             'new_house_type' => Hresource::get_new_house_type(),
             'yongtu' => Hresource::get_functionality($type),
-            'province' => $this->Result_model->getList('linkage', 'id,name', $province_where, 0, 0, 'listorder desc, id desc'),
+            'province' => $province,
             'city' => $city,
+            'direct_province' => $direct_province,
             'subway' => $this->get_cache('subway', array('parentid' => 0), '*', 'listorder desc, id asc'),
         );
         
