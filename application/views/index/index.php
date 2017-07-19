@@ -13,13 +13,13 @@
 	<form action="<?php echo site_url('house') ?>" method="get" id="searchForm">
 	<div class="search">
 		<div class="search_top">
-			<a href="javascript:;" class="active" onclick="$('#house_type').val(1);$('#sales_type').show()">
+			<a href="javascript:;" class="active" onclick="$('#house_type').val(1);$('#sales_type').show();$('#sales_type_input').val(2);">
 				商业地产
 			</a>
-			<a href="javascript:;"  onclick="$('#house_type').val(2);$('#sales_type').hide()">
+			<a href="javascript:;"  onclick="$('#house_type').val(2);$('#sales_type').hide();$('#sales_type_input').val('');">
 				  投资地产
 			</a>
-			<a href="javascript:;"  onclick="$('#house_type').val(3);$('#sales_type').hide()">
+			<a href="javascript:;"  onclick="$('#house_type').val(3);$('#sales_type').hide();$('#sales_type_input').val('');">
 				 学区房/豪宅
 			</a>
 			<a href="javascript:;"  onclick="$('#searchForm').attr('action','<?php echo site_url('house/lists') ?>'),$('#house_type').val(4)">
@@ -28,8 +28,8 @@
 		</div>
 		<div class="search_bottom">
 			<input type="hidden" name="t" value="1" id="house_type">
-
-			<select name="sales_type" id="sales_type" class="i_ss_xl left">
+			<input type="hidden" name="sales_type" id="sales_type_input" value="2">
+			<select id="sales_type" class="i_ss_xl left">
 				<option value="2">出售</option>
 				<option value="1">出租</option>
 			</select >

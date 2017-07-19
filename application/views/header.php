@@ -9,7 +9,7 @@
 <meta name="keywords" content="<?php echo !empty($webset['keywords']) ? $webset['keywords'] : ''; ?>" />
 <meta name="description" content="<?php echo !empty($webset['description']) ? $webset['description'] : ''; ?>" />
 </head>
-<!-- <base target="_blank"> -->
+<base target="_blank">
 <body >
 <script>
     var SITEURL = '<?php echo site_url()?>';

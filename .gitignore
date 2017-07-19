@@ -2,3 +2,5 @@
 /application/cache/
 /tmp/
 /log/
+/doc/
+/*.sql

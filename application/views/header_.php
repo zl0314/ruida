@@ -10,7 +10,7 @@
 <meta name="description" content="<?php echo !empty($webset['description']) ? $webset['description'] : ''; ?>" />
 </head>
 <body>
-<!-- <base target="_blank"> -->
+<base target="_blank">
 
 <script>
     var SITEURL = '<?php echo site_url()?>';

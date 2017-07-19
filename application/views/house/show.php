@@ -119,37 +119,29 @@
             </div>
 
         </div>
+
         <div class="xx_bottom_list clearfix">
+            <?php if(!empty($row['hx_intro'])): ?>
             <h2>
                 房源介绍
             </h2>
-            <?php if(!empty($row['hx_intro'])): ?>
             <div class="xx_bottom_nr clearfix">
-                <div class="xx_bottom_nr_1 clearfix">
-                    户型介绍
-                </div>
                 <div class="xx_bottom_nr_text clearfix">
                     <?php echo $row['hx_intro'] ?>
                 </div>
             </div>
         <?php endif; ?>
-        <?php if(!empty($row['zb_intro'])): ?>
-            <div class="xx_bottom_nr clearfix">
-                <div class="xx_bottom_nr_1 clearfix">
-                    周边配套
-                </div>
-                <div class="xx_bottom_nr_text clearfix">
-                    <?php echo $row['zb_intro'] ?>
-                </div>
-            </div>
-        <?php endif; ?>
+       
         <?php if(!empty($row['xiaoqu_intro'])): ?>
-            <div class="xx_bottom_nr clearfix">
-                <div class="xx_bottom_nr_1 clearfix">
+            <div class="xx_bottom_list clearfix">
+               <h2>
                     大厦介绍
-                </div>
-                <div class="xx_bottom_nr_text clearfix">
-                    <?php echo $row['xiaoqu_intro'] ?>
+                </h2>
+
+                 <div class="xx_bottom_nr clearfix">
+                    <div class="xx_bottom_nr_text clearfix">
+                        <?php echo $row['xiaoqu_intro'] ?>
+                    </div>
                 </div>
             </div>
         <?php endif; ?>
