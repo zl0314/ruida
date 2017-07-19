@@ -121,17 +121,7 @@
         </div>
 
         <div class="xx_bottom_list clearfix">
-            <?php if(!empty($row['hx_intro'])): ?>
-            <h2>
-                房源介绍
-            </h2>
-            <div class="xx_bottom_nr clearfix">
-                <div class="xx_bottom_nr_text clearfix">
-                    <?php echo $row['hx_intro'] ?>
-                </div>
-            </div>
-        <?php endif; ?>
-       
+           
         <?php if(!empty($row['xiaoqu_intro'])): ?>
             <div class="xx_bottom_list clearfix">
                <h2>

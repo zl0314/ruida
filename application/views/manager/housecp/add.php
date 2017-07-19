@@ -356,14 +356,14 @@
             </div>
         </div>
        
-        <div class="form-row">
+             
+ <!-- <div class="form-row">
           <label for="hx_intro" class="form-field">房源介绍</label>
           <div class="form-cont">
           <script id="hx_intro" name="data[hx_intro]" type="text/plain" style="width:650px;height:250px;"><?=!empty($vo['hx_intro']) ? $vo['hx_intro'] : '';?></script>
             </div>
         </div>
-        
- <!--
+  
           <div class="form-row">
           <label for="zb_intro" class="form-field">房源介绍</label>
           <div class="form-cont">
