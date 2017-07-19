@@ -4,3 +4,4 @@
 /log/
 /doc/
 /*.sql
+/application/config/database.php
