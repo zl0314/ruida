@@ -289,7 +289,10 @@
                     </li>
                     <?php if($r['type'] != 4): ?>
                     <li>
-                        <i class="er"></i><?php echo $r['ting_shi_txt'] ?> <?php echo $r['acreage_txt'] ?> - <?php echo !empty($r['subway_info']['1']['name']) ? $r['subway_info']['1']['name'] : ''?>
+                        <i class="er"></i>
+                        <?php echo $r['ting_shi_txt'] ?> 
+                        <?php echo !empty($r['acreage_txt']) ? $r['acreage_txt'] . '-' : '' ?>  
+                        <?php echo !empty($r['subway_info']['1']['name']) ? $r['subway_info']['1']['name'] : ''?>
                     </li>
                     <li>
                         <i class="san"></i><!--181人关注 / 共112次带看 / --> <?php echo mdate($r['fb_time']) ?>发布

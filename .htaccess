@@ -1,6 +1,6 @@
-RewriteEngine on
-RewriteBase /
+#RewriteEngine on
+#RewriteBase /
 
-RewriteCond $1 !^(index\.php|resource/|static/|uploads/|exp\.php)
+#RewriteCond $1 !^(index\.php|resource/|static/|uploads/|exp\.php)
 
-RewriteRule ^(.*)$ index.php?/$1 [L]
+#RewriteRule ^(.*)$ index.php?/$1 [L]
