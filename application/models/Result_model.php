@@ -13,6 +13,7 @@ class Result_model extends CI_Model{
     public function __construct(){
         parent::__construct();
         $this->is_manager = $this->uri->segment(1);
+        $this->rwdb = $this->db = $this->load->database('default', TRUE);
     }
     
     /**
@@ -319,8 +320,8 @@ class Result_model extends CI_Model{
         }else{
             // $this->db = $this->load->database('default', TRUE);
         }
-        $this->rwdb = $this->load->database('default', TRUE);
-        $this->db = $this->rwdb;
+        // $this->rwdb = $this->db = $this->load->database('default', TRUE);
+        // $this->db = $this->rwdb;
     }
 
 	/**

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>瑞达联行</title>
+<link type="text/css" rel="stylesheet" href="css/style.css" />
+<script type="text/javascript" src="js/jquery.js"></script>
+</head>
+<body style="background: url(images/login_bg.jpg) no-repeat center top; background-size:100%">
+<div class="login">
+    <div class="login_top">
+        <span>
+            还没有账号？
+            <a href="注册.html">
+                马上注册
+            </a>
+        </span>
+        <a href="index.html">返回首页</a>
+    </div>
+    <div class="login_center">
+        <div class="login_logo">
+            <img src="images/logo.png" alt="">
+        </div>
+        <div class="login_nr">
+            <input type="text" value="" id="mobile" placeholder="请输入手机号" class="zc_wbk sjh">
+        </div>
+        <div class="login_nr">
+            <input type="password" value="" id="password" placeholder="请输入密码" class="zc_wbk mm">
+        </div>
+        <div class="login_nr">
+            <input type="text" value="" id="" placeholder="验证码" class="yzm_wbk">
+            <img src="images/yzm.jpg" class="inputcheckbox" width="80" alt="">
+        </div>
+        <div class="login_nr">
+            <label><input type="checkbox">下次自动登录</label>
+        </div>
+        <div class="login_nr">
+            <a href="#" class="login_but">
+                立即登录
+            </a>
+        </div>
+    </div>
+    <div class="login_bottom">
+        北京瑞达联行 | 网络经营许可证 京ICP备11024601号-12 | © Copyright©2010-2016 <br>
+        瑞达联行lianhang.com版权所有
+    </div>
+</div>
+<script type="text/javascript">
+    $(".login_but").click(function() {
+        var mobile = $("#mobile").val();
+        var password = $("#password").val();
+        if (mobile == '') {
+            alert('请输入你的手机号码');
+            return false;
+        }
+        if (password == '') {
+            alert('请输入密码');
+            return false;
+        }
+    });
+</script>
+</body>
+</html>

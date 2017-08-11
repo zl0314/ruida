@@ -7,6 +7,7 @@ class Index extends MY_Controller {
      */
     function __construct(){
         parent::__construct();
+
         $this->load->model('ad_model');
         $this->load->model('Result_model');
     }
@@ -15,6 +16,8 @@ class Index extends MY_Controller {
      * 站点首页
      */
     public function index($source = 0){
+        $this->data['header'] = 'header';
+        
         //第一屏背景图
         $where = array(
             'pos' => 'index-index'
@@ -49,6 +52,20 @@ class Index extends MY_Controller {
         );
         $house_list_xqhz = $this->Result_model->getList('house', 'id,title,unit_price,total_price,thumb', $where, 4, null, 'fb_time desc');
 
+        //地产咨询 各分类下 有缩略图的新闻， 按fb_time desc 排序
+        /**$this->newsType = array(
+            '1' => '商业地产',
+            '2' => '投资地产',
+            '3' => '全国地产',
+            '4' => '其它',
+        );*/
+        $sql = "SELECT id,title,thumb FROM rd_news WHERE is_recommend=1 and thumb!='' LIMIT 3";
+        $news_list_recomend = $this->Result_model->getListBySql($sql);
+
+        $sql = "SELECT id,title,fb_time FROM rd_news WHERE is_recommend=0 ORDER BY fb_time DESC  LIMIT 9";
+        $news_list = $this->Result_model->getListBySql($sql);
+        
+
 		$vars = array(
             'ad_row' => $ad_row,
             'ad_row_banner2' => $ad_row_banner2,
@@ -56,6 +73,8 @@ class Index extends MY_Controller {
             'house_list_tz' => $house_list_tz,
             'house_list_xqhz' => $house_list_xqhz,
             'house_list_bussness' => $house_list_bussness,
+            'news_list_recomend' => $news_list_recomend,
+            'news_list' => $news_list
 
         );
         $this->tpl->assign($vars);

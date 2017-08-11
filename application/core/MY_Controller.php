@@ -8,7 +8,7 @@ class MY_Controller extends Common_Controller {
 
 		$this->data['friend_link'] = $this->Result_model->getList('friend_link', 'id,link_url,name',array(), 0, null, 'listorder desc, id desc');
 
-        $this->data['header'] = 'header';
+        $this->data['header'] = 'header_';
         $this->data['footer'] = 'footer';
 	}
 

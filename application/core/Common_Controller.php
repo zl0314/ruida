@@ -15,6 +15,13 @@ class Common_Controller extends CI_Controller {
         $this->data['sitemethod'] = $this->sitemethod;
         $this->data['siteclass'] = $this->siteclass;
 
+		$this->newsType = array(
+            '1' => '商业地产',
+            '2' => '投资地产',
+            '3' => '全国地产',
+            '4' => '其它',
+        );
+
 	}
 
 	/**

@@ -13,10 +13,7 @@ class Newscp extends Base_Controller {
         $this->load->model('Result_model');
         $this->load->model('news_model', 'model');
 
-        $this->newsType = array(
-            '1' => '品牌新闻',
-            '2' => '项目动态',
-        );
+      
         $this->tpl->assign('newsType', $this->newsType);
     }
 
@@ -41,7 +38,7 @@ class Newscp extends Base_Controller {
         $id = intval($id);
         $msg = '';
         if(!empty($_POST)){
-            $data = $this->input->post('data');
+            $data = request_post('data');
             if($data['title'] == ''){
                 $msg = '标题为空';
             }
@@ -49,7 +46,7 @@ class Newscp extends Base_Controller {
                 $msg = '请选择新闻分类';
             }
             if(empty($data['thumb'])){
-                $msg = '缩略图不能为空';
+                // $msg = '缩略图不能为空';
             }
             if(empty($data['content'])){
                 $msg = '内容不能为空';

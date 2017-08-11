@@ -22,14 +22,23 @@
                 </div>
                 </div>
 
+
+          <div class="form-row">
+                <label for="source" class="form-field">来源</label>
+                <div class="form-cont">
+                    <input id="source" type="text" required name="data[source]" class="input-txt" value="<?=!empty($vo['source']) ? $vo['source'] : '';?>" />
+                </div>
+                </div>
+
               <div class="form-row">
               <label for="name" class="form-field">新闻分类</label>
               <div class="form-cont">
                   
                    <select name="data[type]" id="type">
                         <option value="0">请选择</option>
-                        <option value="1" <?php if(!empty($vo['type']) && $vo['type'] == 1){ echo 'selected';} ?> >品牌新闻</option>
-                        <option value="2" <?php if(!empty($vo['type']) && $vo['type'] == 2){ echo 'selected';} ?> >项目动态</option>
+                        <?php foreach ($newsType as $k => $v)  :?>
+                        <option value="<?= $k ?>" <?php if(!empty($vo['type']) && $vo['type'] == $k){ echo 'selected';} ?> ><?= $v ?></option>
+                        <?php endforeach?>
                     </select>
               </div>
               </div>
@@ -59,13 +68,26 @@
           </div>
         </div>
 
-             <div class="form-row">
+            <!--  <div class="form-row">
                 <label for="name" class="form-field">排序</label>
                 <div class="form-cont">
                     <input id="name" type="text" required name="data[listorder]" class="input-txt" value="<?=isset($vo['listorder']) ? $vo['listorder'] : '1';?>" />
                     数值越大越靠前
                     </div>
-                </div>
+                </div> -->
+
+
+        <div class="form-row">
+              <label for="is_recommend" class="form-field">是否推荐</label>
+              <div class="form-cont">
+                  
+                   <select name="data[is_recommend]" id="is_recommend">
+                        <option value="0">请选择</option>
+                        <option value="1" <?php if(!empty($vo['is_recommend']) && $vo['is_recommend'] == 1){ echo 'selected';} ?> >是</option>
+                        <option value="0" <?php if(isset($vo['is_recommend']) && $vo['is_recommend'] == 0){ echo 'selected';} ?> >否</option>
+                    </select>
+              </div>
+              </div>
 
             <div class="btn-area">
                 <input type="submit" value="保 存" style="width:70px; height:25px;">

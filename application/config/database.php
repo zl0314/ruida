@@ -97,12 +97,11 @@ $db['default'] = array(
 
 $db['rw'] = array(
     'dsn'	=> '',
-    'hostname' => '127.0.0.1',
-    'username' => 'root',
-    'password' => 'zlflrhl',
-    'database' => 'ruida',
-    'dbdriver' => 'mysqli',
-	'dbprefix' => DB_PREFIX,
+	'hostname' => 'bdm258130691.my3w.com',
+	'username' => 'bdm258130691',
+	'password' => '75764895a',
+	'database' => 'bdm258130691_db',
+    'dbprefix' => DB_PREFIX,
     'pconnect' => FALSE,
     'db_debug' => SHOW_DEBUG_BACKTRACE,
     'cache_on' => FALSE,

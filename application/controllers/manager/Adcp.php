@@ -16,6 +16,7 @@ class Adcp extends Base_Controller {
             'page-index-aboutus' => '关于我们',
             'page-index-statement' => '隐私声明',
             'job-index' => '加入我们',
+            'page-index-contactus' => '联系我们',
 			'page-index-agreement' => '注册协议',
             'index-index-banner2' => '首页第二2屏背景图',
             'index-index-rmsq' => '热门商圈',
