@@ -1219,22 +1219,22 @@ class CI_Upload {
 		$regexp = '/^([a-z\-]+\/[a-z0-9\-\.\+]+)(;\s.+)?$/';
 
 		// Fileinfo extension - most reliable method
-		//$finfo = info_open(FILEINFO_MIME);
-		//if (is_resource($finfo)) // It is possible that a FALSE value is returned, if there is no magic MIME database file found on the system
-		//{
-			// $mime = @finfo_file($finfo, $file['tmp_name']);
-			// finfo_close($finfo);
+		$finfo = @finfo_open(FILEINFO_MIME);
+		if (is_resource($finfo)) // It is possible that a FALSE value is returned, if there is no magic MIME database file found on the system
+		{
+			$mime = @finfo_file($finfo, $file['tmp_name']);
+			finfo_close($finfo);
 
 			/* According to the comments section of the PHP manual page,
 			 * it is possible that this function returns an empty string
 			 * for some files (e.g. if they don't exist in the magic MIME database)
 			 */
-		// 	if (is_string($mime) && preg_match($regexp, $mime, $matches))
-		// 	{
-		// 		$this->file_type = $matches[1];
-		// 		return;
-		// 	}
-		// }
+			if (is_string($mime) && preg_match($regexp, $mime, $matches))
+			{
+				$this->file_type = $matches[1];
+				return;
+			}
+		}
 
 		/* This is an ugly hack, but UNIX-type systems provide a "native" way to detect the file type,
 		 * which is still more secure than depending on the value of $_FILES[$field]['type'], and as it

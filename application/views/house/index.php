@@ -294,9 +294,9 @@
                         <?php echo !empty($r['acreage_txt']) ? $r['acreage_txt'] . '-' : '' ?>  
                         <?php echo !empty($r['subway_info']['1']['name']) ? $r['subway_info']['1']['name'] : ''?>
                     </li>
-                    <li>
-                        <i class="san"></i><!--181人关注 / 共112次带看 / --> <?php echo mdate($r['fb_time']) ?>发布
-                    </li>
+                   <!--<li>
+                        <i class="san"></i>181人关注 / 共112次带看 /  <?php echo mdate($r['fb_time']) ?>发布
+                    </li>-->
                 <?php endif; ?>
 
                 </ul>
