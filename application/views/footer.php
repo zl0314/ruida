@@ -1,7 +1,11 @@
 
 <!-- footer -->
 <div class="footer clearfix">
+<<<<<<< HEAD
 <?php if($siteclass == 'index'):?>
+=======
+<?php // if($siteclass == 'index' || $siteclass == 'china'):?>
+>>>>>>> e6baf0896a38a189b19ef3324aa13a6eddae7ffa
     <div class="f_top_box clearfix">
         <div class="warp clearfix">
             <ul>
@@ -20,6 +24,7 @@
             </ul>
         </div>
     </div>
+<<<<<<< HEAD
 <?php endif;?>
     <div class="warp clearfix">
         <div class="footer_top">
@@ -31,6 +36,19 @@
                 客服电话<span><?php echo !empty($webset['customer_tel']) ? $webset['customer_tel'] : '' ?></span>24小时
             </div>
           <?php endif;?> 
+=======
+<?php //endif;?>
+    <div class="warp clearfix">
+        <div class="footer_top">
+            <a href="<?php echo site_url('pages/aboutus') ?>">关于我们</a>
+             <!-- <a href="<?php echo site_url('pages/contactus') ?>">联系我们</a> -->
+            <a href="<?php echo site_url('pages/statement') ?>">隐私声明</a>
+            <?php //if($siteclass == 'index'):?>
+             <div class="footer_dh">
+                客服电话<span><?php echo !empty($webset['customer_tel']) ? $webset['customer_tel'] : '' ?></span>24小时
+            </div>
+          <?php // endif;?> 
+>>>>>>> e6baf0896a38a189b19ef3324aa13a6eddae7ffa
         </div>
         <div class="footer_center clearfix">
             <h2>合作与友情链接</h2>

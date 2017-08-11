@@ -1119,7 +1119,11 @@ label {
 
 .lb_top_3 dl dd {
     padding: 11px 0;
+<<<<<<< HEAD
     width: 90px;
+=======
+    width: 110px;
+>>>>>>> e6baf0896a38a189b19ef3324aa13a6eddae7ffa
     text-align: center;
     color: #666666;
     float: left;
@@ -1533,11 +1537,16 @@ label {
     color: #666666;
     text-align: left;
     float: left;
+<<<<<<< HEAD
 }
 
 .xx_bottom_nr_2 {
     width: 520px;
     float: left;
+=======
+    font-size: 20px;
+    font-weight: bold;
+>>>>>>> e6baf0896a38a189b19ef3324aa13a6eddae7ffa
 }
 
 .xx_bottom_nr_2 ul li {
@@ -1557,8 +1566,11 @@ label {
 }
 
 .xx_bottom_nr_text {
+<<<<<<< HEAD
     width: 520px;
     float: left;
+=======
+>>>>>>> e6baf0896a38a189b19ef3324aa13a6eddae7ffa
     text-align: left;
     line-height: 1.7;
     color: #333333;

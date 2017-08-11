@@ -65,7 +65,7 @@ class Subwaycp extends Base_Controller {
 								'parentid' => $data['parentid'],
 								'name' => trim($r)
 							);
-							$row = $this->model->getRow('id', array('name' => $r));
+							$row = $this->model->getRow('id', array('name' => $r,'parentid' => $data['parentid'],));
 							if(empty($row)){
 								$this->model->save($save_data);
 							}

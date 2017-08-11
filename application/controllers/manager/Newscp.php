@@ -14,7 +14,11 @@ class Newscp extends Base_Controller {
         $this->load->model('news_model', 'model');
 
       
+<<<<<<< HEAD
         $this->tpl->assign('newsType', $this->newsType);
+=======
+        // $this->tpl->assign('newsType', $this->newsType);
+>>>>>>> e6baf0896a38a189b19ef3324aa13a6eddae7ffa
     }
 
     public function index(){
@@ -24,7 +28,7 @@ class Newscp extends Base_Controller {
             $where['like']['title'] = request_get('title');
         }
         // 列表数据  分页数据
-        $data =  get_page('news', $where, $this->Result_model, null , 'listorder desc, id desc');
+        $data =  get_page('news', $where, $this->Result_model, null , 'fb_time DESC,id desc');
 		$this->tpl->assign($data);
         $this->tpl->assign('search', $search);
 

@@ -1,7 +1,7 @@
 <?php
-
 ini_set('session.auto_start', 1);
 ini_set('session.save_path', dirname(__FILE__).'/tmp');
+
 
 /**
  * CodeIgniter
@@ -33,7 +33,7 @@ ini_set('session.save_path', dirname(__FILE__).'/tmp');
  * @package	CodeIgniter
  * @author	EllisLab Dev Team
  * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (https://ellislab.com/)
- * @copyright	Copyright (c) 2014 - 2016, British Columbia Institute of Technology (http://bcit.ca/)
+ * @copyright	Copyright (c) 2014 - 2016, Brit Columbia Institute of Technology (http://bcit.ca/)
  * @license	http://opensource.org/licenses/MIT	MIT License
  * @link	https://codeigniter.com
  * @since	Version 1.0.0

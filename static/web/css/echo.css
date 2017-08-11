@@ -1,0 +1,27 @@
+/*
+	Echo
+	URL: www.toddmotto.com
+*/
+
+/*------------------------------------*\
+    Echo
+\*------------------------------------*/
+
+.xx_bottom_list_img img {
+
+	background:#FFF url(../images/ajax.gif) no-repeat center center;
+	
+}
+.title {
+	font-size:18px;
+	font-weight:900;
+	margin:0 0 10px;
+}
+.title__code {
+	background:#FFF;
+	border-radius:5px;
+	border:1px solid #CCC;
+	padding:10px 20px;
+	margin:0 0 25px;
+	overflow-x:scroll;
+}

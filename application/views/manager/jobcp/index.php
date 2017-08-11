@@ -15,6 +15,9 @@ $this->load->view('search_end');
                 <th ><div class="th-gap"><input type="checkbox" onclick="selallck(this)"> </div></th>
                 <th ><div class="th-gap" >ID</div></th>
                 <th ><div class="th-gap">标题</div></th>
+                <th ><div class="th-gap">分类</div></th>
+                <th ><div class="th-gap">城市</div></th>
+                <th ><div class="th-gap">所在部门</div></th>
                 <th ><div class="th-gap">创建时间</div></th>
                 <th ><div class="th-gap">排序</div></th>
                 <th ><div class="th-gap">操作</div></th>
@@ -42,6 +45,9 @@ $this->load->view('search_end');
                         <td><input type="checkbox" value="<?php echo $v['id'];?>" ></td>
                         <td><?php echo $v['id'];?></td>
                         <td><?php echo $v['title'];?></td>
+                        <td><?php echo $jobType[$v['type']];?></td>
+                        <td><?php echo $v['city_name'];?></td>
+                        <td><?php echo !empty($v['apartment']) ? $v['apartment'] : '';?></td>
                         <td><?php echo date('Y-m-d H:i:s' , $v['addtime']);?></td>
                         <td>
                         <input type="text" class="short_txt" itemid="<?php echo $v['id']?>" name="listorder[<?php echo $v['id']?>]" value="<?=$v['listorder']?>">

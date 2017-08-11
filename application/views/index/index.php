@@ -13,13 +13,13 @@
 	<form action="<?php echo site_url('house') ?>" method="get" id="searchForm">
 	<div class="search">
 		<div class="search_top">
-			<a href="javascript:;" class="active" onclick="$('#house_type').val(1)">
+			<a href="javascript:;" class="active" onclick="$('#house_type').val(1);$('#sales_type').show();$('#sales_type_input').val(2);">
 				商业地产
 			</a>
-			<a href="javascript:;"  onclick="$('#house_type').val(2)">
+			<a href="javascript:;"  onclick="$('#house_type').val(2);$('#sales_type').hide();$('#sales_type_input').val('');">
 				  投资地产
 			</a>
-			<a href="javascript:;"  onclick="$('#house_type').val(3)">
+			<a href="javascript:;"  onclick="$('#house_type').val(3);$('#sales_type').hide();$('#sales_type_input').val('');">
 				 学区房/豪宅
 			</a>
 			<a href="javascript:;"  onclick="$('#searchForm').attr('action','<?php echo site_url('house/lists') ?>'),$('#house_type').val(4)">
@@ -28,12 +28,21 @@
 		</div>
 		<div class="search_bottom">
 			<input type="hidden" name="t" value="1" id="house_type">
+<<<<<<< HEAD
 
 			<select name="sales_type" class="i_ss_xl left">
 				<option value="2">出售</option>
 				<option value="1">出租</option>
 			</select >
 			<input type="text" value="请输入区域、商圈或小区名开始找房" class="i_ss_wbk left">
+=======
+			<input type="hidden" name="sales_type" id="sales_type_input" value="2">
+			<select id="sales_type" class="i_ss_xl left">
+				<option value="2">出售</option>
+				<option value="1">出租</option>
+			</select >
+			<input type="text" name="q" placeholder="请输入区域、商圈或小区名开始找房" class="i_ss_wbk left">
+>>>>>>> e6baf0896a38a189b19ef3324aa13a6eddae7ffa
 			<input type="submit" value="" class="i_ss_but left">
 		</div>
 		<div class="i_ad">
@@ -125,6 +134,7 @@
 </div>
 <?php endif; ?>
 
+<<<<<<< HEAD
 <!-- 地产咨询 -->
 <div class="dczx clearfix">
 	<div class="warp clearfix">
@@ -169,18 +179,25 @@
 <?php if(!empty($house_list_bussness)): ?>
 <!-- ====商业地产==== -->
 <div class="sydc clearfix">
+=======
+
+<?php if(!empty($house_list_tz)): ?>
+
+<!-- ====投资地产==== -->
+<div class="tzdc clearfix">
+>>>>>>> e6baf0896a38a189b19ef3324aa13a6eddae7ffa
 	<div class="warp clearfix">
 		<div class="sydc_title">
 			<span>
-				<a href="<?php echo site_url('house?t=1') ?>">
-					更多商业地产
+				<a href="<?php echo site_url('house?t=2') ?>">
+					更多投资地产
 				</a>
 			</span>
-			商业地产
+			投资地产
 		</div>
 		<div class="sydc_bottom clearfix">
-			<?php foreach ($house_list_bussness as $key => $r): ?>
-			<div class="sydc_bottom_list  <?php if($key == 0): ?>ml<?php endif;?>" >
+			<?php foreach ($house_list_tz as $key => $r): ?>
+			<div class="sydc_bottom_list  <?php if($key == 0): ?>ml<?php endif;?>"">
 				<a href="<?php echo site_url('house/show/'.$r['id']) ?>">
 					<img src="<?php echo $r['thumb'] ?>" alt="">
 				</a>
@@ -196,22 +213,64 @@
 	</div>
 </div>
 <?php endif; ?>
-<?php if(!empty($house_list_tz)): ?>
 
-<!-- ====投资地产==== -->
-<div class="tzdc clearfix">
+<?php if(!empty($news_list_recomend)):?>
+
+<!-- 地产咨询 -->
+<div class="dczx clearfix">
+	<div class="warp clearfix">
+		<div class="rmsq_title">
+			<h2>
+				地产资讯
+			</h2>
+		</div>
+
+		<div class="dczx_top">
+			<?php foreach ($news_list_recomend as $k => $r): ?>
+				<div class="dczx_top_list <?php if($k == 0){ echo 'ml0';}?>">
+					<a href="<?=site_url('news/show/'.$r['id'])?>">
+						<img src="<?=$r['thumb']?>" alt="">
+						<span>
+							<?=$r['title']?>
+						</span>
+					</a>
+				</div>
+			<?php endforeach ?>
+			
+		</div>
+
+
+		<div class="dczx_bottom">
+			<ul>
+			<?php foreach ($news_list as $k => $r): ?>
+				<li>
+					<a href="<?=site_url('news/show/'.$r['id'])?>">
+						<span><?=date('m-d', $r['fb_time'])?></span>
+						· <?=mb_substr($r['title'],0,20)?>
+					</a>
+				</li>
+				<?php endforeach ?>
+			</ul>
+		</div>
+	</div>
+</div>
+<?php endif;?>
+
+<?php if(!empty($house_list_bussness)): ?>
+<!-- ====商业地产==== -->
+<div class="sydc clearfix">
 	<div class="warp clearfix">
 		<div class="sydc_title">
 			<span>
-				<a href="<?php echo site_url('house?t=2') ?>">
-					更多投资地产
+				<a href="<?php echo site_url('house?t=1') ?>">
+					更多商业地产
 				</a>
 			</span>
-			投资地产
+			商业地产
 		</div>
 		<div class="sydc_bottom clearfix">
-			<?php foreach ($house_list_tz as $key => $r): ?>
-			<div class="sydc_bottom_list  <?php if($key == 0): ?>ml<?php endif;?>"">
+			<?php foreach ($house_list_bussness as $key => $r): ?>
+			<div class="sydc_bottom_list  <?php if($key == 0): ?>ml<?php endif;?>" >
 				<a href="<?php echo site_url('house/show/'.$r['id']) ?>">
 					<img src="<?php echo $r['thumb'] ?>" alt="">
 				</a>

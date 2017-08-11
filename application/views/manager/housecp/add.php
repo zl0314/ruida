@@ -343,32 +343,36 @@
             $this->load->view('public_uploadify');
             ?>
 
-              <div class="form-row">
-          <label for="base_intro" class="form-field">基本属性</label>
+              <!-- div class="form-row">
+          <label for="base_intro" class="form-field">基本属性&交易属性</label>
           <div class="form-cont">
           <script id="base_intro" name="data[base_intro]" type="text/plain" style="width:650px;height:250px;"><?=!empty($vo['base_intro']) ? $vo['base_intro'] : '';?></script>
             </div>
-        </div>
+        </div> -->
           <div class="form-row">
-          <label for="trade_intro" class="form-field">交易属性</label>
+          <label for="trade_intro" class="form-field">基本信息</label>
           <div class="form-cont">
           <script id="trade_intro" name="data[trade_intro]" type="text/plain" style="width:650px;height:250px;"><?=!empty($vo['trade_intro']) ? $vo['trade_intro'] : '';?></script>
             </div>
         </div>
-          <div class="form-row">
-          <label for="hx_intro" class="form-field">户型介绍</label>
+       
+             
+ <!-- <div class="form-row">
+          <label for="hx_intro" class="form-field">房源介绍</label>
           <div class="form-cont">
           <script id="hx_intro" name="data[hx_intro]" type="text/plain" style="width:650px;height:250px;"><?=!empty($vo['hx_intro']) ? $vo['hx_intro'] : '';?></script>
             </div>
         </div>
+  
           <div class="form-row">
-          <label for="zb_intro" class="form-field">周边配套</label>
+          <label for="zb_intro" class="form-field">房源介绍</label>
           <div class="form-cont">
           <script id="zb_intro" name="data[zb_intro]" type="text/plain" style="width:650px;height:250px;"><?=!empty($vo['zb_intro']) ? $vo['zb_intro'] : '';?></script>
             </div>
-        </div>
+        </div>-->
+
           <div class="form-row">
-          <label for="xiaoqu_intro" class="form-field">小区介绍</label>
+          <label for="xiaoqu_intro" class="form-field">大厦介绍</label>
           <div class="form-cont">
           <script id="xiaoqu_intro" name="data[xiaoqu_intro]" type="text/plain" style="width:650px;height:250px;"><?=!empty($vo['xiaoqu_intro']) ? $vo['xiaoqu_intro'] : '';?></script>
             </div>

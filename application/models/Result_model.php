@@ -102,11 +102,13 @@ class Result_model extends CI_Model{
      * @param string $order         排序
      * @return array
      */
-    public function getList($tb, $field = '*', $where = array(), $limit = 0, $offset = 0, $order = ''){
+    public function getList($tb, $field = '*', $where = array(), $limit = 0, $offset = 0, $order = '', $enable_cache = true){
         $cache_id = md5($tb.$field.$limit.$offset.json_encode($where));
         $result = $this->cache->file->get($cache_id);
-        if(!empty($result)){
-            return !empty($result) ? $result : array();
+        if($enable_cache){
+            if(!empty($result)){
+                // return !empty($result) ? $result : array();
+            }
         }
 
         $this->get_db();

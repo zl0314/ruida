@@ -2,3 +2,7 @@
 /application/cache/
 /tmp/
 /log/
+/doc/
+/.idea/
+/*.sql
+/application/config/database.php
