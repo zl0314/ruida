@@ -59,7 +59,6 @@ class PublicPicProcess extends Base_Controller {
 			$imgdata =  $this->upload->data();
 			$data['url'] = trim($config['upload_path'],'.').$imgdata['file_name'];
 		}
-		
 		if(!empty($water_mark)){
 			$this->watermark('./'.$data['url'], './'.$data['url'], 5);	
 		}

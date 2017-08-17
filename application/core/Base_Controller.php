@@ -126,7 +126,6 @@ class Base_Controller extends Common_Controller {
 		$this->w_minheight = 52;
 		$this->w_quality = 80;
 		$this->w_pct = 85;
-	 
 		$w_pos = $w_pos ? $w_pos : $this->w_pos;
 		$w_img = $w_img ? $w_img : $this->w_img;
 		//if(!$this->watermark_enable || !$this->check($source)) return false;
