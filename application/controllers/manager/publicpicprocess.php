@@ -59,7 +59,7 @@ class PublicPicProcess extends Base_Controller {
 			$data['url'] = trim($config['upload_path'],'.').$imgdata['file_name'];
 		}
 		
-		
+		$this->watermark('./'.$data['url'], './'.$data['url'], 5);
 		if(!empty($data['url'])){
 			//如果创建缩略图
 			echo $data['url'];

@@ -195,13 +195,13 @@ class Housecp extends Base_Controller {
         }else if(empty($data['scrollpic'])){
             $msg = '轮播图不能为空';
         }else if(empty($data['base_intro'])){
-            $msg = '基本信息不能为空';
+            // $msg = '基本信息不能为空';
         }else if(empty($data['trade_intro'])){
             // $msg = '交易属性不能为空';
         }else if(empty($data['hx_intro'])){
-            $msg = '户型介绍不能为空';
+            //$msg = '户型介绍不能为空';
         }else if(empty($data['zb_intro'])){
-            $msg = '周边介绍不能为空';
+            // $msg = '周边介绍不能为空';
         }else if(empty($data['xiaoqu_intro'])){
             // $msg = '小区介绍不能为空';
         }else if(empty($data['house_pics'])){

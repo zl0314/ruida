@@ -14,11 +14,7 @@ class Newscp extends Base_Controller {
         $this->load->model('news_model', 'model');
 
       
-<<<<<<< HEAD
-        $this->tpl->assign('newsType', $this->newsType);
-=======
         // $this->tpl->assign('newsType', $this->newsType);
->>>>>>> e6baf0896a38a189b19ef3324aa13a6eddae7ffa
     }
 
     public function index(){
