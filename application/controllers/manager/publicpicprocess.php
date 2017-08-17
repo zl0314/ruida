@@ -21,6 +21,7 @@ class PublicPicProcess extends Base_Controller {
 		$this->config->load('upload_config');
 		$upload = $upload ? $upload : 'default';
 		$config = $this->config->item($upload);
+		$water_mark = request_get('water_mark') ? request_get('water_mark') : '';
 		//$create_thumb = request_get('create_thumb') ? request_get('create_thumb') : '';
 		
 		//缩略图配置
@@ -59,7 +60,9 @@ class PublicPicProcess extends Base_Controller {
 			$data['url'] = trim($config['upload_path'],'.').$imgdata['file_name'];
 		}
 		
-		$this->watermark('./'.$data['url'], './'.$data['url'], 5);
+		if(!empty($water_mark)){
+			$this->watermark('./'.$data['url'], './'.$data['url'], 5);	
+		}
 		if(!empty($data['url'])){
 			//如果创建缩略图
 			echo $data['url'];

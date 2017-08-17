@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,6 +36,14 @@
     var map = new BMap.Map("container"),marker,point,styleStr;
     map.enableScrollWheelZoom();
     map.enableContinuousZoom();
+    var clicked_point = {lng:'116.4035', lat:'39.915'};
+    map.addEventListener("click",function(e){
+        var doit = confirm('确认以此坐标为准插入地图吗？');
+        if(doit){
+            clicked_point.lng = e.point.lng;
+            clicked_point.lat = e.point.lat;
+        }
+    });
     function doSearch(){
         if (!document.getElementById('city').value) {
             alert(lang.cityMsg);
@@ -44,8 +53,12 @@
             onSearchComplete: function (results){
                 if (results && results.getNumPois()) {
                     var points = [];
+
                     for (var i=0; i<results.getCurrentNumPois(); i++) {
                         points.push(results.getPoi(i).point);
+                        var pt = new BMap.Point(results.getPoi(i).point.lng, results.getPoi(i).point.lat);
+                        var marker = new BMap.Marker(pt);
+                        map.addOverlay(marker);
                     }
                     if (points.length > 1) {
                         map.setViewport(points);
@@ -53,7 +66,9 @@
                         map.centerAndZoom(points[0], 13);
                     }
                     point = map.getCenter();
-                    marker.setPoint(point);
+                    clicked_point.lng = points[0].lng;
+                    clicked_point.lat = points[0].lat;
+                    console.log(points[0]);
                 } else {
                     alert(lang.errorMsg);
                 }
@@ -105,11 +120,11 @@
     };
     dialog.onok = function (){
         var center = map.getCenter();
-        var zoom = map.zoomLevel;
+        var zoom = 15;
         var size = map.getSize();
         var mapWidth = size.width;
         var mapHeight = size.height;
-        var point = marker.getPoint();
+        var point = clicked_point;
 
         if($G('is_dynamic').checked) {
             var URL = editor.options.UEDITOR_HOME_URL,

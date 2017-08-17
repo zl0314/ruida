@@ -5,6 +5,7 @@ $spicheight = !empty($this->data['spicheight']) ? $this->data['spicheight'] : '3
 
 $create_thumb = !empty($this->data['create_thumb']) ? $this->data['create_thumb'] : '';
 $thumb_config = !empty($this->data['thumb_config']) ? $this->data['thumb_config'] : '';
+$water_mark = !empty($this->data['water_mark']) ? 1 : '';
 
 
 $spictitle = !empty($this->data['spictitle']) ? $this->data['spictitle'] : '轮播图';
@@ -118,7 +119,7 @@ $max_size = $config['max_size'] ? $config['max_size'] : 2000;
 			fileSizeLimit	  : '<?php echo $max_size;?>KB',
 			fileTypeExts : '*.gif; *.jpg; *.png; *.jpeg',
         	swf           : SITE_URL+'/static/uploadify/uploadify.swf',
-        	uploader      : '<?php echo site_url('manager/publicpicprocess/upload/scrollpic?filedata=Filedata&create_thumb='.$create_thumb.'&thumb_config='.$thumb_config)?>',
+        	uploader      : '<?php echo site_url('manager/publicpicprocess/upload/scrollpic?filedata=Filedata&create_thumb='.$create_thumb.'&thumb_config='.$thumb_config.'&water_mark='.$water_mark)?>',
         	width         : 98,
         	multi         : true,
         	buttonText	  : '<span class="uploadify-button-text"><i class="icon-plus-sign"></i></span>',

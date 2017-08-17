@@ -340,6 +340,7 @@
             $this->data['spicname'] = 'scrollpic';
             $this->data['spicwidth'] = '700像素';
             $this->data['spicheight'] = '400像素';
+            $this->data['water_mark'] = true;
             $this->load->view('public_uploadify');
             ?>
 
