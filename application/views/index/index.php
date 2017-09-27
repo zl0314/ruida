@@ -28,21 +28,12 @@
 		</div>
 		<div class="search_bottom">
 			<input type="hidden" name="t" value="1" id="house_type">
-<<<<<<< HEAD
-
-			<select name="sales_type" class="i_ss_xl left">
-				<option value="2">出售</option>
-				<option value="1">出租</option>
-			</select >
-			<input type="text" value="请输入区域、商圈或小区名开始找房" class="i_ss_wbk left">
-=======
 			<input type="hidden" name="sales_type" id="sales_type_input" value="2">
 			<select id="sales_type" class="i_ss_xl left">
 				<option value="2">出售</option>
 				<option value="1">出租</option>
 			</select >
 			<input type="text" name="q" placeholder="请输入区域、商圈或小区名开始找房" class="i_ss_wbk left">
->>>>>>> e6baf0896a38a189b19ef3324aa13a6eddae7ffa
 			<input type="submit" value="" class="i_ss_but left">
 		</div>
 		<div class="i_ad">
@@ -134,58 +125,11 @@
 </div>
 <?php endif; ?>
 
-<<<<<<< HEAD
-<!-- 地产咨询 -->
-<div class="dczx clearfix">
-	<div class="warp clearfix">
-		<div class="rmsq_title">
-			<h2>
-				地产资讯
-			</h2>
-		</div>
-<?php if(!empty($news_list_recomend)):?>
-
-		<div class="dczx_top">
-			<?php foreach ($news_list_recomend as $k => $r): ?>
-				<div class="dczx_top_list <?php if($k == 0){ echo 'ml0';}?>">
-					<a href="<?=site_url('news/show/'.$r['id'])?>">
-						<img src="<?=$r['thumb']?>" alt="">
-						<span>
-							<?=$r['title']?>
-						</span>
-					</a>
-				</div>
-			<?php endforeach ?>
-			
-		</div>
-<?php endif;?>
-
-
-		<div class="dczx_bottom">
-			<ul>
-			<?php foreach ($news_list as $k => $r): ?>
-				<li>
-					<a href="<?=site_url('news/show/'.$r['id'])?>">
-						<span><?=date('m-d', $r['fb_time'])?></span>
-						· <?=$r['title']?>
-					</a>
-				</li>
-				<?php endforeach ?>
-			</ul>
-		</div>
-	</div>
-</div>
-
-<?php if(!empty($house_list_bussness)): ?>
-<!-- ====商业地产==== -->
-<div class="sydc clearfix">
-=======
 
 <?php if(!empty($house_list_tz)): ?>
 
 <!-- ====投资地产==== -->
 <div class="tzdc clearfix">
->>>>>>> e6baf0896a38a189b19ef3324aa13a6eddae7ffa
 	<div class="warp clearfix">
 		<div class="sydc_title">
 			<span>

@@ -75,9 +75,9 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => '127.0.0.1',
+	'hostname' => '192.168.0.174',
 	'username' => 'root',
-	'password' => 'zlflrhl',
+	'password' => 'long1991',
 	'database' => 'ruida',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => DB_PREFIX,
@@ -97,9 +97,9 @@ $db['default'] = array(
 
 $db['rw'] = array(
     'dsn'	=> '',
-    'hostname' => '127.0.0.1',
+    'hostname' => '192,168.0.163',
     'username' => 'root',
-    'password' => 'zlflrhl',
+    'password' => 'long1991',
     'database' => 'ruida',
     'dbprefix' => DB_PREFIX,
     'pconnect' => FALSE,

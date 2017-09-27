@@ -9,15 +9,11 @@
 <meta name="keywords" content="<?php echo !empty($webset['keywords']) ? $webset['keywords'] : ''; ?>" />
 <meta name="description" content="<?php echo !empty($webset['description']) ? $webset['description'] : ''; ?>" />
 </head>
-<<<<<<< HEAD
-<body >
-=======
 <base target="_blank">
 <body >
 <script>
     var SITEURL = '<?php echo site_url()?>';
 </script>
->>>>>>> e6baf0896a38a189b19ef3324aa13a6eddae7ffa
 <!-- ====header=== -->
 <div class="warp clearfix">
     <div class="hd_top">
@@ -72,18 +68,6 @@
                             新房
                         </a>
                     </li>
-<<<<<<< HEAD
-                <li>
-                    <a href="#">
-                        全国地产服务
-                    </a>
-                </li>
-                <li  <?php if(in_array($siteclass, array('job'))): ?>class="cur"<?php endif; ?>>
-                        <a href="<?php echo site_url('job') ?>">
-                            加入我们
-                        </a>
-                    </li>
-=======
                  <li  <?php if($siteclass == 'china'): ?>class="cur"<?php endif; ?>>
                         <a href="<?php echo site_url('china')?>">
                             全国地产服务
@@ -99,7 +83,6 @@
                             加入我们
                         </a>
                     </li>
->>>>>>> e6baf0896a38a189b19ef3324aa13a6eddae7ffa
             </ul>
         </div>
     </div>

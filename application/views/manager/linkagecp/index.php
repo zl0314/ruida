@@ -17,10 +17,7 @@
             <!-- <th><div class="th-gap"><input type="checkbox" onclick="selallck(this)"> </div></th>  -->
             <th><div class="th-gap">ID</div></th>
             <th><div class="th-gap">城市名</div></th>
-<<<<<<< HEAD
-=======
             <th><div class="th-gap">推荐到招聘首页城市列表</div></th>
->>>>>>> e6baf0896a38a189b19ef3324aa13a6eddae7ffa
             <th><div class="th-gap">排序</div></th>
 
             <th><div class="th-gap">操作</div></th>
@@ -42,10 +39,7 @@
           <!-- <td><input type="checkbox" value="<?php echo $v['id'];?>" >  </td> -->
             <td><?php echo $v['id'];?></td>
             <td><?php echo $v['name'];?></td>
-<<<<<<< HEAD
-=======
             <td><?php echo $recommend[$v['recommend_to_job_index']];?></td>
->>>>>>> e6baf0896a38a189b19ef3324aa13a6eddae7ffa
             <td><input type="text" class="short_txt" itemid="<?php echo $v['id']?>" name="listorder[<?php echo $v['id']?>]" value="<?php echo !empty($v['listorder']) ? $v['listorder'] : '0';?>"></td>
 
             <td>
