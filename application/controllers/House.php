@@ -44,13 +44,9 @@ class House extends MY_Controller {
             'biaoqian' => Hresource::get_label(),
             'new_house_type' => Hresource::get_new_house_type(),
             'yongtu' => Hresource::get_functionality($type),
-<<<<<<< HEAD
-            'area' => $this->Result_model->getList('linkage', 'id,name', array('parentid' => 2), 0, 0, 'listorder desc, id desc'),
-=======
             'province' => $province,
             'city' => $city,
             'direct_province' => $direct_province,
->>>>>>> e6baf0896a38a189b19ef3324aa13a6eddae7ffa
             'subway' => $this->get_cache('subway', array('parentid' => 0), '*', 'listorder desc, id asc'),
         );
         
